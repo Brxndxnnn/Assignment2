@@ -20,8 +20,8 @@
 
             <ImageView
                 android:id="@+id/mainbackground"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -38,20 +38,21 @@
                 android:layout_marginTop="120dp"
                 android:layout_marginBottom="8dp"
                 android:text="Login"
+                android:textColor="@android:color/black"
                 android:textSize="28sp"
                 android:textStyle="bold"
-                android:textColor="@android:color/black"
                 app:layout_constraintBottom_toTopOf="@+id/textView6"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.117"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
 
             <TextView
                 android:id="@+id/textView6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="84dp"
+                android:layout_marginBottom="68dp"
                 android:text="Create an account here"
                 android:textStyle="italic"
                 app:layout_constraintBottom_toTopOf="@+id/emailToChange"
@@ -144,7 +145,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="52dp"
                 android:clickable="true"
-                android:text="Do not have an account yet? Click here to sign up"
+                android:text="@string/registerHere"
                 android:textColor="#236AA3"
                 app:layout_constraintBottom_toTopOf="@+id/submitButton"
                 app:layout_constraintEnd_toEndOf="parent"

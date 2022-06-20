@@ -28,6 +28,7 @@ public class StartUpPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), UserLogin.class));
+                finish();
             }
         });
 
@@ -35,6 +36,7 @@ public class StartUpPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), UserRegistration.class));
+                finish();
             }
         });
         //Button to Login and Register Page CODES//

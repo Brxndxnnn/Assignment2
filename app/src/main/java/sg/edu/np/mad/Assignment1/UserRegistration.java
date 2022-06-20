@@ -41,7 +41,8 @@ public class UserRegistration extends AppCompatActivity {
         // calling the action bar
         ActionBar actionBar = getSupportActionBar();
 
-        actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(android.R.color.transparent)));
+        actionBar.setTitle("");
+        actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.PaleGreen)));
 
         actionBar.setHomeAsUpIndicator(R.drawable.backbutton_icon);
 
@@ -128,6 +129,7 @@ public class UserRegistration extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), UserLogin.class));
+                finish();
             }
         });
         //Go to LOGIN Page if account exist CODES//
@@ -143,7 +145,10 @@ public class UserRegistration extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                this.finish();
+                Intent intent = new Intent(getApplicationContext(), StartUpPage.class);
+                startActivity(intent);
+                finish();
+                //this.finish();
                 return true;
         }
         return super.onOptionsItemSelected(item);

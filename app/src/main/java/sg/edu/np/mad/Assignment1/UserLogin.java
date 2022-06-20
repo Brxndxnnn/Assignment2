@@ -36,7 +36,8 @@ public class UserLogin extends AppCompatActivity {
         // calling the action bar
         ActionBar actionBar = getSupportActionBar();
 
-        actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(android.R.color.transparent)));
+        actionBar.setTitle("");
+        actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.PaleGreen)));
 
         actionBar.setHomeAsUpIndicator(R.drawable.backbutton_icon);
 
@@ -72,6 +73,7 @@ public class UserLogin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), UserRegistration.class));
+                finish();
             }
         });
 
@@ -101,6 +103,7 @@ public class UserLogin extends AppCompatActivity {
                             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                             intent.putExtra("LoggedInEmail", email);
                             startActivity(intent);
+                            finish();
                         }
                         else{
                             Toast.makeText(UserLogin.this, "Credentials are wrong, please try again",Toast.LENGTH_SHORT).show();
@@ -114,7 +117,10 @@ public class UserLogin extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                this.finish();
+                Intent intent = new Intent(getApplicationContext(), StartUpPage.class);
+                startActivity(intent);
+                finish();
+                //this.finish();
                 return true;
         }
         return super.onOptionsItemSelected(item);
