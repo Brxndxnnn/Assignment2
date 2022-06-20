@@ -3,10 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Poly/Year 3 Modules/MAD/Assignment1/app/src/main/res/font/roboto_condensed_bold.xml" value="0.228515625" />
+        <entry key="..\:/Poly/Year 3 Modules/MAD/Assignment1/app/src/main/res/layout/activity_faqhelp.xml" value="0.27447916666666666" />
+        <entry key="..\:/Poly/Year 3 Modules/MAD/Assignment1/app/src/main/res/layout/activity_faqrow.xml" value="0.27447916666666666" />
         <entry key="..\:/Poly/Year 3 Modules/MAD/Assignment1/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Poly/Year 3 Modules/MAD/Assignment1/app/src/main/res/layout/activity_start_up_page.xml" value="0.264" />
         <entry key="..\:/Poly/Year 3 Modules/MAD/Assignment1/app/src/main/res/layout/activity_user_login.xml" value="0.264" />
         <entry key="..\:/Poly/Year 3 Modules/MAD/Assignment1/app/src/main/res/layout/activity_user_registration.xml" value="0.264" />
+        <entry key="..\:/Poly/Year 3 Modules/MAD/Assignment1/app/src/main/res/layout/fragment_home.xml" value="0.1265625" />
         <entry key="..\:/Users/Brand/AndroidStudioProjects/Assignment1/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.196" />
         <entry key="..\:/Users/Brand/AndroidStudioProjects/Assignment1/app/src/main/res/drawable/ic_launcher_background.xml" value="0.196" />
         <entry key="..\:/Users/Brand/AndroidStudioProjects/Assignment1/app/src/main/res/layout/activity_change_password.xml" value="0.33" />
