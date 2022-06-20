@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/frameLayout5"
@@ -7,15 +8,19 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/profileFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="14dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="16dp"
         android:text="Profile"
         android:textColor="#000000"
-        android:textSize="40sp"
+        android:textSize="30sp"
         android:textStyle="italic|bold" />
 
     <ImageView
@@ -37,17 +42,19 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
         android:text="Username"
-        android:textSize="24sp" />
+        android:textAlignment="center"
+        android:textSize="15sp" />
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="52dp"
         android:layout_below="@id/textView8"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="52dp"
         android:text="Email Address"
-        android:textSize="24sp" />
+        android:textAlignment="center"
+        android:textSize="15sp" />
 
     <Button
         android:id="@+id/button5"
@@ -56,7 +63,7 @@
         android:layout_below="@id/textView9"
         android:layout_centerHorizontal="true"
         android:text="Change Username"
-        android:backgroundTint="@android:color/transparent"
+        android:backgroundTint="@android:color/holo_green_light"
         android:textColor="@android:color/black"
         app:rippleColor="@android:color/black"
         app:strokeColor="@android:color/black"
@@ -69,10 +76,11 @@
         android:layout_below="@id/button5"
         android:layout_centerHorizontal="true"
         android:text="Change Password"
-        android:backgroundTint="@android:color/transparent"
+        android:backgroundTint="@android:color/holo_green_light"
         android:textColor="@android:color/black"
         app:rippleColor="@android:color/black"
         app:strokeColor="@android:color/black"
         app:strokeWidth="1dp" />
 
 </RelativeLayout>
+</ScrollView>
