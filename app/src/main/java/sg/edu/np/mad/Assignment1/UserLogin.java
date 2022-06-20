@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -19,6 +20,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class UserLogin extends AppCompatActivity {
     EditText loginEmail, loginPassword;
@@ -32,6 +34,20 @@ public class UserLogin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_login);
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            // User is signed in
+            String email = user.getEmail();
+            Intent i = new Intent(UserLogin.this, MainActivity.class);
+            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            i.putExtra("LoggedInEmail", email);
+            startActivity(i);
+            finish();
+        } else {
+            // User is signed out
+            Log.d("cb", "onAuthStateChanged:signed_out");
+        }
 
         // calling the action bar
         ActionBar actionBar = getSupportActionBar();
@@ -112,6 +128,8 @@ public class UserLogin extends AppCompatActivity {
                 });
                 }
         });
+
+
     }
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
