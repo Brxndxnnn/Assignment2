@@ -16,20 +16,21 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/mainbackground"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:scaleType="centerCrop"
+                android:scaleType="fitXY"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="1.0"
-                app:srcCompat="@drawable/leaf_bg" />
+                app:srcCompat="@drawable/leaf_bg"
+                tools:ignore="ImageContrastCheck" />
 
             <TextView
                 android:id="@+id/textView"
@@ -54,6 +55,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="68dp"
                 android:text="Create an account here"
+                android:textColor="#616161"
                 android:textStyle="italic"
                 app:layout_constraintBottom_toTopOf="@+id/emailToChange"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -69,9 +71,11 @@
                 android:ems="13"
                 android:hint="Enter email here"
                 android:inputType="textEmailAddress"
+                android:textColorHint="#616161"
                 app:layout_constraintBottom_toTopOf="@+id/loginPasswordText"
                 app:layout_constraintEnd_toEndOf="parent"
-                tools:ignore="TouchTargetSizeCheck" />
+                tools:ignore="TouchTargetSizeCheck"
+                android:autofillHints="" />
 
 
             <EditText
@@ -83,9 +87,11 @@
                 android:ems="13"
                 android:hint="Enter password here"
                 android:inputType="textPassword"
+                android:textColorHint="#616161"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                tools:ignore="TouchTargetSizeCheck" />
+                tools:ignore="TouchTargetSizeCheck"
+                android:autofillHints="" />
 
             <Button
                 android:id="@+id/submitButton"
@@ -101,7 +107,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:rippleColor="@android:color/black"
                 app:strokeColor="@android:color/black"
-                app:strokeWidth="1dp" />
+                app:strokeWidth="1dp"
+                tools:ignore="DuplicateSpeakableTextCheck" />
 
             <ImageView
                 android:id="@+id/imageView"
@@ -146,11 +153,12 @@
                 android:layout_marginBottom="52dp"
                 android:clickable="true"
                 android:text="@string/registerHere"
-                android:textColor="#236AA3"
+                android:textColor="#01579B"
                 app:layout_constraintBottom_toTopOf="@+id/submitButton"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                tools:ignore="TouchTargetSizeCheck" />
+                tools:ignore="TouchTargetSizeCheck"
+                android:focusable="true" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 

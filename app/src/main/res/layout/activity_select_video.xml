@@ -19,7 +19,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:hint="Enter Video Title"/>
+        android:hint="Enter Video Title"
+        android:minHeight="48dp" />
 
     <VideoView
         android:id="@+id/videoView"

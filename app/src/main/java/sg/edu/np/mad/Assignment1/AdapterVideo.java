@@ -53,8 +53,6 @@ public class AdapterVideo extends RecyclerView.Adapter<AdapterVideo.HolderVideo>
     public HolderVideo onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.listedvideos, parent, false);
 
-        MediaSource.Factory mediaSourceFactory = new DefaultMediaSourceFactory(context);
-
         return new HolderVideo(view);
     }
 
@@ -66,10 +64,6 @@ public class AdapterVideo extends RecyclerView.Adapter<AdapterVideo.HolderVideo>
 
         ModelVideos modelVideos = videosArrayList.get(position);
 
-        //ExoPlayer player = new ExoPlayer.Builder(context).build();
-
-        holder.videoView.setPlayer(holder.player);
-
         String timestamp = modelVideos.getTimestamp();
 
         String test = modelVideos.videoUrl;
@@ -79,13 +73,16 @@ public class AdapterVideo extends RecyclerView.Adapter<AdapterVideo.HolderVideo>
         calendar.setTimeInMillis(Long.parseLong(timestamp));
         String formattedDateTime = DateFormat.format("dd/MM/yyyy hh:mm", calendar).toString();
 
+
         //set data
         holder.videoTitle.setText(modelVideos.title);
         holder.videoTime.setText(formattedDateTime);
 
         MediaItem mediaItem = MediaItem.fromUri(test);
         holder.player.setMediaItem(mediaItem);
+
         holder.player.prepare();
+
     }
 
 
@@ -109,6 +106,8 @@ public class AdapterVideo extends RecyclerView.Adapter<AdapterVideo.HolderVideo>
             videoView = itemView.findViewById(R.id.videoDisplayed);
             videoTitle = itemView.findViewById(R.id.videoTitle);
             videoTime = itemView.findViewById(R.id.videoTime);
+
+            videoView.setPlayer(player);
         }
     }
 

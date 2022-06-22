@@ -10,46 +10,46 @@ import java.util.ArrayList;
 
 public class DBHandler extends SQLiteOpenHelper {
 
-    public DBHandler(Context c) {super(c, "Videos.db", null, 1);}
+    public DBHandler(Context c) {super(c, "Listings.db", null, 1);}
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE VideoDetails (ID Text, Title TEXT, TimeStamp TEXT, VideoURL TEXT, ID INTEGER PRIMARY KEY, Follow INTEGER)");
+        db.execSQL("CREATE TABLE ListingDetails (ID Text, Title TEXT, Description TEXT, Image TEXT, ID INTEGER PRIMARY KEY, Follow INTEGER)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS UserDetails");
+        db.execSQL("DROP TABLE IF EXISTS ListingDetails");
         onCreate(db);
     }
 
-    public void insertUsers(ModelVideos modelVideos) {
+    public void insertListings(Listings listings) {
         //int f;
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("ID", modelVideos.id);
-        contentValues.put("Title", modelVideos.title);
-        contentValues.put("TimeStamp", modelVideos.timestamp);
-        contentValues.put("VideoURL", modelVideos.videoUrl);
+        contentValues.put("ID", listings.id);
+        contentValues.put("Title", listings.title);
+        contentValues.put("Description", listings.desc);
+        contentValues.put("Image", listings.image);
 
-        db.insert("VideoDetails", null, contentValues);
+        db.insert("ListingDetails", null, contentValues);
         db.close();
     }
 
-    public ArrayList<ModelVideos> getUsers(){
+    public ArrayList<Listings> getListings(){
         SQLiteDatabase db = this.getWritableDatabase();
-        ArrayList<ModelVideos> videosList = new ArrayList<>();
-        Cursor cursor = db.rawQuery("SELECT*FROM VideoDetails", null);
+        ArrayList<Listings> imageList = new ArrayList<>();
+        Cursor cursor = db.rawQuery("SELECT*FROM ListingDetails", null);
         while(cursor.moveToNext()){
-            ModelVideos modelVideos = new ModelVideos();
-            modelVideos.id = cursor.getString(0);
-            modelVideos.title = cursor.getString(1);
-            modelVideos.timestamp = cursor.getString(2);
-            modelVideos.videoUrl = cursor.getString(3);
+            Listings listings = new Listings();
+            listings.id = cursor.getString(0);
+            listings.title = cursor.getString(1);
+            listings.desc = cursor.getString(2);
+            listings.image = cursor.getString(3);
 
-            videosList.add(modelVideos);
+            imageList.add(listings);
         }
         db.close();
-        return videosList;
+        return imageList;
     }
 }

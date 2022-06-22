@@ -37,7 +37,7 @@ public class UploadFragment extends Fragment implements View.OnClickListener{
     }
 
     Button selectVidBtn;
-
+    Button createListingBtn;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -45,9 +45,11 @@ public class UploadFragment extends Fragment implements View.OnClickListener{
         View view = inflater.inflate(R.layout.fragment_upload, container, false);
 
         selectVidBtn = (Button) view.findViewById(R.id.selectVid);
-
+        createListingBtn = (Button) view.findViewById(R.id.createListing);
 
         selectVidBtn.setOnClickListener(this);
+        createListingBtn.setOnClickListener(this);
+
 
 
         return view;
@@ -56,7 +58,17 @@ public class UploadFragment extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-        Intent myIntent = new Intent(v.getContext(), SelectVideo.class);
-        startActivity(myIntent);
+        switch (v.getId()){
+            case R.id.selectVid:
+                Intent myIntent = new Intent(v.getContext(), SelectVideo.class);
+                startActivity(myIntent);
+                break;
+
+            case R.id.createListing:
+                Intent intent = new Intent(v.getContext(), SelectListings.class);
+                startActivity(intent);
+                break;
+        }
+
     }
 }

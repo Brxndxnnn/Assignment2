@@ -16,7 +16,21 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/mainbackground"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0"
+                app:srcCompat="@drawable/leaf_bg" />
+
 
             <TextView
                 android:id="@+id/textView"
@@ -25,26 +39,27 @@
                 android:layout_marginTop="150dp"
                 android:layout_marginBottom="8dp"
                 android:text="Change Username"
+                android:textColor="#302D2D"
                 android:textSize="28sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/textView6"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.25"
+                app:layout_constraintHorizontal_bias="0.251"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
 
             <TextView
                 android:id="@+id/textView6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginBottom="84dp"
+                android:layout_marginBottom="68dp"
                 android:text="Enter the New Username you want to change to"
-                android:textStyle="italic"
+                android:textStyle="bold|italic"
                 app:layout_constraintBottom_toTopOf="@+id/usernameToChange"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.25"
+                app:layout_constraintHorizontal_bias="0.242"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <EditText
@@ -57,10 +72,12 @@
                 android:ems="13"
                 android:hint="Enter New Username here"
                 android:inputType="textEmailAddress"
+                android:textColorHint="#616161"
                 app:layout_constraintBottom_toTopOf="@+id/submitButton"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/usernameiconView"
-                tools:ignore="TouchTargetSizeCheck" />
+                tools:ignore="TouchTargetSizeCheck"
+                android:autofillHints="" />
 
             <Button
                 android:id="@+id/submitButton"

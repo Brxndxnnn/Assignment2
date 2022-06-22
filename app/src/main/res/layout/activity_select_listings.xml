@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SelectListings">
+
+
+    <EditText
+        android:id="@+id/editTextListingTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="36dp"
+        android:layout_marginTop="36dp"
+        android:autofillHints=""
+        android:ems="16"
+        android:hint="Title of Listing"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:textColorHint="#757575"
+        app:layout_constraintBottom_toTopOf="@+id/listingImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.21"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageView
+        android:id="@+id/listingImage"
+        android:layout_width="312dp"
+        android:layout_height="187dp"
+        android:layout_below="@id/editTextListingTitle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="76dp"
+        android:layout_marginBottom="36dp"
+        android:scaleType="fitXY"
+        android:src="@android:drawable/sym_def_app_icon"
+        app:layout_constraintBottom_toTopOf="@+id/editTextListingDesc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextListingDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_below="@id/listingImage"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="50dp"
+        android:autofillHints=""
+        android:ems="16"
+        android:hint="Listing Description"
+        android:inputType="textPersonName"
+        android:textColorHint="#757575"
+        android:layout_centerHorizontal="true"
+        app:layout_constraintBottom_toTopOf="@+id/selectImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/selectImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextListingDesc"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="32dp"
+        android:text="select image"
+        app:layout_constraintBottom_toTopOf="@+id/uploadListing"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/uploadListing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/selectImage"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp"
+        android:text="Upload Listing"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+</RelativeLayout>

@@ -19,10 +19,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.TextUtils;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.MediaController;
 import android.widget.Toast;
 import android.widget.VideoView;
@@ -38,26 +38,30 @@ import com.google.firebase.storage.UploadTask;
 
 import java.util.HashMap;
 
-public class SelectVideo extends AppCompatActivity {
+public class SelectListings extends AppCompatActivity implements View.OnClickListener{
 
-    private EditText selectTitle;
-    private VideoView videoView;
-    private Button selectVidBtn;
-    private Button uploadVidBtn;
+    private static final int PICK_IMAGE_REQUEST = 1;
 
-    private static final int VIDEO_PICK_GALLERY_CODE = 100;
-    private static final int VIDEO_PICK_CAMERA_CODE = 101;
+    private EditText listingTitle;
+    private EditText listingDesc;
+    private ImageView listingImage;
+    private Button selectImg;
+    private Button uploadListing;
+
+    private static final int IMAGE_PICK_GALLERY_CODE = 100;
+    private static final int IMAGE_PICK_CAMERA_CODE = 101;
     private static final int CAMERA_REQUEST_CODE = 102;
 
     private String[] cameraPermissions;
-    private Uri videoUri = null;
     private ProgressDialog progressDialog;
     private String title;
+    private String desc;
+    private Uri imageURI = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_select_video);
+        setContentView(R.layout.activity_select_listings);
 
         //Action Bar CODES//
         // calling the action bar
@@ -65,55 +69,58 @@ public class SelectVideo extends AppCompatActivity {
 
         actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(android.R.color.transparent)));
 
-        actionBar.setTitle("Select Video to Upload");
+        actionBar.setTitle("Select Image to Upload");
         actionBar.setHomeAsUpIndicator(R.drawable.backbutton_icon);
 
         // showing the back button in action bar
         actionBar.setDisplayHomeAsUpEnabled(true);
         //Action Bar CODES//
 
-        //init ui views
-        selectTitle = findViewById(R.id.selectTitle);
-        videoView = findViewById(R.id.videoView);
-        selectVidBtn = findViewById(R.id.selectVideoBtn);
-        uploadVidBtn = findViewById(R.id.uploadVidBtn);
+
+        listingTitle = findViewById(R.id.editTextListingTitle);
+        listingDesc = findViewById(R.id.editTextListingDesc);
+        listingImage = findViewById(R.id.listingImage);
+        selectImg = findViewById(R.id.selectImage);
+        uploadListing = findViewById(R.id.uploadListing);
 
         //setup progress dialog
         progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Please wait");
-        progressDialog.setMessage("Uploading Video");
+        progressDialog.setMessage("Uploading Image");
         progressDialog.setCanceledOnTouchOutside(false);
 
         //camera permissions
         cameraPermissions = new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
-        //upload vid
-        uploadVidBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                title = selectTitle.getText().toString().trim();
+        selectImg.setOnClickListener(this);
+        uploadListing.setOnClickListener(this);
+    }
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.selectImage:
+                videoPickDialog();
+                break;
+
+            case R.id.uploadListing:
+                title = listingTitle.getText().toString().trim();
+                desc = listingDesc.getText().toString().trim();
                 if (TextUtils.isEmpty(title)){
-                    Toast.makeText(SelectVideo.this, "Title is required for the video", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SelectListings.this, "Title is required for the Listing", Toast.LENGTH_SHORT).show();
                 }
-                else if (videoUri==null){
+                else if (TextUtils.isEmpty(desc)){
+                    Toast.makeText(SelectListings.this, "Description is required for the Listing", Toast.LENGTH_SHORT).show();
+                }
+                else if (imageURI==null){
                     //video is not picked
-                    Toast.makeText(SelectVideo.this, "Please choose a Video to upload", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SelectListings.this, "Please choose a Image to upload", Toast.LENGTH_SHORT).show();
                 }
                 else{
                     //upload video to firebase
                     uploadVideoFirebase();
                 }
-            }
-        });
-
-        //select vid to upload
-        selectVidBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                videoPickDialog();
-            }
-        });
-
+                break;
+        }
     }
 
     private void uploadVideoFirebase() {
@@ -124,12 +131,12 @@ public class SelectVideo extends AppCompatActivity {
         String timestamp = "" + System.currentTimeMillis();
 
         //filepath and name in storage
-        String filePathAndName = "Videos/" + "video_" + timestamp;
+        String filePathAndName = "Listings/" + "listing_" + timestamp;
 
         //storage reference
         StorageReference storageReference = FirebaseStorage.getInstance().getReference(filePathAndName);
         //upload video of any file type
-        storageReference.putFile(videoUri)
+        storageReference.putFile(imageURI)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -144,11 +151,11 @@ public class SelectVideo extends AppCompatActivity {
                             //add details to vid in firebase
                             HashMap<String, Object> hashMap = new HashMap<>();
                             hashMap.put("id", "" + timestamp);
-                            hashMap.put("title", "" + title);
-                            hashMap.put("timestamp", "" + timestamp);
-                            hashMap.put("videoUrl", "" + downloadUri);
+                            hashMap.put("title", "" + listingTitle);
+                            hashMap.put("desc", "" + listingDesc);
+                            hashMap.put("videoUrl", "" + imageURI);
 
-                            DatabaseReference reference = FirebaseDatabase.getInstance("https://mad-assignment-1-7b524-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Videos");
+                            DatabaseReference reference = FirebaseDatabase.getInstance("https://mad-assignment-1-7b524-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Listings");
                             reference.child(timestamp)
                                     .setValue(hashMap)
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -156,7 +163,7 @@ public class SelectVideo extends AppCompatActivity {
                                         public void onSuccess(Void unused) {
                                             //videos added to db
                                             progressDialog.dismiss();
-                                            Toast.makeText(SelectVideo.this, "Video has been uploaded to Database", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(SelectListings.this, "Video has been uploaded to Database", Toast.LENGTH_SHORT).show();
                                         }
                                     })
                                     .addOnFailureListener(new OnFailureListener() {
@@ -164,7 +171,7 @@ public class SelectVideo extends AppCompatActivity {
                                         public void onFailure(@NonNull Exception e) {
                                             //video details failed to add to db
                                             progressDialog.dismiss();
-                                            Toast.makeText(SelectVideo.this, "Video details failed to upload to Database", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(SelectListings.this, "Image details failed to upload to Database", Toast.LENGTH_SHORT).show();
                                         }
                                     });
                         }
@@ -175,7 +182,7 @@ public class SelectVideo extends AppCompatActivity {
                     public void onFailure(@NonNull Exception e) {
                         //failed uploading to storage
                         progressDialog.dismiss();
-                        Toast.makeText(SelectVideo.this, "Video failed to upload to Database", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SelectListings.this, "Image failed to upload to Database", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
@@ -196,12 +203,12 @@ public class SelectVideo extends AppCompatActivity {
                     }
                     else{
                         //permission allowed, take pic
-                        videoPickCamera();
+                        imagePickCamera();
                     }
                 }
                 else if (i == 1){
                     //gallery clicked
-                    videoPickGallery();
+                    imagePickGallery();
                 }
             }
         }).show();
@@ -219,36 +226,22 @@ public class SelectVideo extends AppCompatActivity {
         return result1 && result2;
     }
 
-    private void videoPickGallery(){
-        //pick video from gallery
+    private void imagePickGallery(){
+        //pick image from gallery
         Intent intent = new Intent();
-        intent.setType("video/*");
+        intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent,"Select Videos"), VIDEO_PICK_GALLERY_CODE);
+        startActivityForResult(Intent.createChooser(intent,"Select Image"), IMAGE_PICK_GALLERY_CODE);
     }
 
-    private void videoPickCamera(){
-        //pick video from camera - intent
-        Intent intent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
-
-        startActivityForResult(intent, VIDEO_PICK_CAMERA_CODE);
+    private void imagePickCamera(){
+        //pick image from camera - intent
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(intent, IMAGE_PICK_CAMERA_CODE);
     }
 
     private void setVideoToVideoView(){
-        MediaController mediaController = new MediaController(this);
-        mediaController.setAnchorView(videoView);
-
-        //set media controller to video view
-        videoView.setMediaController(mediaController);
-        //set video uri
-        videoView.setVideoURI(videoUri);
-        videoView.requestFocus();
-        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-            @Override
-            public void onPrepared(MediaPlayer mp) {
-                videoView.pause();
-            }
-        });
+        listingImage.setImageURI(imageURI);
     }
 
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -260,7 +253,7 @@ public class SelectVideo extends AppCompatActivity {
                     boolean storageAccepted = grantResults[1] == PackageManager.PERMISSION_GRANTED;
                     if(cameraAccepted && storageAccepted){
                         //both permissions allowed
-                        videoPickCamera();
+                        imagePickCamera();
                     }
                     else{
                         //both or one not allowed
@@ -272,21 +265,22 @@ public class SelectVideo extends AppCompatActivity {
     }
 
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        //called after picking video from camera/gallery
+        //called after picking image from camera/gallery
         if(resultCode == RESULT_OK){
-            if(requestCode == VIDEO_PICK_GALLERY_CODE){
-                videoUri = data.getData();
-                //show picked video in VideoView
+            if(requestCode == IMAGE_PICK_GALLERY_CODE){
+                imageURI = data.getData();
+                //show picked image in imageview
                 setVideoToVideoView();
             }
-            else if (requestCode == VIDEO_PICK_CAMERA_CODE){
-                videoUri = data.getData();
-                //show picked video in VideoView
+            else if (requestCode == IMAGE_PICK_CAMERA_CODE){
+                imageURI = data.getData();
+                //show picked image in imageview
                 setVideoToVideoView();
             }
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
+
 
     @Override
     public boolean onSupportNavigateUp(){
