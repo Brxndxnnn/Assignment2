@@ -35,12 +35,6 @@ public class AdapterVideo extends RecyclerView.Adapter<AdapterVideo.HolderVideo>
 
     private ArrayList<ModelVideos> videosArrayList;
 
-    TextView videoTitle, videoTime;
-
-    public boolean alreadyExecuted = false;
-
-    VideoFragment videoFragment;
-
 
     public AdapterVideo(Context context, ArrayList<ModelVideos> videosArrayList) {
         this.context = context;

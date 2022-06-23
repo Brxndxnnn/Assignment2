@@ -4,14 +4,12 @@ import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Html;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -53,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     HomeFragment homeFragment = new HomeFragment();
     VideoFragment videoFragment = new VideoFragment();
     UploadFragment uploadFragment = new UploadFragment();
-    RewardsFragment rewardsFragment = new RewardsFragment();
+    ListingFragment listingFragment = new ListingFragment();
     ProfileFragment profileFragment = new ProfileFragment();
 
 
@@ -75,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 return true;
 
             case R.id.reward:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, rewardsFragment).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, listingFragment).commit();
                 return true;
 
             case R.id.userprofile:
@@ -99,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 return true;
 
             case R.id.button3:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, rewardsFragment).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, listingFragment).commit();
                 bottomNavigationView.setSelectedItemId(R.id.reward);
                 return true;
 

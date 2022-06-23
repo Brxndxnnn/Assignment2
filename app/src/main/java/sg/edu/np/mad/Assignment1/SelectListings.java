@@ -10,6 +10,7 @@ import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.app.ProgressDialog;
+import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -19,6 +20,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.TextUtils;
+import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -36,6 +39,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.io.File;
+import java.util.Date;
 import java.util.HashMap;
 
 public class SelectListings extends AppCompatActivity implements View.OnClickListener{
@@ -47,6 +52,7 @@ public class SelectListings extends AppCompatActivity implements View.OnClickLis
     private ImageView listingImage;
     private Button selectImg;
     private Button uploadListing;
+
 
     private static final int IMAGE_PICK_GALLERY_CODE = 100;
     private static final int IMAGE_PICK_CAMERA_CODE = 101;
@@ -236,11 +242,13 @@ public class SelectListings extends AppCompatActivity implements View.OnClickLis
 
     private void imagePickCamera(){
         //pick image from camera - intent
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        Intent intent = new Intent();
+        intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
+        //intent.putExtra(MediaStore.EXTRA_OUTPUT, imageURI);
         startActivityForResult(intent, IMAGE_PICK_CAMERA_CODE);
     }
 
-    private void setVideoToVideoView(){
+    private void setImageToImageView(){
         listingImage.setImageURI(imageURI);
     }
 
@@ -270,12 +278,13 @@ public class SelectListings extends AppCompatActivity implements View.OnClickLis
             if(requestCode == IMAGE_PICK_GALLERY_CODE){
                 imageURI = data.getData();
                 //show picked image in imageview
-                setVideoToVideoView();
+                setImageToImageView();
             }
             else if (requestCode == IMAGE_PICK_CAMERA_CODE){
+                Log.d("Camera", "gg");
                 imageURI = data.getData();
                 //show picked image in imageview
-                setVideoToVideoView();
+                setImageToImageView();
             }
         }
         super.onActivityResult(requestCode, resultCode, data);
