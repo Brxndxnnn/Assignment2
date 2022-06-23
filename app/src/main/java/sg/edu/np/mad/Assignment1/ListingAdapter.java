@@ -37,8 +37,15 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.Viewhold
     public void onBindViewHolder(@NonNull Viewholder holder, int position) {
         Listings listings = listingsArrayList.get(position);
 
-        Uri myUri = Uri.parse(listings.image);
-        holder.listingImg.setImageURI(myUri);
+        if(listings.image == null){
+            Log.d("Image", "Image nt found");
+        }
+        else{
+            Log.d("Image", "Image found");
+
+        }
+
+        holder.listingImg.setImageURI(listings.image);
         holder.listingTitle.setText(listings.title);
     }
 
@@ -56,5 +63,9 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.Viewhold
             listingImg = itemView.findViewById(R.id.listingImg);
             listingTitle = itemView.findViewById(R.id.listingTitle);
         }
+    }
+    @Override
+    public long getItemId(int position) {
+        return position;
     }
 }

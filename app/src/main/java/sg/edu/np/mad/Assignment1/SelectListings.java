@@ -157,9 +157,9 @@ public class SelectListings extends AppCompatActivity implements View.OnClickLis
                             //add details to vid in firebase
                             HashMap<String, Object> hashMap = new HashMap<>();
                             hashMap.put("id", "" + timestamp);
-                            hashMap.put("title", "" + listingTitle);
-                            hashMap.put("desc", "" + listingDesc);
-                            hashMap.put("videoUrl", "" + imageURI);
+                            hashMap.put("title", "" + title);
+                            hashMap.put("desc", "" + desc);
+                            hashMap.put("imageUrl", "" + downloadUri);
 
                             DatabaseReference reference = FirebaseDatabase.getInstance("https://mad-assignment-1-7b524-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Listings");
                             reference.child(timestamp)
