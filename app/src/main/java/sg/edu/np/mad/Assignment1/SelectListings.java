@@ -169,7 +169,7 @@ public class SelectListings extends AppCompatActivity implements View.OnClickLis
                                         public void onSuccess(Void unused) {
                                             //videos added to db
                                             progressDialog.dismiss();
-                                            Toast.makeText(SelectListings.this, "Video has been uploaded to Database", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(SelectListings.this, "Listing has been uploaded to Database", Toast.LENGTH_SHORT).show();
                                         }
                                     })
                                     .addOnFailureListener(new OnFailureListener() {
@@ -177,7 +177,7 @@ public class SelectListings extends AppCompatActivity implements View.OnClickLis
                                         public void onFailure(@NonNull Exception e) {
                                             //video details failed to add to db
                                             progressDialog.dismiss();
-                                            Toast.makeText(SelectListings.this, "Image details failed to upload to Database", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(SelectListings.this, "Listing details failed to upload to Database", Toast.LENGTH_SHORT).show();
                                         }
                                     });
                         }
@@ -188,7 +188,7 @@ public class SelectListings extends AppCompatActivity implements View.OnClickLis
                     public void onFailure(@NonNull Exception e) {
                         //failed uploading to storage
                         progressDialog.dismiss();
-                        Toast.makeText(SelectListings.this, "Image failed to upload to Database", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SelectListings.this, "Failed to upload to Database", Toast.LENGTH_SHORT).show();
                     }
                 });
     }

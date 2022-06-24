@@ -23,12 +23,12 @@ import java.util.ArrayList;
 
 public class ListingFragment extends Fragment {
 
-    RecyclerView listings;
-    Context mContext;
+    private RecyclerView listings;
+    private Context mContext;
     public static ArrayList<Listings> listingsArrayList = new ArrayList<>();
-    ListingAdapter listingAdapter;
+    private ListingAdapter listingAdapter;
     public boolean alreadyExecuted = false;
-    GridLayoutManager gridLayoutManager;
+    private GridLayoutManager gridLayoutManager;
 
     public ListingFragment(){
         // require a empty public constructor
@@ -68,6 +68,7 @@ public class ListingFragment extends Fragment {
                     for (DataSnapshot ds: snapshot.getChildren()){
                         //get data
                         Listings listings = ds.getValue(Listings.class);
+
                         //add model/data to list
                         listingsArrayList.add(listings);
                     }

@@ -12,12 +12,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.Viewholder> {
 
-    Context context;
-    ArrayList<Listings> listingsArrayList;
+    private Context context;
+    private ArrayList<Listings> listingsArrayList;
     LayoutInflater inflater;
 
     public ListingAdapter(Context context, ArrayList<Listings> listingsArrayList) {
@@ -37,15 +39,16 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.Viewhold
     public void onBindViewHolder(@NonNull Viewholder holder, int position) {
         Listings listings = listingsArrayList.get(position);
 
-        if(listings.image == null){
+        if(listings.imageUrl == null){
             Log.d("Image", "Image nt found");
         }
         else{
             Log.d("Image", "Image found");
 
         }
+        Glide.with(context).load(listings.imageUrl).into(holder.listingImg);
 
-        holder.listingImg.setImageURI(listings.image);
+        //holder.listingImg.setImageURI(Uri.parse(listings.imageUrl));
         holder.listingTitle.setText(listings.title);
     }
 
