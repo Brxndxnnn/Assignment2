@@ -15,7 +15,7 @@
         tools:ignore="MenuTitle" />
     <item
         android:id="@+id/reward"
-        android:icon="@drawable/reward_icon"
+        android:icon="@drawable/listings_icon"
         tools:ignore="MenuTitle" />
     <item
         android:id="@+id/userprofile"

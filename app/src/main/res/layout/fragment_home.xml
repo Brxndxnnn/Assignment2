@@ -71,6 +71,7 @@
                     android:layout_width="420dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:scaleType="centerInside"
                     app:srcCompat="@drawable/news" />
 
                 <ImageView
@@ -116,18 +117,18 @@
             app:layout_constraintStart_toEndOf="@+id/button"
             app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="175dp"
-            android:layout_height="70dp"
-            android:layout_marginTop="30dp"
-            android:backgroundTint="#EDA73E"
-            android:drawableLeft="@drawable/reward_icon"
-            android:text="Rewards"
-            app:layout_constraintEnd_toStartOf="@+id/button4"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button" />
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="175dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="30dp"
+                android:backgroundTint="#EDA73E"
+                android:drawableLeft="@drawable/listings_icon"
+                android:text="Listings"
+                app:layout_constraintEnd_toStartOf="@+id/button4"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/button" />
 
         <Button
             android:id="@+id/button4"
