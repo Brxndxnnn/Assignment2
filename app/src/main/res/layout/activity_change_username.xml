@@ -84,7 +84,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="244dp"
-                android:backgroundTint="@android:color/transparent"
+                android:backgroundTint="@android:color/white"
                 android:text="Submit"
                 android:textColor="@android:color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
