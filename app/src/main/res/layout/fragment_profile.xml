@@ -1,101 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/frameLayout5"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/Beige"
     tools:context=".MainActivity">
+    
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+        
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="match_parent"
+                android:layout_height="210dp"
+                android:background="@drawable/profile_bg"
+                android:scaleType="centerCrop"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_constraintLeft_creator="1"
+                tools:layout_constraintTop_creator="1" />
 
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="115dp"
+                android:layout_height="105dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="156dp"
+                android:scaleType="fitXY"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@android:drawable/sym_def_app_icon"
+                tools:ignore="MissingConstraints" />
 
-    <TextView
-        android:id="@+id/profileFragment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="16dp"
-        android:text="Profile"
-        android:textColor="#000000"
-        android:textSize="30sp"
-        android:textStyle="italic|bold" />
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imageView5"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:text="Username"
+                android:textAlignment="center"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="115dp"
-        android:layout_height="105dp"
-        android:layout_below="@id/profileFragment"
-        android:layout_marginTop="18dp"
-        android:layout_marginBottom="20dp"
-        android:layout_centerHorizontal="true"
-        android:scaleType="fitXY"
-        app:srcCompat="@android:drawable/sym_def_app_icon" />
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textView8"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:text="Email Address"
+                android:textAlignment="center"
+                android:textSize="17sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/imageView5"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp"
-        android:text="Username"
-        android:textAlignment="center"
-        android:textSize="17sp" />
+            <Button
+                android:id="@+id/button5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textView9"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="50dp"
+                android:backgroundTint="#C8EAD1"
+                android:text="Change Username"
+                android:textColor="@android:color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView9"
+                app:rippleColor="@android:color/black"
+                app:strokeColor="@android:color/black"
+                app:strokeWidth="1dp" />
 
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textView8"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="52dp"
-        android:text="Email Address"
-        android:textAlignment="center"
-        android:textSize="17sp" />
+            <Button
+                android:id="@+id/button7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/button6"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="45dp"
+                android:backgroundTint="#8FE381"
+                android:text="Sign Out"
+                android:textColor="@android:color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/button6"
+                app:rippleColor="@android:color/black"
+                app:strokeColor="@android:color/black"
+                app:strokeWidth="1dp" />
 
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textView9"
-        android:layout_centerHorizontal="true"
-        android:text="Change Username"
-        android:backgroundTint="@android:color/holo_green_light"
-        android:textColor="@android:color/black"
-        app:rippleColor="@android:color/black"
-        app:strokeColor="@android:color/black"
-        app:strokeWidth="1dp" />
-
-    <Button
-        android:id="@+id/button6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/button5"
-        android:layout_centerHorizontal="true"
-        android:text="Change Password"
-        android:backgroundTint="@android:color/holo_green_light"
-        android:textColor="@android:color/black"
-        app:rippleColor="@android:color/black"
-        app:strokeColor="@android:color/black"
-        app:strokeWidth="1dp" />
-
-    <Button
-        android:id="@+id/button7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/button6"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="45dp"
-        android:backgroundTint="@android:color/holo_green_light"
-        android:text="Sign Out"
-        android:textColor="@android:color/black"
-        app:rippleColor="@android:color/black"
-        app:strokeColor="@android:color/black"
-        app:strokeWidth="1dp" />
-
-</RelativeLayout>
-</ScrollView>
+            <Button
+                android:id="@+id/button6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/button5"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="#C8EAD1"
+                android:text="Change Password"
+                android:textColor="@android:color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/button5"
+                app:rippleColor="@android:color/black"
+                app:strokeColor="@android:color/black"
+                app:strokeWidth="1dp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
