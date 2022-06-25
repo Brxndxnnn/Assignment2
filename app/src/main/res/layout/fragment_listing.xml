@@ -5,7 +5,7 @@
     android:id="@+id/frameLayout4"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/Beige"
+    android:background="@drawable/gradient_background_green"
     tools:context=".MainActivity">
 
     <androidx.recyclerview.widget.RecyclerView
