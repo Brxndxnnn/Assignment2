@@ -105,7 +105,7 @@ public class SelectListings extends AppCompatActivity implements View.OnClickLis
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.selectImage:
-                videoPickDialog();
+                imagePickDialog();
                 break;
 
             case R.id.uploadListing:
@@ -118,18 +118,18 @@ public class SelectListings extends AppCompatActivity implements View.OnClickLis
                     Toast.makeText(SelectListings.this, "Description is required for the Listing", Toast.LENGTH_SHORT).show();
                 }
                 else if (imageURI==null){
-                    //video is not picked
-                    Toast.makeText(SelectListings.this, "Please choose a Image to upload", Toast.LENGTH_SHORT).show();
+                    //image is not picked
+                    Toast.makeText(SelectListings.this, "Please choose an Image to upload", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    //upload video to firebase
-                    uploadVideoFirebase();
+                    //upload image to firebase
+                    uploadImageFirebase();
                 }
                 break;
         }
     }
 
-    private void uploadVideoFirebase() {
+    private void uploadImageFirebase() {
         //show progress bar
         progressDialog.show();
 
@@ -141,20 +141,20 @@ public class SelectListings extends AppCompatActivity implements View.OnClickLis
 
         //storage reference
         StorageReference storageReference = FirebaseStorage.getInstance().getReference(filePathAndName);
-        //upload video of any file type
+        //upload image of any file type
         storageReference.putFile(imageURI)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        //video uploaded, get url of vid
+                        //image uploaded, get url of img
                         Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
 
                         while (!uriTask.isSuccessful());
                         Uri downloadUri = uriTask.getResult();
                         if (uriTask.isSuccessful()){
-                            //url of uploaded vid is received
+                            //url of uploaded image is received
 
-                            //add details to vid in firebase
+                            //add details to image in firebase
                             HashMap<String, Object> hashMap = new HashMap<>();
                             hashMap.put("id", "" + timestamp);
                             hashMap.put("title", "" + title);
@@ -167,7 +167,7 @@ public class SelectListings extends AppCompatActivity implements View.OnClickLis
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void unused) {
-                                            //videos added to db
+                                            //listing added to db
                                             progressDialog.dismiss();
                                             Toast.makeText(SelectListings.this, "Listing has been uploaded to Database", Toast.LENGTH_SHORT).show();
                                         }
@@ -175,7 +175,7 @@ public class SelectListings extends AppCompatActivity implements View.OnClickLis
                                     .addOnFailureListener(new OnFailureListener() {
                                         @Override
                                         public void onFailure(@NonNull Exception e) {
-                                            //video details failed to add to db
+                                            //listing details failed to add to db
                                             progressDialog.dismiss();
                                             Toast.makeText(SelectListings.this, "Listing details failed to upload to Database", Toast.LENGTH_SHORT).show();
                                         }
@@ -193,12 +193,12 @@ public class SelectListings extends AppCompatActivity implements View.OnClickLis
                 });
     }
 
-    private void videoPickDialog() {
+    private void imagePickDialog() {
         String[] options = {"Camera", "Gallery"};
 
         //dialog
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Pick Video From").setItems(options, new DialogInterface.OnClickListener() {
+        builder.setTitle("Pick Image From").setItems(options, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int i) {
                 if(i == 0){
