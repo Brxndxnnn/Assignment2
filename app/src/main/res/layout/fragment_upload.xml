@@ -5,7 +5,7 @@
     android:id="@+id/frameLayout3"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/Beige"
+    android:background="@drawable/gradient_background_green"
     tools:context=".MainActivity">
 
     <ScrollView
@@ -38,16 +38,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="288dp"
+                android:backgroundTint="#FDBAB4B4"
                 android:text="Select Video"
+                android:textColor="@color/black"
+                app:strokeWidth="2dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
             <ImageView
                 android:id="@+id/imageView16"
-                android:layout_width="155dp"
-                android:layout_height="142dp"
+                android:layout_width="200dp"
+                android:layout_height="180dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -60,9 +62,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="36dp"
+                android:backgroundTint="#FDBAB4B4"
                 android:text="Create Listing"
+                android:textColor="@color/black"
+                app:strokeWidth="2dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/selectVid" />
 
