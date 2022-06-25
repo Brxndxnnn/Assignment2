@@ -5,6 +5,7 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/Beige"
     tools:context=".MainActivity">
 
     <ScrollView
@@ -90,32 +91,32 @@
             </LinearLayout>
         </HorizontalScrollView>
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="175dp"
-            android:layout_height="70dp"
-            android:layout_marginTop="30dp"
-            android:backgroundTint="@color/purple_200"
-            android:drawableLeft="@drawable/video_icon"
-            android:text="Educational Videos"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/button2"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView7" />
+            <Button
+                android:id="@+id/button"
+                android:layout_width="175dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="36dp"
+                android:backgroundTint="@color/purple_200"
+                android:drawableLeft="@drawable/video_icon"
+                android:text="Educational Videos"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/button2"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="175dp"
-            android:layout_height="70dp"
-            android:layout_marginTop="30dp"
-            android:backgroundTint="#3385D6"
-            android:drawableLeft="@drawable/upload2icon"
-            android:text="Upload Videos"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/button"
-            app:layout_constraintTop_toBottomOf="@+id/textView7" />
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="175dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="36dp"
+                android:backgroundTint="#3385D6"
+                android:drawableLeft="@drawable/upload2icon"
+                android:text="Upload Videos"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/button"
+                app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
             <Button
                 android:id="@+id/button3"

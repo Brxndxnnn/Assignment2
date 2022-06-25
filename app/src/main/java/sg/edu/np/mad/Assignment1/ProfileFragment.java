@@ -45,7 +45,7 @@ public class ProfileFragment extends Fragment {
         username = (TextView) view.findViewById(R.id.textView8);
         email = (TextView) view.findViewById(R.id.textView9);
 
-        email.setText(MainActivity.loggedInEmail);
+        email.setText("Email Address: " + MainActivity.loggedInEmail);
 
         mDatabase = FirebaseDatabase.getInstance("https://mad-assignment-1-7b524-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
 
@@ -56,7 +56,7 @@ public class ProfileFragment extends Fragment {
                     Log.e("firebase", "Error getting data", task.getException());
                 }
                 else {
-                    username.setText(String.valueOf(task.getResult().child("username").getValue()));
+                    username.setText("Username: " + String.valueOf(task.getResult().child("username").getValue()));
                 }
             }
         });

@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setLogo(R.mipmap.ic_launcher_round);
         actionBar.setDisplayUseLogoEnabled(true);
-        actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(android.R.color.transparent)));
+        actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.MintCream)));
         actionBar.setTitle(Html.fromHtml("<font color='#000000'> Recyclops </font>"));
 
 

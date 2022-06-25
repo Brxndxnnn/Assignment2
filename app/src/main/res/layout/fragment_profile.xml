@@ -6,6 +6,7 @@
     android:id="@+id/frameLayout5"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/Beige"
     tools:context=".MainActivity">
 
 <RelativeLayout
@@ -43,7 +44,7 @@
         android:layout_marginBottom="20dp"
         android:text="Username"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="17sp" />
 
     <TextView
         android:id="@+id/textView9"
@@ -54,7 +55,7 @@
         android:layout_marginBottom="52dp"
         android:text="Email Address"
         android:textAlignment="center"
-        android:textSize="15sp" />
+        android:textSize="17sp" />
 
     <Button
         android:id="@+id/button5"
