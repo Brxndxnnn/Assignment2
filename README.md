@@ -28,9 +28,9 @@ Brandon: Main Coder for the application. Coded the main structure of the applica
 
 Irene: Designing and Tester. Doing the start up page design and testing of the app to check for error.
 
-Chor Yi:
+Chor Yi: Coder and Tester. Coded the FAQ page, layouts (e.g. for different screen orientations, app colours etc) and tested the app.
 
-Xin Ying:
+Xin Ying: Designer, Coder and Tester. Designed and coded layouts (e.g. alignments, constraints and scrollviews etc). Tested application to check for errors.
 
 Zhe Wei: App Tester. Testing the app for any bugs as well as ensure all the error handling are working as intended. 
 
