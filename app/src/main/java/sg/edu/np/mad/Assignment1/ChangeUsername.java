@@ -61,6 +61,12 @@ public class ChangeUsername extends AppCompatActivity {
                     newUsername.setError("New Username is required");
                     return;
                 }
+
+                else if(username.length() < 4){
+                    newUsername.setError("Username must be more than 4 Characters");
+                    return;
+                }
+
                 else {
                     mDatabase = FirebaseDatabase.getInstance("https://mad-assignment-1-7b524-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
                     mDatabase.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {

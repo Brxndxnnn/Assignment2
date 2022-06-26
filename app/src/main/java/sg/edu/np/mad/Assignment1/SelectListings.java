@@ -113,8 +113,16 @@ public class SelectListings extends AppCompatActivity implements View.OnClickLis
                 if (TextUtils.isEmpty(title)){
                     Toast.makeText(SelectListings.this, "Title is required for the Listing", Toast.LENGTH_SHORT).show();
                 }
+                else if(title.length() < 4){
+                    listingTitle.setError("Title must be more than 4 Characters");
+                    return;
+                }
                 else if (TextUtils.isEmpty(desc)){
                     Toast.makeText(SelectListings.this, "Description is required for the Listing", Toast.LENGTH_SHORT).show();
+                }
+                else if(desc.length() < 10){
+                    listingTitle.setError("Description must be more than 10 Characters");
+                    return;
                 }
                 else if (imageURI==null){
                     //image is not picked
