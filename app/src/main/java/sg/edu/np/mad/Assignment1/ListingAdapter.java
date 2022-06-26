@@ -50,6 +50,10 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.Viewhold
 
         //holder.listingImg.setImageURI(Uri.parse(listings.imageUrl));
         holder.listingTitle.setText(listings.title);
+
+        Integer size = listingsArrayList.size();
+
+        Log.d("list size", size.toString());
     }
 
     @Override

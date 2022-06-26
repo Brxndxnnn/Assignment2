@@ -25,7 +25,7 @@ public class ListingFragment extends Fragment {
 
     private RecyclerView listings;
     private Context mContext;
-    public static ArrayList<Listings> listingsArrayList = new ArrayList<>();
+    private ArrayList<Listings> listingsArrayList = new ArrayList<>();
     private ListingAdapter listingAdapter;
     public boolean alreadyExecuted = false;
     private GridLayoutManager gridLayoutManager;
@@ -57,45 +57,32 @@ public class ListingFragment extends Fragment {
 
     private void loadListingsFromFirebase(){
 
-        if(!alreadyExecuted){
-            Log.d("Firebase", "Requested");
+        Log.d("Firebase", "Requested");
 
-            DatabaseReference ref = FirebaseDatabase.getInstance("https://mad-assignment-1-7b524-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Listings");
-            ref.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    //clear list before adding data into it
-                    for (DataSnapshot ds: snapshot.getChildren()){
-                        //get data
-                        Listings listings = ds.getValue(Listings.class);
+        DatabaseReference ref = FirebaseDatabase.getInstance("https://mad-assignment-1-7b524-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Listings");
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                listingsArrayList.clear();
+                //clear list before adding data into it
+                for (DataSnapshot ds: snapshot.getChildren()){
+                    //get data
+                    Listings listings = ds.getValue(Listings.class);
 
-                        //add model/data to list
-                        listingsArrayList.add(listings);
-                    }
-
-                    listings.setLayoutManager(gridLayoutManager);
-                    //setup adapter
-                    listingAdapter = new ListingAdapter(mContext, listingsArrayList);
-                    //set adapter to recyclerview
-                    listings.setAdapter(listingAdapter);
-
-
-                    alreadyExecuted = true;
+                    //add model/data to list
+                    listingsArrayList.add(listings);
                 }
+                listings.setLayoutManager(gridLayoutManager);
+                //setup adapter
+                listingAdapter = new ListingAdapter(mContext, listingsArrayList);
+                //set adapter to recyclerview
+                listings.setAdapter(listingAdapter);
+            }
 
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
-                }
-            });
-        }
-        else{
-            Log.d("Firebase", "No more Requested");
-
-            //setup adapter
-            listingAdapter = new ListingAdapter(mContext, listingsArrayList);
-            //set adapter to recyclerview
-            listings.setAdapter(listingAdapter);
-        }
+            }
+        });
     }
 }

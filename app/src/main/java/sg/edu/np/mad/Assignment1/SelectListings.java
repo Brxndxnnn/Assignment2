@@ -14,6 +14,7 @@ import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -44,8 +45,6 @@ import java.util.Date;
 import java.util.HashMap;
 
 public class SelectListings extends AppCompatActivity implements View.OnClickListener{
-
-    private static final int PICK_IMAGE_REQUEST = 1;
 
     private EditText listingTitle;
     private EditText listingDesc;
@@ -169,7 +168,8 @@ public class SelectListings extends AppCompatActivity implements View.OnClickLis
                                         public void onSuccess(Void unused) {
                                             //listing added to db
                                             progressDialog.dismiss();
-                                            Toast.makeText(SelectListings.this, "Listing has been uploaded to Database", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(SelectListings.this, "Listing has been uploaded", Toast.LENGTH_SHORT).show();
+                                            finish();
                                         }
                                     })
                                     .addOnFailureListener(new OnFailureListener() {
@@ -177,7 +177,7 @@ public class SelectListings extends AppCompatActivity implements View.OnClickLis
                                         public void onFailure(@NonNull Exception e) {
                                             //listing details failed to add to db
                                             progressDialog.dismiss();
-                                            Toast.makeText(SelectListings.this, "Listing details failed to upload to Database", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(SelectListings.this, "Listing details failed to upload. Try again", Toast.LENGTH_SHORT).show();
                                         }
                                     });
                         }
@@ -242,9 +242,7 @@ public class SelectListings extends AppCompatActivity implements View.OnClickLis
 
     private void imagePickCamera(){
         //pick image from camera - intent
-        Intent intent = new Intent();
-        intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
-        //intent.putExtra(MediaStore.EXTRA_OUTPUT, imageURI);
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(intent, IMAGE_PICK_CAMERA_CODE);
     }
 
@@ -281,10 +279,14 @@ public class SelectListings extends AppCompatActivity implements View.OnClickLis
                 setImageToImageView();
             }
             else if (requestCode == IMAGE_PICK_CAMERA_CODE){
-                Log.d("Camera", "gg");
-                imageURI = data.getData();
+                Bitmap image = (Bitmap) data.getExtras().get("data");
+                listingImage.setImageBitmap(image);
+
+                if(imageURI == null){
+                    Log.d("Fuck", "fuck");
+                }
                 //show picked image in imageview
-                setImageToImageView();
+                //setImageToImageView();
             }
         }
         super.onActivityResult(requestCode, resultCode, data);

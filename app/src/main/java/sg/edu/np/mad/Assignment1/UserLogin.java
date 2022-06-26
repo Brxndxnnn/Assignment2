@@ -46,7 +46,7 @@ public class UserLogin extends AppCompatActivity {
             finish();
         } else {
             // User is signed out
-            Log.d("cb", "onAuthStateChanged:signed_out");
+            Log.d("D", "onAuthStateChanged:signed_out");
         }
 
         // calling the action bar
