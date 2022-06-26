@@ -96,7 +96,11 @@ public class SelectVideo extends AppCompatActivity {
                     Toast.makeText(SelectVideo.this, "Title is required for the video", Toast.LENGTH_SHORT).show();
                 }
                 else if(title.length() < 6){
-                    selectTitle.setError("Title must be more than 6 Characters");
+                    selectTitle.setError("Title must be more than 5 Characters");
+                    return;
+                }
+                else if(title.length() > 20){
+                    selectTitle.setError("Title must not be more than 20 Characters");
                     return;
                 }
                 else if (videoUri==null){

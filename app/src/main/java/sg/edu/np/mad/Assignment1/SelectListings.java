@@ -117,11 +117,19 @@ public class SelectListings extends AppCompatActivity implements View.OnClickLis
                     listingTitle.setError("Title must be more than 4 Characters");
                     return;
                 }
+                else if(title.length() > 20){
+                    listingTitle.setError("Title must not be more than 20 Characters");
+                    return;
+                }
                 else if (TextUtils.isEmpty(desc)){
                     Toast.makeText(SelectListings.this, "Description is required for the Listing", Toast.LENGTH_SHORT).show();
                 }
                 else if(desc.length() < 10){
-                    listingTitle.setError("Description must be more than 10 Characters");
+                    listingDesc.setError("Description must be more than 10 Characters");
+                    return;
+                }
+                else if(desc.length() > 50){
+                    listingDesc.setError("Description must not be more than 50 Characters");
                     return;
                 }
                 else if (imageURI==null){

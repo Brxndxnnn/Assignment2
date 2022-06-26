@@ -63,7 +63,7 @@ public class ChangeUsername extends AppCompatActivity {
                 }
 
                 else if(username.length() < 4){
-                    newUsername.setError("Username must be more than 4 Characters");
+                    newUsername.setError("Username must be more than 3 Characters");
                     return;
                 }
 

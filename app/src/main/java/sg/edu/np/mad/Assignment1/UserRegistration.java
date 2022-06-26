@@ -75,27 +75,32 @@ public class UserRegistration extends AppCompatActivity {
                     return;
                 }
 
-                if(TextUtils.isEmpty(email)){
+                else if(username.length() < 4){
+                    registerUsername.setError("Username must be more than 3 Characters");
+                    return;
+                }
+
+                else if(TextUtils.isEmpty(email)){
                     registerEmail.setError("Email is required");
                     return;
                 }
 
-                if(TextUtils.isEmpty(password)){
+                else if(TextUtils.isEmpty(password)){
                     registerPassword.setError("Password is required");
                     return;
                 }
 
-                if(password.length() < 6){
+                else if(password.length() < 6){
                     registerPassword.setError("Password must be more than 5 Characters");
                     return;
                 }
 
-                if(TextUtils.isEmpty(password)){
+                else if(TextUtils.isEmpty(password)){
                     registerPassword2.setError("Please Enter your password");
                     return;
                 }
 
-                if(!password2.equals(password)){
+                else if(!password2.equals(password)){
                     registerPassword2.setError("Password not the same as above");
                     return;
                 }
