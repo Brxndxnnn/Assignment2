@@ -8,6 +8,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp"
+    android:background="@drawable/gradient_background_green"
     tools:context=".SelectVideo">
 
 <RelativeLayout
@@ -34,9 +35,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/videoView"
-        android:backgroundTint="#FD5CCA60"
+        android:backgroundTint="#eef2f3"
         android:text="Select Video"
-        android:textColor="@color/white"
+        android:textColor="#43A047"
         app:strokeWidth="2dp"/>
 
     <Button
@@ -44,9 +45,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/selectVideoBtn"
-        android:backgroundTint="#FD5CCA60"
+        android:backgroundTint="#eef2f3"
         android:text="Upload Video"
-        android:textColor="@color/white"
+        android:textColor="#43A047"
         app:strokeWidth="2dp"/>
 
 </RelativeLayout>
