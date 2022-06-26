@@ -32,7 +32,7 @@ Chor Yi:
 
 Xin Ying:
 
-Zhe Wei:
+Zhe Wei: App Tester. Testing the app for any bugs as well as ensure all the error handling are working as intended. 
 
 ### Relevant appendices (diagrams, screenshots, user guides):
 
