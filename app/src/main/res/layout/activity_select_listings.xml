@@ -7,6 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp"
+    android:background="@drawable/gradient_background_green"
     tools:context=".SelectListings">
     
 <RelativeLayout 
@@ -76,9 +77,9 @@
         android:layout_below="@id/editTextListingDesc"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="32dp"
-        android:backgroundTint="#FD5CCA60"
+        android:backgroundTint="#eef2f3"
         android:text="select image"
-        android:textColor="@color/white"
+        android:textColor="#43A047"
         app:layout_constraintBottom_toTopOf="@+id/uploadListing"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -92,9 +93,9 @@
         android:layout_below="@id/selectImage"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="50dp"
-        android:backgroundTint="#FD5CCA60"
+        android:backgroundTint="#eef2f3"
         android:text="Upload Listing"
-        android:textColor="@color/white"
+        android:textColor="#43A047"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
