@@ -30,6 +30,9 @@ public class ChangeUsername extends AppCompatActivity {
 
     DatabaseReference mDatabase;
 
+    ProfileFragment profileFragment = new ProfileFragment();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +43,7 @@ public class ChangeUsername extends AppCompatActivity {
         // calling the action bar
         ActionBar actionBar = getSupportActionBar();
 
-        actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(android.R.color.transparent)));
+        actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.MintCream)));
 
         actionBar.setHomeAsUpIndicator(R.drawable.backbutton_icon);
 
@@ -68,7 +71,8 @@ public class ChangeUsername extends AppCompatActivity {
                             }
                             else {
                                 mDatabase.child("Users").child(MainActivity.loggedInEmail.replace(".", "").trim()).child("username").setValue(newUsername.getText().toString().trim());
-                                Toast.makeText(ChangeUsername.this, "Username changed successfully! Refresh page to see changes",Toast.LENGTH_LONG).show();
+                                Toast.makeText(ChangeUsername.this, "Username changed successfully!",Toast.LENGTH_LONG).show();
+                                startActivity(new Intent(v.getContext(), MainActivity.class));
                                 finish();
                             }
                         }

@@ -156,7 +156,7 @@ public class SelectVideo extends AppCompatActivity {
                                         public void onSuccess(Void unused) {
                                             //videos added to db
                                             progressDialog.dismiss();
-                                            Toast.makeText(SelectVideo.this, "Video has been uploaded to Database", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(SelectVideo.this, "Video has been uploaded", Toast.LENGTH_SHORT).show();
                                         }
                                     })
                                     .addOnFailureListener(new OnFailureListener() {
@@ -164,7 +164,7 @@ public class SelectVideo extends AppCompatActivity {
                                         public void onFailure(@NonNull Exception e) {
                                             //video details failed to add to db
                                             progressDialog.dismiss();
-                                            Toast.makeText(SelectVideo.this, "Video details failed to upload to Database", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(SelectVideo.this, "Video details failed to upload. Try again", Toast.LENGTH_SHORT).show();
                                         }
                                     });
                         }
@@ -175,7 +175,7 @@ public class SelectVideo extends AppCompatActivity {
                     public void onFailure(@NonNull Exception e) {
                         //failed uploading to storage
                         progressDialog.dismiss();
-                        Toast.makeText(SelectVideo.this, "Video failed to upload to Database", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SelectVideo.this, "Video failed to upload. Try again", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
