@@ -21,6 +21,7 @@ import java.util.Locale;
 
 public class ChangePassword extends AppCompatActivity {
 
+    //Initialising Variables
     EditText emailAddress;
     Button sendEmail;
 
@@ -39,18 +40,24 @@ public class ChangePassword extends AppCompatActivity {
         // showing the back button in action bar
         actionBar.setDisplayHomeAsUpEnabled(true);
 
+        //Assigning layout ID's
         emailAddress = findViewById(R.id.emailToChange);
         sendEmail = findViewById(R.id.submitButton);
 
+        //When Submit button is clicked
         sendEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Assigning Email Address to String variable
                 String email = emailAddress.getText().toString().trim();
+
+                //Error Validation - If user did not enter email
                 if(TextUtils.isEmpty(email)){
                     emailAddress.setError("Email is required");
                     return;
                 }
                 else{
+                    //Sending password reset email to registered email user entered
                     FirebaseAuth.getInstance().sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
@@ -68,6 +75,7 @@ public class ChangePassword extends AppCompatActivity {
         });
     }
 
+    //Action Bar - Back to Previous activity
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {

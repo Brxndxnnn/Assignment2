@@ -54,21 +54,19 @@ public class AdapterVideo extends RecyclerView.Adapter<AdapterVideo.HolderVideo>
     @Override
     public void onBindViewHolder(@NonNull HolderVideo holder, int position) {
 
-        Log.d("Viewholder", "Set videos");
-
+        //Assigning current ModelVideo object in the list
         ModelVideos modelVideos = videosArrayList.get(position);
 
+        //Assigning ModelVideos values to String variables
         String timestamp = modelVideos.getTimestamp();
-
         String test = modelVideos.videoUrl;
 
-        //format timestamp
+        //Formatting timestamp
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(Long.parseLong(timestamp));
         String formattedDateTime = DateFormat.format("dd/MM/yyyy hh:mm", calendar).toString();
 
-
-        //set data
+        //Setting data
         holder.videoTitle.setText(modelVideos.title);
         holder.videoTime.setText(formattedDateTime);
 
@@ -90,6 +88,7 @@ public class AdapterVideo extends RecyclerView.Adapter<AdapterVideo.HolderVideo>
 
     public class HolderVideo extends RecyclerView.ViewHolder{
 
+        //Initialising variables
         PlayerView videoView;
         TextView videoTitle, videoTime;
         ExoPlayer player = new ExoPlayer.Builder(context).build();
@@ -97,6 +96,7 @@ public class AdapterVideo extends RecyclerView.Adapter<AdapterVideo.HolderVideo>
         public HolderVideo(@NonNull View itemView) {
             super(itemView);
 
+            //Assigning Layout ID's
             videoView = itemView.findViewById(R.id.videoDisplayed);
             videoTitle = itemView.findViewById(R.id.videoTitle);
             videoTime = itemView.findViewById(R.id.videoTime);
