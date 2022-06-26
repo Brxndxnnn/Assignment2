@@ -35,20 +35,6 @@ public class UserLogin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_login);
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null) {
-            // User is signed in
-            String email = user.getEmail();
-            Intent i = new Intent(UserLogin.this, MainActivity.class);
-            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            i.putExtra("LoggedInEmail", email);
-            startActivity(i);
-            finish();
-        } else {
-            // User is signed out
-            Log.d("D", "onAuthStateChanged:signed_out");
-        }
-
         // calling the action bar
         ActionBar actionBar = getSupportActionBar();
 

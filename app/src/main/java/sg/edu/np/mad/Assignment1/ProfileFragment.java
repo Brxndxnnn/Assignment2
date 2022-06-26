@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -38,6 +39,8 @@ public class ProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_profile, container, false);
 
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
         changeUsernamebtn = (Button) view.findViewById(R.id.button5);
         changePasswordbtn = (Button) view.findViewById(R.id.button6);
         signoutButton = (Button) view.findViewById(R.id.button7);
@@ -45,7 +48,8 @@ public class ProfileFragment extends Fragment {
         username = (TextView) view.findViewById(R.id.textView8);
         email = (TextView) view.findViewById(R.id.textView9);
 
-        email.setText("Email Address: " + MainActivity.loggedInEmail);
+        //email.setText("Email Address: " + MainActivity.loggedInEmail);
+        email.setText(user.getEmail());
 
         mDatabase = FirebaseDatabase.getInstance("https://mad-assignment-1-7b524-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
 

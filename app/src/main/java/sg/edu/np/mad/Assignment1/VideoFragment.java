@@ -37,7 +37,7 @@ public class VideoFragment extends Fragment {
 
     private RecyclerView eduVideos;
 
-    public static ArrayList<ModelVideos> videosArrayList = new ArrayList<>();
+    private static ArrayList<ModelVideos> videosArrayList = new ArrayList<>();
 
     private AdapterVideo adapterVideo;
 
@@ -75,6 +75,7 @@ public class VideoFragment extends Fragment {
             ref.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    videosArrayList.clear();
                     //clear list before adding data into it
                     for (DataSnapshot ds: snapshot.getChildren()){
                         //get data
