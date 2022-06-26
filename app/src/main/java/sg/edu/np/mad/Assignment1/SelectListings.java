@@ -298,11 +298,8 @@ public class SelectListings extends AppCompatActivity implements View.OnClickLis
                 Bitmap image = (Bitmap) data.getExtras().get("data");
                 listingImage.setImageBitmap(image);
 
-                if(imageURI == null){
-                    Log.d("Fuck", "fuck");
-                }
                 //show picked image in imageview
-                //setImageToImageView();
+                setImageToImageView();
             }
         }
         super.onActivityResult(requestCode, resultCode, data);

@@ -165,6 +165,7 @@ public class SelectVideo extends AppCompatActivity {
                                             //videos added to db
                                             progressDialog.dismiss();
                                             Toast.makeText(SelectVideo.this, "Video has been uploaded", Toast.LENGTH_SHORT).show();
+                                            finish();
                                         }
                                     })
                                     .addOnFailureListener(new OnFailureListener() {
