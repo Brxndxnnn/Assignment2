@@ -26,7 +26,7 @@ Users can also contribute by posting various videos on ways on how we can upcycl
 
 Brandon: Main Coder for the application. Coded the main structure of the application, including the Upload Listings feature, Viewing of Listings, Viewing of Videos etc. 
 
-Irene: Designing and Tester. doing the start up page design and testing of the app to check for error
+Irene: Designing and Tester. Doing the start up page design and testing of the app to check for error
 
 Chor Yi:
 
