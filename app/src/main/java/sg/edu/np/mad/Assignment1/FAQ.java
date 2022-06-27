@@ -2,6 +2,7 @@ package sg.edu.np.mad.Assignment1;
 
 public class FAQ {
 
+    //Initialising variables
     private String question, description;
     private boolean expandable;
 

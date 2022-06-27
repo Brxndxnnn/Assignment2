@@ -13,7 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FAQHelp extends AppCompatActivity {
-    
+
+    //Initialising variables
     RecyclerView recyclerView;
     List<FAQ> faqList;
 
@@ -46,6 +47,7 @@ public class FAQHelp extends AppCompatActivity {
     }
 
     private void initData(){
+        //Adding the FAQ rows to the List where the FAQs are retrieved from and displayed
         faqList = new ArrayList<>();
 
         faqList.add(new FAQ("What is this application about?", "Recyclops is a platform that allows users to list secondhand items and learn upcycling. Unlike Carousell, which allows people to sell new or old items for cash, our application only allows users to list secondhand items in order to raise awareness on the importance of buying second-hand and upcycling. Users can utilize this platform to buy supplies for their own projects and can also contribute their upcycling suggestions. Finally, through uploaded tutorials, users will be able to learn to upcycle in unique ways."));

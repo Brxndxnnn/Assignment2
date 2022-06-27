@@ -14,6 +14,7 @@ import java.util.List;
 
 public class FAQAdapter extends RecyclerView.Adapter<FAQAdapter.FAQViewHolder> {
 
+    //Initialising variables
     List<FAQ> faqList;
 
     public FAQAdapter(List<FAQ> faqList) {
@@ -29,7 +30,10 @@ public class FAQAdapter extends RecyclerView.Adapter<FAQAdapter.FAQViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull FAQViewHolder holder, int position) {
+        //Get respective FAQ object position in list to set to Adapter
         FAQ faq = faqList.get(position);
+
+        //Set FAQ object values
         holder.questiontxt.setText(faq.getQuestion());
         holder.desctxt.setText(faq.getDescription());
 
@@ -46,6 +50,7 @@ public class FAQAdapter extends RecyclerView.Adapter<FAQAdapter.FAQViewHolder> {
 
     public class FAQViewHolder extends RecyclerView.ViewHolder{
 
+        //Initialising variables
         TextView questiontxt, desctxt;
         LinearLayout linearLayout;
         RelativeLayout expandableLayout;
@@ -53,9 +58,9 @@ public class FAQAdapter extends RecyclerView.Adapter<FAQAdapter.FAQViewHolder> {
         public FAQViewHolder(@NonNull View itemView){
             super(itemView);
 
+            //Assigning layout ID's
             questiontxt = itemView.findViewById(R.id.faq_question);
             desctxt = itemView.findViewById(R.id.faq_description);
-
             linearLayout = itemView.findViewById(R.id.linear_layout);
             expandableLayout = itemView.findViewById(R.id.expandable_layout);
 
