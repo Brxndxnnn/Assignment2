@@ -25,6 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class ChangeUsername extends AppCompatActivity {
 
+    //Initialising variables
     EditText newUsername;
     Button submitUsername;
 
@@ -50,24 +51,32 @@ public class ChangeUsername extends AppCompatActivity {
         // showing the back button in action bar
         actionBar.setDisplayHomeAsUpEnabled(true);
 
+        //Assigning layout ID's
         newUsername = findViewById(R.id.usernameToChange);
         submitUsername = findViewById(R.id.submitButton);
 
+
+        //if user clicked submit new username button
         submitUsername.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Assign new username by user to String username
                 String username = newUsername.getText().toString().trim();
+
+                //Error Validation - If username is empty
                 if(TextUtils.isEmpty(username)){
                     newUsername.setError("New Username is required");
                     return;
                 }
 
+                //Error Validation - If username characters less than 4
                 else if(username.length() < 4){
                     newUsername.setError("Username must be more than 3 Characters");
                     return;
                 }
 
                 else {
+                    //Get Realtime Database instance
                     mDatabase = FirebaseDatabase.getInstance("https://mad-assignment-1-7b524-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
                     mDatabase.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                         @Override
@@ -76,6 +85,7 @@ public class ChangeUsername extends AppCompatActivity {
                                 Log.e("firebase", "Error getting data", task.getException());
                             }
                             else {
+                                //If data found, find user and change the Username in database accordingly
                                 mDatabase.child("Users").child(MainActivity.loggedInEmail.replace(".", "").trim()).child("username").setValue(newUsername.getText().toString().trim());
                                 Toast.makeText(ChangeUsername.this, "Username changed successfully!",Toast.LENGTH_LONG).show();
                                 startActivity(new Intent(v.getContext(), MainActivity.class));
