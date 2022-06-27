@@ -20,6 +20,7 @@ import java.util.ArrayList;
 
 public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.Viewholder> {
 
+    //Initialising variables
     private Context context;
     private ArrayList<Listings> listingsArrayList;
     LayoutInflater inflater;
@@ -40,21 +41,15 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.Viewhold
 
     @Override
     public void onBindViewHolder(@NonNull Viewholder holder, int position) {
+
+        //Get respective Listing object position in list to set
         Listings listings = listingsArrayList.get(position);
 
-        if(listings.imageUrl == null){
-            Log.d("Image", "Image nt found");
-        }
-        else{
-            Log.d("Image", "Image found");
-
-        }
+        //Loading the Image into ImageView using Glide
         Glide.with(context).load(listings.imageUrl).into(holder.listingImg);
+
+        //Setting the Listing title into TextView
         holder.listingTitle.setText(listings.title);
-
-        Integer size = listingsArrayList.size();
-
-        Log.d("list size", size.toString());
     }
 
     @Override
@@ -63,6 +58,7 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.Viewhold
     }
 
     public class Viewholder extends RecyclerView.ViewHolder{
+        //Initialising variables
         ImageView listingImg;
         TextView listingTitle;
 
@@ -71,6 +67,7 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.Viewhold
             listingImg = itemView.findViewById(R.id.listingImg);
             listingTitle = itemView.findViewById(R.id.listingTitle);
 
+            //If listing is being pressed on, enlarge chosen listing
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

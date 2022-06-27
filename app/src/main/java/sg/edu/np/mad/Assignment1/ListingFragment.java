@@ -23,6 +23,7 @@ import java.util.ArrayList;
 
 public class ListingFragment extends Fragment {
 
+    //Initialising variables
     private RecyclerView listings;
     private Context mContext;
     private ArrayList<Listings> listingsArrayList = new ArrayList<>();
@@ -45,11 +46,14 @@ public class ListingFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_listing, container, false);
 
+        //Assigning Recyclerview
         listings = (RecyclerView) view.findViewById(R.id.listings);
 
+        //Setting GridLayout
         gridLayoutManager = new GridLayoutManager(view.getContext(), 2 , GridLayoutManager.VERTICAL, false);
         listings.setLayoutManager(gridLayoutManager);
 
+        //Calling method to load listings from Database
         loadListingsFromFirebase();
 
         return view;
@@ -57,14 +61,14 @@ public class ListingFragment extends Fragment {
 
     private void loadListingsFromFirebase(){
 
-        Log.d("Firebase", "Requested");
-
+        //Getting Realtime Database Instance
         DatabaseReference ref = FirebaseDatabase.getInstance("https://mad-assignment-1-7b524-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Listings");
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                listingsArrayList.clear();
                 //clear list before adding data into it
+                listingsArrayList.clear();
+
                 for (DataSnapshot ds: snapshot.getChildren()){
                     //get data
                     Listings listings = ds.getValue(Listings.class);

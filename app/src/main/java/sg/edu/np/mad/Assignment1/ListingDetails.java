@@ -19,6 +19,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 public class ListingDetails extends AppCompatActivity {
+    //Initialising variables
     TextView listingTitle, listingDesc;
     ImageView listingImage;
 
@@ -40,15 +41,18 @@ public class ListingDetails extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         //Action Bar CODES//
 
+        //Assigning layout ID's
         listingTitle = findViewById(R.id.listingTitleDetails);
         listingDesc = findViewById(R.id.listingDescDetails);
         listingImage = findViewById(R.id.listingImageDetails);
 
+        //Getting Intent values from ListingAdapter (when Listing is pressed on)
         Intent intent = getIntent();
         String title = intent.getStringExtra("Title");
         String image = intent.getStringExtra("Image");
         String desc = intent.getStringExtra("Desc");
 
+        //Setting the data saved in Intent
         Glide.with(this).load(image).into(listingImage);
         listingTitle.setText(title);
         listingDesc.setText(desc);

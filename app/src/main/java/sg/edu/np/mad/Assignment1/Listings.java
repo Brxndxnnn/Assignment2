@@ -20,6 +20,7 @@ public class Listings {
         this.imageUrl = imageUrl;
     }
 
+    //Getter & Setter
     public String getId() {
         return id;
     }
