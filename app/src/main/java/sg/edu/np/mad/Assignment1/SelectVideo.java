@@ -40,15 +40,18 @@ import java.util.HashMap;
 
 public class SelectVideo extends AppCompatActivity {
 
+    //Initialising variables
     private EditText selectTitle;
     private VideoView videoView;
     private Button selectVidBtn;
     private Button uploadVidBtn;
 
+    //Codes for REQUESTS
     private static final int VIDEO_PICK_GALLERY_CODE = 100;
     private static final int VIDEO_PICK_CAMERA_CODE = 101;
     private static final int CAMERA_REQUEST_CODE = 102;
 
+    //Initialising variables
     private String[] cameraPermissions;
     private Uri videoUri = null;
     private ProgressDialog progressDialog;
@@ -87,26 +90,37 @@ public class SelectVideo extends AppCompatActivity {
         //camera permissions
         cameraPermissions = new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
-        //upload vid
+        //upload vid button is clicked
         uploadVidBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Assign User inputted title to Title variable
                 title = selectTitle.getText().toString().trim();
+
+                //Error Validation - If Title is empty
                 if (TextUtils.isEmpty(title)){
                     Toast.makeText(SelectVideo.this, "Title is required for the video", Toast.LENGTH_SHORT).show();
                 }
+
+                //Error Validation - If Title less than 6 characters
                 else if(title.length() < 6){
                     selectTitle.setError("Title must be more than 5 Characters");
                     return;
                 }
+
+                //Error Validation - If Title more than 20 characters
                 else if(title.length() > 20){
                     selectTitle.setError("Title must not be more than 20 Characters");
                     return;
                 }
+
+                //Error Validation - If Video is yet to be picked
                 else if (videoUri==null){
                     //video is not picked
                     Toast.makeText(SelectVideo.this, "Please choose a Video to upload", Toast.LENGTH_SHORT).show();
                 }
+
+                //If all fine, call uploadVideoFirebase() method
                 else{
                     //upload video to firebase
                     uploadVideoFirebase();
@@ -114,7 +128,7 @@ public class SelectVideo extends AppCompatActivity {
             }
         });
 
-        //select vid to upload
+        //select vid button is clicked, call videoPickDialog method
         selectVidBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -156,6 +170,7 @@ public class SelectVideo extends AppCompatActivity {
                             hashMap.put("timestamp", "" + timestamp);
                             hashMap.put("videoUrl", "" + downloadUri);
 
+                            //Get Realtime Database instance
                             DatabaseReference reference = FirebaseDatabase.getInstance("https://mad-assignment-1-7b524-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Videos");
                             reference.child(timestamp)
                                     .setValue(hashMap)

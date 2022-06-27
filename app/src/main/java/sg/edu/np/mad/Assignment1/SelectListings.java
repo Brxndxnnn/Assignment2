@@ -46,17 +46,19 @@ import java.util.HashMap;
 
 public class SelectListings extends AppCompatActivity implements View.OnClickListener{
 
+    //Initialising variables
     private EditText listingTitle;
     private EditText listingDesc;
     private ImageView listingImage;
     private Button selectImg;
     private Button uploadListing;
 
-
+    //Codes for REQUESTS
     private static final int IMAGE_PICK_GALLERY_CODE = 100;
     private static final int IMAGE_PICK_CAMERA_CODE = 101;
     private static final int CAMERA_REQUEST_CODE = 102;
 
+    //Initialising variables
     private String[] cameraPermissions;
     private ProgressDialog progressDialog;
     private String title;
@@ -81,7 +83,7 @@ public class SelectListings extends AppCompatActivity implements View.OnClickLis
         actionBar.setDisplayHomeAsUpEnabled(true);
         //Action Bar CODES//
 
-
+        //Assigning layout ID's
         listingTitle = findViewById(R.id.editTextListingTitle);
         listingDesc = findViewById(R.id.editTextListingDesc);
         listingImage = findViewById(R.id.listingImage);
@@ -97,45 +99,67 @@ public class SelectListings extends AppCompatActivity implements View.OnClickLis
         //camera permissions
         cameraPermissions = new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
+        //Set onClickListener for Select Image and Upload Listing Button
         selectImg.setOnClickListener(this);
         uploadListing.setOnClickListener(this);
     }
     @Override
     public void onClick(View v) {
         switch (v.getId()){
+
+            //If Select Image button is clicked, call imagePickDialog method
             case R.id.selectImage:
                 imagePickDialog();
                 break;
 
+            //If Upload Listing button is clicked
             case R.id.uploadListing:
+
+                //Get Listing Title and Description user inputted
                 title = listingTitle.getText().toString().trim();
                 desc = listingDesc.getText().toString().trim();
+
+                //Error Validation - If Title is empty
                 if (TextUtils.isEmpty(title)){
                     Toast.makeText(SelectListings.this, "Title is required for the Listing", Toast.LENGTH_SHORT).show();
                 }
+
+                //Error Validation - If Title less than 4 characters
                 else if(title.length() < 4){
                     listingTitle.setError("Title must be more than 4 Characters");
                     return;
                 }
+
+                //Error Validation - If Title more than 20 characters
                 else if(title.length() > 20){
                     listingTitle.setError("Title must not be more than 20 Characters");
                     return;
                 }
+
+                //Error Validation - If Description is empty
                 else if (TextUtils.isEmpty(desc)){
                     Toast.makeText(SelectListings.this, "Description is required for the Listing", Toast.LENGTH_SHORT).show();
                 }
+
+                //Error Validation - If Description less than 10 characters
                 else if(desc.length() < 10){
                     listingDesc.setError("Description must be more than 10 Characters");
                     return;
                 }
+
+                //Error Validation - If Description more than 50 characters
                 else if(desc.length() > 50){
                     listingDesc.setError("Description must not be more than 50 Characters");
                     return;
                 }
+
+                //Error Validation - If Image is yet to be picked
                 else if (imageURI==null){
                     //image is not picked
                     Toast.makeText(SelectListings.this, "Please choose an Image to upload", Toast.LENGTH_SHORT).show();
                 }
+
+                //If all fine, call uploadImageFirebase() method
                 else{
                     //upload image to firebase
                     uploadImageFirebase();
@@ -144,6 +168,7 @@ public class SelectListings extends AppCompatActivity implements View.OnClickLis
         }
     }
 
+    //Method to upload Listings
     private void uploadImageFirebase() {
         //show progress bar
         progressDialog.show();
@@ -176,6 +201,7 @@ public class SelectListings extends AppCompatActivity implements View.OnClickLis
                             hashMap.put("desc", "" + desc);
                             hashMap.put("imageUrl", "" + downloadUri);
 
+                            //Get Realtime Database instance
                             DatabaseReference reference = FirebaseDatabase.getInstance("https://mad-assignment-1-7b524-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Listings");
                             reference.child(timestamp)
                                     .setValue(hashMap)
@@ -256,6 +282,8 @@ public class SelectListings extends AppCompatActivity implements View.OnClickLis
         startActivityForResult(Intent.createChooser(intent,"Select Image"), IMAGE_PICK_GALLERY_CODE);
     }
 
+
+    //NOTE, CAMERA NOT WORKING FOR LISTING*****
     private void imagePickCamera(){
         //pick image from camera - intent
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);

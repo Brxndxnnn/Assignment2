@@ -14,6 +14,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class StartUpPage extends AppCompatActivity {
 
+    //Initialising variables
     Button mloginButton, mregisterButton;
 
     @Override
@@ -21,6 +22,7 @@ public class StartUpPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_up_page);
 
+        //Get current logged in User
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             // User is signed in
@@ -42,6 +44,7 @@ public class StartUpPage extends AppCompatActivity {
         mloginButton = findViewById(R.id.mainLogin);
         mregisterButton = findViewById(R.id.mainRegister);
 
+        //If Login button is clicked
         mloginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,6 +53,7 @@ public class StartUpPage extends AppCompatActivity {
             }
         });
 
+        //If Register button is clicked
         mregisterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
