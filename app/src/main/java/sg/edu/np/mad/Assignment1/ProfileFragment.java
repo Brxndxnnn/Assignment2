@@ -87,6 +87,7 @@ public class ProfileFragment extends Fragment {
             public void onClick(View v) {
                 //Intent to ChangePassword Activity
                 Intent intent = new Intent(view.getContext(), ChangePassword.class);
+                intent.putExtra("Email", user.getEmail());
                 startActivity(intent);
             }
         });

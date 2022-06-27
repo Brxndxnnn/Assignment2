@@ -44,6 +44,18 @@ public class ChangePassword extends AppCompatActivity {
         emailAddress = findViewById(R.id.emailToChange);
         sendEmail = findViewById(R.id.submitButton);
 
+        //Set email User just registered with to Email in Login page for convenience
+        String registeredEmail;
+        if (savedInstanceState == null) {
+            Bundle extras = getIntent().getExtras();
+            if(extras == null) {
+            }
+            else {
+                registeredEmail = extras.getString("Email");
+                emailAddress.setText(registeredEmail);
+            }
+        }
+
         //When Submit button is clicked
         sendEmail.setOnClickListener(new View.OnClickListener() {
             @Override
