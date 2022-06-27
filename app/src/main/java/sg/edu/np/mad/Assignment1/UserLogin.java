@@ -23,6 +23,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class UserLogin extends AppCompatActivity {
+
+    //Initialising variables
     EditText loginEmail, loginPassword;
     Button loginButton;
     TextView registerWord, forgotPassword;
@@ -46,6 +48,7 @@ public class UserLogin extends AppCompatActivity {
         // showing the back button in action bar
         actionBar.setDisplayHomeAsUpEnabled(true);
 
+        //Assigning layout ID's
         loginEmail = findViewById(R.id.emailToChange);
         loginPassword = findViewById(R.id.loginPasswordText);
         loginButton = findViewById(R.id.submitButton);
@@ -53,6 +56,7 @@ public class UserLogin extends AppCompatActivity {
         registerWord = findViewById(R.id.signupText);
         forgotPassword = findViewById(R.id.forgotPassword);
 
+        //Set email User just registered with to Email in Login page for convenience
         String registeredEmail;
         if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
@@ -64,14 +68,18 @@ public class UserLogin extends AppCompatActivity {
             }
         }
 
+        //If forgot password word was clicked
         forgotPassword.setOnClickListener(new View.OnClickListener() {
+            //Intent to ChangePassword activity
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), ChangePassword.class));
             }
         });
 
+        //If Register word was clicked
         registerWord.setOnClickListener(new View.OnClickListener() {
+            //Intent to UserRegistration activity
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), UserRegistration.class));
@@ -79,22 +87,25 @@ public class UserLogin extends AppCompatActivity {
             }
         });
 
+        //If login button is clicked
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Getting User inputted values and assigning to variables email & password
                 String email = loginEmail.getText().toString();
                 String password = loginPassword.getText().toString();
 
+                //Error Validation - If Email Address is empty
                 if(TextUtils.isEmpty(email)){
-                    loginEmail.setError("Username is required");
+                    loginEmail.setError("Email is required");
                     return;
                 }
 
-                if(TextUtils.isEmpty(password)){
+                //Error Validation - If Password is empty
+                else if(TextUtils.isEmpty(password)){
                     loginPassword.setError("Password is required");
                     return;
                 }
-
 
                 // authenticate the user
                 fAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {

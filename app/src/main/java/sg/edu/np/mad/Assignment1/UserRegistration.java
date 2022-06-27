@@ -26,6 +26,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class UserRegistration extends AppCompatActivity {
+    //Initialising variables
     EditText registerUsername, registerEmail, registerPassword, registerPassword2;
     Button registerButton;
     TextView loginWord;
@@ -63,43 +64,50 @@ public class UserRegistration extends AppCompatActivity {
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Assigning User inputted values to variables
                 String id = registerEmail.getText().toString().replace(".", "").trim();
                 String username = registerUsername.getText().toString().trim();
                 String email = registerEmail.getText().toString().trim();
                 String password = registerPassword.getText().toString().trim();
                 String password2 = registerPassword2.getText().toString().trim();
 
-
+                //Error Validation - If Username is empty
                 if(TextUtils.isEmpty(username)){
                     registerUsername.setError("Username is required");
                     return;
                 }
 
+                //Error Validation - If Username has less than 4 characters
                 else if(username.length() < 4){
                     registerUsername.setError("Username must be more than 3 Characters");
                     return;
                 }
 
+                //Error Validation - If Email is empty
                 else if(TextUtils.isEmpty(email)){
                     registerEmail.setError("Email is required");
                     return;
                 }
 
+                //Error Validation - If Password is empty
                 else if(TextUtils.isEmpty(password)){
                     registerPassword.setError("Password is required");
                     return;
                 }
 
+                //Error Validation - If Password is less than 6 characters
                 else if(password.length() < 6){
                     registerPassword.setError("Password must be more than 5 Characters");
                     return;
                 }
 
+                //Error Validation - If Second password is empty
                 else if(TextUtils.isEmpty(password)){
                     registerPassword2.setError("Please Enter your password");
                     return;
                 }
 
+                //Error Validation - If Re-Enter password not the same as above Password
                 else if(!password2.equals(password)){
                     registerPassword2.setError("Password not the same as above");
                     return;
@@ -140,6 +148,8 @@ public class UserRegistration extends AppCompatActivity {
         //Go to LOGIN Page if account exist CODES//
     }
 
+
+    //Method to write new User to Realtime Database
     public void writeNewUser(String id, String email, String name) {
         User user = new User(email, name);
 

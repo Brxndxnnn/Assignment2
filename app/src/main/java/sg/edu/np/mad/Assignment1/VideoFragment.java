@@ -29,6 +29,7 @@ import java.util.ArrayList;
 
 public class VideoFragment extends Fragment {
 
+    //Initialising Variables
     private Context mContext;
 
     public VideoFragment(){
@@ -56,8 +57,10 @@ public class VideoFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_video, container, false);
 
+        //Assigning RecyclerView
         eduVideos = (RecyclerView) view.findViewById(R.id.eduVideos);
 
+        //Call method
         loadVideosFromFirebase();
 
 
@@ -69,14 +72,15 @@ public class VideoFragment extends Fragment {
     private void loadVideosFromFirebase(){
 
         if(!alreadyExecuted){
-            Log.d("Firebase", "Requested");
 
+            //Get Realtime Database instance
             DatabaseReference ref = FirebaseDatabase.getInstance("https://mad-assignment-1-7b524-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Videos");
             ref.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    videosArrayList.clear();
                     //clear list before adding data into it
+                    videosArrayList.clear();
+
                     for (DataSnapshot ds: snapshot.getChildren()){
                         //get data
                         ModelVideos modelVideos = ds.getValue(ModelVideos.class);
@@ -98,8 +102,6 @@ public class VideoFragment extends Fragment {
             });
         }
         else{
-            Log.d("Firebase", "No more Requested");
-
             //setup adapter
             adapterVideo = new AdapterVideo(mContext, videosArrayList); //was dbHandler.getUsers()
             //set adapter to recyclerview

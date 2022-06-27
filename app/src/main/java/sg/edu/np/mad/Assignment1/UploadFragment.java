@@ -36,6 +36,7 @@ public class UploadFragment extends Fragment implements View.OnClickListener{
         // require a empty public constructor
     }
 
+    //Initialising variables
     Button selectVidBtn;
     Button createListingBtn;
 
@@ -44,13 +45,13 @@ public class UploadFragment extends Fragment implements View.OnClickListener{
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_upload, container, false);
 
+        //Assigning layout ID's
         selectVidBtn = (Button) view.findViewById(R.id.selectVid);
         createListingBtn = (Button) view.findViewById(R.id.createListing);
 
+        //Set onClickListener for Select Vid button and Create Listing button
         selectVidBtn.setOnClickListener(this);
         createListingBtn.setOnClickListener(this);
-
-
 
         return view;
     }
@@ -59,11 +60,13 @@ public class UploadFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         switch (v.getId()){
+            //If button Select Vid is clicked, Intent to SelectVideo activity
             case R.id.selectVid:
                 Intent myIntent = new Intent(v.getContext(), SelectVideo.class);
                 startActivity(myIntent);
                 break;
 
+            //If button Create Listing is clicked, Intent to SelectListings activity
             case R.id.createListing:
                 Intent intent = new Intent(v.getContext(), SelectListings.class);
                 startActivity(intent);
