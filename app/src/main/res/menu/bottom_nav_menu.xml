@@ -14,7 +14,7 @@
         android:icon="@drawable/upload_icon"
         tools:ignore="MenuTitle" />
     <item
-        android:id="@+id/reward"
+        android:id="@+id/listing"
         android:icon="@drawable/listings_icon"
         tools:ignore="MenuTitle" />
     <item

@@ -15,6 +15,7 @@ public class ModelVideos {
         this.videoUrl = videoUrl;
     }
 
+    //Getter & Setter
     public String getId() {
         return id;
     }
