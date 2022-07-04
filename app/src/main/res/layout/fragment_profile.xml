@@ -55,6 +55,7 @@
                 android:layout_marginTop="20dp"
                 android:text="Username"
                 android:textAlignment="center"
+                android:textColor="@color/black"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -69,6 +70,7 @@
                 android:layout_marginTop="10dp"
                 android:text="Email Address"
                 android:textAlignment="center"
+                android:textColor="@color/black"
                 android:textSize="17sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -124,6 +126,19 @@
                 app:rippleColor="@android:color/black"
                 app:strokeColor="@android:color/black"
                 app:strokeWidth="1dp" />
+
+            <Button
+                android:id="@+id/button8"
+                android:layout_width="50dp"
+                android:layout_height="51dp"
+                android:layout_marginTop="184dp"
+                android:background="@drawable/upload2icon"
+                android:backgroundTint="@color/Beige"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.095"
+                app:layout_constraintStart_toEndOf="@+id/imageView5"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="SpeakableTextPresentCheck" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
