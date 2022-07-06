@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -98,14 +99,16 @@ public class ProfileFragment extends Fragment {
         });
 
         //Finding Picture in Realtime Database through current User Email Address
-        mDatabase.child("Users").child(MainActivity.loggedInEmail.replace(".", "").trim()).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        mDatabase.child("Users").child(MainActivity.loggedInEmail.replace(".", "").trim()).child("profilepicUrl").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
-                if (!task.isSuccessful()) {
-                    Log.e("firebase", "Error getting data", task.getException());
+                //Check if user has existing profile pic
+                if (task.getResult().exists()) {
+                    Glide.with(getContext()).load(task.getResult().getValue()).into(profilePic);
                 }
-                //Set User Username to Textview
+                //Set User Profile Pic to ImageView
                 else {
+                    Log.e("firebase", "Error getting data", task.getException());
                 }
             }
         });
