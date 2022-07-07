@@ -18,6 +18,7 @@ public class Listings {
         this.title = title;
         this.desc = desc;
         this.imageUrl = imageUrl;
+
     }
 
     //Getter & Setter
@@ -49,7 +50,5 @@ public class Listings {
         return imageUrl;
     }
 
-    public void setImage(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
+    public void setImage(String imageUrl) {this.imageUrl = imageUrl;}
 }

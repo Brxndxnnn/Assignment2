@@ -10,38 +10,32 @@ import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.app.ProgressDialog;
-import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.drawable.ColorDrawable;
-import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.TextUtils;
-import android.text.format.DateFormat;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.MediaController;
 import android.widget.Toast;
-import android.widget.VideoView;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import java.io.File;
-import java.util.Date;
 import java.util.HashMap;
 
 public class SelectListings extends AppCompatActivity implements View.OnClickListener{
@@ -64,6 +58,10 @@ public class SelectListings extends AppCompatActivity implements View.OnClickLis
     private String title;
     private String desc;
     private Uri imageURI = null;
+    private String uName;
+
+    DatabaseReference mDatabase;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -192,14 +190,18 @@ public class SelectListings extends AppCompatActivity implements View.OnClickLis
                         while (!uriTask.isSuccessful());
                         Uri downloadUri = uriTask.getResult();
                         if (uriTask.isSuccessful()){
-                            //url of uploaded image is received
+                            //Getting Realtime Database instance
+                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                            String uEmail = user.getEmail();
 
+                            //url of uploaded image is received
                             //add details to image in firebase
                             HashMap<String, Object> hashMap = new HashMap<>();
                             hashMap.put("id", "" + timestamp);
                             hashMap.put("title", "" + title);
                             hashMap.put("desc", "" + desc);
                             hashMap.put("imageUrl", "" + downloadUri);
+                            hashMap.put("userEmail", "" + uEmail);
 
                             //Get Realtime Database instance
                             DatabaseReference reference = FirebaseDatabase.getInstance("https://mad-assignment-1-7b524-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Listings");
@@ -234,6 +236,8 @@ public class SelectListings extends AppCompatActivity implements View.OnClickLis
                     }
                 });
     }
+
+
 
     private void imagePickDialog() {
         String[] options = {"Camera", "Gallery"};
