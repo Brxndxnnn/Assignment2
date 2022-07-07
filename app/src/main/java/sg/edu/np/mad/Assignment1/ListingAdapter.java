@@ -76,6 +76,8 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.Viewhold
                     intent.putExtra("Title", listingsArrayList.get(getAdapterPosition()).title);
                     intent.putExtra("Image", listingsArrayList.get(getAdapterPosition()).imageUrl);
                     intent.putExtra("Desc", listingsArrayList.get(getAdapterPosition()).desc);
+                    intent.putExtra("Poster", listingsArrayList.get(getAdapterPosition()).poster);
+                    intent.putExtra("Location", listingsArrayList.get(getAdapterPosition()).location);
                     v.getContext().startActivity(intent);
                 }
             });

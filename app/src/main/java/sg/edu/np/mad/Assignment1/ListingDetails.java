@@ -1,5 +1,6 @@
 package sg.edu.np.mad.Assignment1;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,14 +15,20 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.net.URI;
 import java.net.URISyntaxException;
 
 public class ListingDetails extends AppCompatActivity {
     //Initialising variables
-    TextView listingTitle, listingDesc;
+    TextView listingTitle, listingDesc, listingPoster, listingLocation;
     ImageView listingImage;
+    DatabaseReference mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +51,8 @@ public class ListingDetails extends AppCompatActivity {
         //Assigning layout ID's
         listingTitle = findViewById(R.id.listingTitleDetails);
         listingDesc = findViewById(R.id.listingDescDetails);
+        listingPoster = findViewById(R.id.poster);
+        listingLocation = findViewById(R.id.meetupLocation);
         listingImage = findViewById(R.id.listingImageDetails);
 
         //Getting Intent values from ListingAdapter (when Listing is pressed on)
@@ -51,11 +60,31 @@ public class ListingDetails extends AppCompatActivity {
         String title = intent.getStringExtra("Title");
         String image = intent.getStringExtra("Image");
         String desc = intent.getStringExtra("Desc");
+        String poster = intent.getStringExtra("Poster");
+        String location = intent.getStringExtra("Location");
 
         //Setting the data saved in Intent
         Glide.with(this).load(image).into(listingImage);
         listingTitle.setText(title);
         listingDesc.setText(desc);
+        listingLocation.setText("Meet up at " + location);
+
+
+        //Getting Realtime Database instance
+        mDatabase = FirebaseDatabase.getInstance("https://mad-assignment-1-7b524-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
+        //Finding Username in Realtime Database through current User Email Address
+        mDatabase.child("Users").child(poster.replace(".", "").trim()).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e("firebase", "Error getting data", task.getException());
+                }
+                //Set User Username to Textview
+                else {
+                    listingPoster.setText("Posted by " + String.valueOf(task.getResult().child("username").getValue()));
+                }
+            }
+        });
     }
 
     @Override

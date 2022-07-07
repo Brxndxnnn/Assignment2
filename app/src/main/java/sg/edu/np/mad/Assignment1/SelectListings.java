@@ -43,6 +43,7 @@ public class SelectListings extends AppCompatActivity implements View.OnClickLis
     //Initialising variables
     private EditText listingTitle;
     private EditText listingDesc;
+    private EditText listingMeetUp;
     private ImageView listingImage;
     private Button selectImg;
     private Button uploadListing;
@@ -57,6 +58,7 @@ public class SelectListings extends AppCompatActivity implements View.OnClickLis
     private ProgressDialog progressDialog;
     private String title;
     private String desc;
+    private String location;
     private Uri imageURI = null;
     private String uName;
 
@@ -84,6 +86,7 @@ public class SelectListings extends AppCompatActivity implements View.OnClickLis
         //Assigning layout ID's
         listingTitle = findViewById(R.id.editTextListingTitle);
         listingDesc = findViewById(R.id.editTextListingDesc);
+        listingMeetUp = findViewById(R.id.editTextMeetUp);
         listingImage = findViewById(R.id.listingImage);
         selectImg = findViewById(R.id.selectImage);
         uploadListing = findViewById(R.id.uploadListing);
@@ -116,6 +119,7 @@ public class SelectListings extends AppCompatActivity implements View.OnClickLis
                 //Get Listing Title and Description user inputted
                 title = listingTitle.getText().toString().trim();
                 desc = listingDesc.getText().toString().trim();
+                location = listingMeetUp.getText().toString().trim();
 
                 //Error Validation - If Title is empty
                 if (TextUtils.isEmpty(title)){
@@ -148,6 +152,17 @@ public class SelectListings extends AppCompatActivity implements View.OnClickLis
                 //Error Validation - If Description more than 50 characters
                 else if(desc.length() > 50){
                     listingDesc.setError("Description must not be more than 50 Characters");
+                    return;
+                }
+
+                //Error Validation - If Location is empty
+                else if (TextUtils.isEmpty(location)){
+                    Toast.makeText(SelectListings.this, "Meet Up Location is required for the Listing", Toast.LENGTH_SHORT).show();
+                }
+
+                //Error Validation - If Location more than 20 characters
+                else if(location.length() > 20){
+                    listingDesc.setError("Location must not be more than 20 Characters");
                     return;
                 }
 
@@ -200,8 +215,9 @@ public class SelectListings extends AppCompatActivity implements View.OnClickLis
                             hashMap.put("id", "" + timestamp);
                             hashMap.put("title", "" + title);
                             hashMap.put("desc", "" + desc);
+                            hashMap.put("poster", "" + uEmail);
+                            hashMap.put("location", "" + location);
                             hashMap.put("imageUrl", "" + downloadUri);
-                            hashMap.put("userEmail", "" + uEmail);
 
                             //Get Realtime Database instance
                             DatabaseReference reference = FirebaseDatabase.getInstance("https://mad-assignment-1-7b524-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Listings");
