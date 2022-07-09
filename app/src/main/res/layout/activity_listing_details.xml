@@ -40,7 +40,7 @@
         android:id="@+id/listingDescDetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:layout_marginLeft="25dp"
         android:layout_below="@+id/poster"
         android:text="Desc"
@@ -56,9 +56,9 @@
         android:id="@+id/poster"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="25dp"
         android:layout_below="@+id/listingTitleDetails"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="5dp"
         android:text="Posted by"
         android:textColor="#131313"
         android:textSize="16sp"
@@ -71,7 +71,7 @@
         android:id="@+id/meetupLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop = "10dp"
+        android:layout_marginTop = "20dp"
         android:layout_marginLeft="25dp"
         android:layout_below="@+id/listingDescDetails"
         android:text="Meet Up at"
@@ -82,4 +82,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.101"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/chatButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/meetupLocation"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:text="chat" />
 </RelativeLayout>
