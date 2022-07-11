@@ -11,6 +11,8 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -27,6 +29,7 @@ import java.net.URISyntaxException;
 public class ListingDetails extends AppCompatActivity {
     //Initialising variables
     TextView listingTitle, listingDesc, listingPoster, listingLocation;
+    Button chatButton;
     ImageView listingImage;
     DatabaseReference mDatabase;
 
@@ -54,6 +57,7 @@ public class ListingDetails extends AppCompatActivity {
         listingPoster = findViewById(R.id.poster);
         listingLocation = findViewById(R.id.meetupLocation);
         listingImage = findViewById(R.id.listingImageDetails);
+        chatButton = findViewById(R.id.chatButton);
 
         //Getting Intent values from ListingAdapter (when Listing is pressed on)
         Intent intent = getIntent();
@@ -83,6 +87,16 @@ public class ListingDetails extends AppCompatActivity {
                 else {
                     listingPoster.setText("Posted by " + String.valueOf(task.getResult().child("username").getValue()));
                 }
+            }
+        });
+
+        chatButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(ListingDetails.this, ChatActivity.class);
+                intent1.putExtra("Name", poster);
+                intent1.putExtra("Image", image);
+                startActivity(intent1);
             }
         });
     }

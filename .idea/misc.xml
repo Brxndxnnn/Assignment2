@@ -34,8 +34,12 @@
         <entry key="..\:/Users/Brand/AndroidStudioProjects/Assignment1/app/src/main/res/layout/fragment_video.xml" value="0.18802083333333333" />
         <entry key="..\:/Users/Brand/AndroidStudioProjects/Assignment1/app/src/main/res/layout/listedvideos.xml" value="0.35260416666666666" />
         <entry key="..\:/Users/Brand/AndroidStudioProjects/Assignment1/app/src/main/res/menu/bottom_nav_menu.xml" value="0.18697916666666667" />
+        <entry key="..\:/Users/Brand/StudioProjects/Assignment1/app/src/main/res/drawable/background_content_top.xml" value="0.25" />
+        <entry key="..\:/Users/Brand/StudioProjects/Assignment1/app/src/main/res/drawable/background_received_message.xml" value="0.215" />
+        <entry key="..\:/Users/Brand/StudioProjects/Assignment1/app/src/main/res/drawable/background_sent_message.xml" value="0.215" />
         <entry key="..\:/Users/Brand/StudioProjects/Assignment1/app/src/main/res/layout/activity_change_password.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Brand/StudioProjects/Assignment1/app/src/main/res/layout/activity_change_username.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Brand/StudioProjects/Assignment1/app/src/main/res/layout/activity_chat.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Brand/StudioProjects/Assignment1/app/src/main/res/layout/activity_listing_details.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Brand/StudioProjects/Assignment1/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Brand/StudioProjects/Assignment1/app/src/main/res/layout/activity_select_listings.xml" value="0.36666666666666664" />
@@ -49,6 +53,8 @@
         <entry key="..\:/Users/Brand/StudioProjects/Assignment1/app/src/main/res/layout/fragment_profile.xml" value="0.35520833333333335" />
         <entry key="..\:/Users/Brand/StudioProjects/Assignment1/app/src/main/res/layout/fragment_upload.xml" value="0.35520833333333335" />
         <entry key="..\:/Users/Brand/StudioProjects/Assignment1/app/src/main/res/layout/fragment_video.xml" value="0.35520833333333335" />
+        <entry key="..\:/Users/Brand/StudioProjects/Assignment1/app/src/main/res/layout/item_container_received_message.xml" value="0.365625" />
+        <entry key="..\:/Users/Brand/StudioProjects/Assignment1/app/src/main/res/layout/item_container_sent_message.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Brand/StudioProjects/Assignment1/app/src/main/res/layout/listing_details.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Brand/StudioProjects/Assignment1/app/src/main/res/menu/bottom_nav_menu.xml" value="0.35520833333333335" />
       </map>
