@@ -22,6 +22,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -45,9 +47,12 @@ public class ChatActivity extends AppCompatActivity {
     private List<ChatMessage> chatMessages;
     private ChatAdapter chatAdapter;
     private FirebaseFirestore database;
+    private String conversationId = null;
 
-    public String currentUserEmail, userEmail, image;
 
+    public String currentUserEmail, image;
+
+    public static String ReceiverUsername, SenderUsername, userEmail;
 
     DatabaseReference mDatabase;
     TextView user;
@@ -72,6 +77,7 @@ public class ChatActivity extends AppCompatActivity {
         Intent intent = getIntent();
         userEmail = intent.getStringExtra("Name");
         image = intent.getStringExtra("Image");
+        //conversationId = intent.getStringExtra("conversationId");
 
         user = findViewById(R.id.textName);
 
@@ -99,6 +105,19 @@ public class ChatActivity extends AppCompatActivity {
         message.put("Message", binding.inputMessage.getText().toString());
         message.put("Timestamp", new Date());
         database.collection("Chat").add(message);
+        if(conversationId != null){
+            updateConversation(binding.inputMessage.getText().toString());
+        }
+        else{
+            HashMap<String, Object> conversation = new HashMap<>();
+            conversation.put("SenderEmail", currentUserEmail);
+            conversation.put("SenderName", SenderUsername);
+            conversation.put("ReceiverEmail", userEmail);
+            conversation.put("ReceiverName", ReceiverUsername);
+            conversation.put("LastMessage", binding.inputMessage.getText().toString());
+            conversation.put("Timestamp", new Date());
+            addConversation(conversation);
+        }
         binding.inputMessage.setText(null);
     }
 
@@ -141,6 +160,10 @@ public class ChatActivity extends AppCompatActivity {
             binding.chatRecyclerView.setVisibility(View.VISIBLE);
         }
         binding.progressBar.setVisibility(View.GONE);
+
+        if(conversationId == null){
+            checkForConversation();
+        }
     };
 
     private void loadUserDetails(){
@@ -155,7 +178,22 @@ public class ChatActivity extends AppCompatActivity {
                 }
                 //Set User Username to Textview
                 else {
-                    user.setText(String.valueOf(task.getResult().child("username").getValue()));
+                    ReceiverUsername = String.valueOf(task.getResult().child("username").getValue());
+                    user.setText(ReceiverUsername);
+                    //user.setText(String.valueOf(task.getResult().child("username").getValue()));
+                }
+            }
+        });
+
+        mDatabase.child("Users").child(currentUserEmail.replace(".", "").trim()).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e("firebase", "Error getting data", task.getException());
+                }
+                //Set User Username to Textview
+                else {
+                    SenderUsername = String.valueOf(task.getResult().child("username").getValue());
                 }
             }
         });
@@ -169,4 +207,47 @@ public class ChatActivity extends AppCompatActivity {
     private String getReadableDateTime(Date date){
         return new SimpleDateFormat("MMMM dd, yyyy - hh:mm a", Locale.getDefault()).format(date);
     }
+
+    private void addConversation(HashMap<String, Object> conversation){
+        database.collection("Conversation")
+                .add(conversation)
+                .addOnSuccessListener(documentReference -> conversationId = documentReference.getId());
+    }
+
+    private void updateConversation(String message){
+        DocumentReference documentReference =
+                database.collection("Conversation").document(conversationId);
+        documentReference.update(
+                "LastMessage", message,
+                "TimeStamp", new Date()
+        );
+    }
+
+    private void checkForConversation(){
+        if (chatMessages.size() != 0){
+            checkForConversationRemotely(
+                    currentUserEmail,
+                    userEmail
+            );
+            checkForConversationRemotely(
+                    userEmail,
+                    currentUserEmail
+            );
+        }
+    }
+
+    private void checkForConversationRemotely(String senderId, String receiverId){
+        database.collection("Conversation")
+                .whereEqualTo("SenderEmail", senderId)
+                .whereEqualTo("ReceiverEmail", receiverId)
+                .get()
+                .addOnCompleteListener(conversationOnCompleteListener);
+    }
+
+    private final OnCompleteListener<QuerySnapshot> conversationOnCompleteListener = task -> {
+        if(task.isSuccessful() && task.getResult() != null && task.getResult().getDocuments().size() > 0 ){
+            DocumentSnapshot documentSnapshot = task.getResult().getDocuments().get(0);
+            conversationId = documentSnapshot.getId();
+        }
+    };
 }
