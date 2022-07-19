@@ -18,7 +18,6 @@ import sg.edu.np.mad.Assignment1.databinding.ItemContainerRecentConversationBind
 public class RecentConversationAdapter extends RecyclerView.Adapter<RecentConversationAdapter.ConversationViewHolder> {
 
     private final List<ChatMessage> chatMessages;
-    //private final ConversationListener conversationListener;
 
     public RecentConversationAdapter(List<ChatMessage> chatMessages) {
         this.chatMessages = chatMessages;
@@ -68,13 +67,10 @@ public class RecentConversationAdapter extends RecyclerView.Adapter<RecentConver
 
                 Intent intent = new Intent(v.getContext(), ChatActivity.class);
                 if(!chatMessages.get(getAdapterPosition()).receiverId.equals(currentUserEmail)){
-                    Log.d("CBLAA", currentUserEmail);
-                    Log.d("CBLA", chatMessages.get(getAdapterPosition()).receiverId);
                     intent.putExtra("Name", chatMessages.get(getAdapterPosition()).receiverId); //**************
                     v.getContext().startActivity(intent);
                 }
                 else {
-                    Log.d("CBLA2", chatMessages.get(getAdapterPosition()).senderId);
                     intent.putExtra("Name", chatMessages.get(getAdapterPosition()).senderId); //**************
                     v.getContext().startActivity(intent);
                 }

@@ -93,7 +93,7 @@ public class ProfileFragment extends Fragment {
                 }
                 //Set User Username to Textview
                 else {
-                    username.setText("Username: " + String.valueOf(task.getResult().child("username").getValue()));
+                    username.setText(String.valueOf(task.getResult().child("username").getValue()));
                 }
             }
         });
@@ -120,7 +120,6 @@ public class ProfileFragment extends Fragment {
                 //Intent to ChangeUsername Activity
                 Intent intent = new Intent(view.getContext(), ChangeUsername.class);
                 startActivity(intent);
-                getActivity().finish();
             }
         });
 

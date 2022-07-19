@@ -39,12 +39,11 @@ public class ChangeUsername extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_username);
 
-
-
         // calling the action bar
         ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("");
 
-        actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.MintCream)));
+        actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.Beige)));
 
         actionBar.setHomeAsUpIndicator(R.drawable.backbutton_icon);
 

@@ -77,7 +77,6 @@ public class ChatActivity extends AppCompatActivity {
         Intent intent = getIntent();
         userEmail = intent.getStringExtra("Name");
         image = intent.getStringExtra("Image");
-        //conversationId = intent.getStringExtra("conversationId");
 
         user = findViewById(R.id.textName);
 
@@ -180,7 +179,6 @@ public class ChatActivity extends AppCompatActivity {
                 else {
                     ReceiverUsername = String.valueOf(task.getResult().child("username").getValue());
                     user.setText(ReceiverUsername);
-                    //user.setText(String.valueOf(task.getResult().child("username").getValue()));
                 }
             }
         });

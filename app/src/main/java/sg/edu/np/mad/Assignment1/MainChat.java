@@ -1,12 +1,16 @@
 package sg.edu.np.mad.Assignment1;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.text.Html;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -45,6 +49,17 @@ public class MainChat extends AppCompatActivity {
         binding = ActivityMainChatBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        // calling the action bar
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle(Html.fromHtml("<font color='#000000'> Chat </font>"));
+
+        actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.Beige)));
+
+        actionBar.setHomeAsUpIndicator(R.drawable.backbutton_icon);
+
+        // showing the back button in action bar
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         currentUserEmail = currentUser.getEmail();
 
@@ -72,7 +87,7 @@ public class MainChat extends AppCompatActivity {
                 }
                 //Set User Username to Textview
                 else {
-                    binding.textName.setText(String.valueOf(task.getResult().child("username").getValue()));
+                    binding.textName.setText("(Me) " + String.valueOf(task.getResult().child("username").getValue()));
                 }
             }
         });
@@ -131,9 +146,13 @@ public class MainChat extends AppCompatActivity {
         }
     };
 
-//    @Override
-//    public void onConversationClicked(User user){
-//        Intent intent = new Intent(getApplicationContext(),ChatActivity.class);
-//        startActivity(intent);
-//    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
