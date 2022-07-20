@@ -40,6 +40,7 @@ import sg.edu.np.mad.Assignment1.databinding.ActivityChatBinding;
 
 public class ChatActivity extends AppCompatActivity {
 
+    //Initialising binding
     private ActivityChatBinding binding;
 
     private List<ChatMessage> chatMessages;
