@@ -58,7 +58,7 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
             ((SentMessageViewHolder) holder).setData(chatMessages.get(position));
         }
         else{
-            ((ReceivedMessageViewHolder) holder).setData(chatMessages.get(position), receiverProfileImage);
+            ((ReceivedMessageViewHolder) holder).setData(chatMessages.get(position)); //add in receiverProfileImage
         }
     }
 
@@ -101,12 +101,11 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
             binding = itemContainerReceivedMessageBinding;
         }
 
-        void setData(ChatMessage chatMessage, String receiverProfileImage){
+        void setData(ChatMessage chatMessage){
             binding.textMessage.setText(chatMessage.message);
             binding.textDateTime.setText(chatMessage.dateTime);
             //binding.imageProfile.setImageURI(Uri.parse(receiverProfileImage));
         }
-
     }
 
 }

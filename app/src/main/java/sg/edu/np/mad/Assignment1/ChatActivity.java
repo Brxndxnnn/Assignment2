@@ -42,13 +42,10 @@ public class ChatActivity extends AppCompatActivity {
 
     private ActivityChatBinding binding;
 
-
-    private User receiverUser;
     private List<ChatMessage> chatMessages;
     private ChatAdapter chatAdapter;
     private FirebaseFirestore database;
-    private String conversationId = null;
-
+    public String conversationId = null;
 
     public String currentUserEmail, image;
 
@@ -77,6 +74,7 @@ public class ChatActivity extends AppCompatActivity {
         Intent intent = getIntent();
         userEmail = intent.getStringExtra("Name");
         image = intent.getStringExtra("Image");
+        conversationId = intent.getStringExtra("ID");
 
         user = findViewById(R.id.textName);
 
@@ -105,9 +103,11 @@ public class ChatActivity extends AppCompatActivity {
         message.put("Timestamp", new Date());
         database.collection("Chat").add(message);
         if(conversationId != null){
+            Log.d("SendMessage", binding.inputMessage.getText().toString());
             updateConversation(binding.inputMessage.getText().toString());
         }
         else{
+            Log.d("SendMessage", "gg");
             HashMap<String, Object> conversation = new HashMap<>();
             conversation.put("SenderEmail", currentUserEmail);
             conversation.put("SenderName", SenderUsername);
@@ -160,7 +160,7 @@ public class ChatActivity extends AppCompatActivity {
         }
         binding.progressBar.setVisibility(View.GONE);
 
-        if(conversationId == null){
+        if(conversationId == null){ //*************8 CLEARED
             checkForConversation();
         }
     };

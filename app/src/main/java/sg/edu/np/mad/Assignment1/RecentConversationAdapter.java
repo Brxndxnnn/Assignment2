@@ -19,9 +19,11 @@ public class RecentConversationAdapter extends RecyclerView.Adapter<RecentConver
 
     private final List<ChatMessage> chatMessages;
 
+    String currentUserEmail;
+    FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+
     public RecentConversationAdapter(List<ChatMessage> chatMessages) {
         this.chatMessages = chatMessages;
-
     }
 
     @NonNull
@@ -61,17 +63,16 @@ public class RecentConversationAdapter extends RecyclerView.Adapter<RecentConver
             binding.textRecentMessage.setText(chatMessage.message);
             //***********************************************
             binding.getRoot().setOnClickListener(v -> {
-                String currentUserEmail;
-                FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-                currentUserEmail = currentUser.getEmail();
 
                 Intent intent = new Intent(v.getContext(), ChatActivity.class);
-                if(!chatMessages.get(getAdapterPosition()).receiverId.equals(currentUserEmail)){
-                    intent.putExtra("Name", chatMessages.get(getAdapterPosition()).receiverId); //**************
+                if(!chatMessages.get(getBindingAdapterPosition()).receiverId.equals(MainActivity.loggedInEmail)){
+                    intent.putExtra("Name", chatMessages.get(getBindingAdapterPosition()).receiverId); //**************
+                    intent.putExtra("ID", chatMessages.get(getBindingAdapterPosition()).conversationId); //**************
                     v.getContext().startActivity(intent);
                 }
                 else {
-                    intent.putExtra("Name", chatMessages.get(getAdapterPosition()).senderId); //**************
+                    intent.putExtra("Name", chatMessages.get(getBindingAdapterPosition()).senderId); //**************
+                    intent.putExtra("ID", chatMessages.get(getBindingAdapterPosition()).conversationId); //**************
                     v.getContext().startActivity(intent);
                 }
             });
