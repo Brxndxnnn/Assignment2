@@ -1,9 +1,12 @@
 package sg.edu.np.mad.Assignment1;
 
+import android.app.SearchManager;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -30,6 +33,7 @@ public class ListingFragment extends Fragment {
     private ListingAdapter listingAdapter;
     public boolean alreadyExecuted = false;
     private GridLayoutManager gridLayoutManager;
+    private SearchView searchView;
 
     public ListingFragment(){
         // require a empty public constructor
@@ -48,6 +52,49 @@ public class ListingFragment extends Fragment {
 
         //Assigning Recyclerview
         listings = (RecyclerView) view.findViewById(R.id.listings);
+
+        //ZW Part: Getting the SearchView
+        searchView = (SearchView) view.findViewById(R.id.searchView);
+        searchView.setOnSearchClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent searchIntent = new Intent(getActivity(),ListingSearch.class);
+                getActivity().startActivity(searchIntent);
+            }
+        });
+
+//        DatabaseReference databaseReference = FirebaseDatabase.getInstance("https://mad-assignment-1-7b524-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference().child("Listings");
+//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String query) {
+//                databaseReference.addValueEventListener(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                        listingsArrayList.clear();
+//                        for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+//                            Listings listings;
+//                            listings = dataSnapshot.getValue(Listings.class);
+//                            if(listings.getTitle().equals(query)){
+//                                listingsArrayList.add(listings);
+//                            }
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError error) {
+//
+//                    }
+//                });
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String newText) {
+//                return false;
+//            }
+//        });
+
+
 
         //Setting GridLayout
         gridLayoutManager = new GridLayoutManager(view.getContext(), 2 , GridLayoutManager.VERTICAL, false);
