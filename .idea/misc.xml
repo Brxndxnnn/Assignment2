@@ -63,6 +63,7 @@
         <entry key="..\:/Users/Brand/StudioProjects/Assignment1/app/src/main/res/menu/bottom_nav_menu.xml" value="0.35520833333333335" />
         <entry key="..\:/Users/jaysa/AndroidStudioProjects/Assignment1/app/src/main/res/drawable/ic_info.xml" value="0.163" />
         <entry key="..\:/Users/jaysa/AndroidStudioProjects/Assignment1/app/src/main/res/drawable/ic_launcher_background.xml" value="0.163" />
+        <entry key="..\:/Users/jaysa/AndroidStudioProjects/Assignment1/app/src/main/res/drawable/ic_remove.xml" value="0.164" />
         <entry key="..\:/Users/jaysa/AndroidStudioProjects/Assignment1/app/src/main/res/drawable/ic_search.xml" value="0.163" />
         <entry key="..\:/Users/jaysa/AndroidStudioProjects/Assignment1/app/src/main/res/layout/activity_listing_details.xml" value="0.17916666666666667" />
         <entry key="..\:/Users/jaysa/AndroidStudioProjects/Assignment1/app/src/main/res/layout/activity_listing_search.xml" value="0.17916666666666667" />
@@ -71,6 +72,7 @@
         <entry key="..\:/Users/jaysa/AndroidStudioProjects/Assignment1/app/src/main/res/layout/custom_grid_layout.xml" value="0.17916666666666667" />
         <entry key="..\:/Users/jaysa/AndroidStudioProjects/Assignment1/app/src/main/res/layout/fragment_home.xml" value="0.17916666666666667" />
         <entry key="..\:/Users/jaysa/AndroidStudioProjects/Assignment1/app/src/main/res/layout/fragment_listing.xml" value="0.17916666666666667" />
+        <entry key="..\:/Users/jaysa/AndroidStudioProjects/Assignment1/app/src/main/res/layout/recent_listing_items.xml" value="0.22333333333333336" />
         <entry key="..\:/Users/jaysa/AndroidStudioProjects/Assignment1/app/src/main/res/menu/bottom_nav_menu.xml" value="0.17916666666666667" />
         <entry key="..\:/Users/jaysa/AndroidStudioProjects/Assignment1/app/src/main/res/xml/list_item_searchable.xml" value="0.13359375" />
       </map>
