@@ -24,7 +24,7 @@ Users can also contribute by posting various videos on ways on how we can upcycl
 ```
 ### Roles and contribution of each team member:
 
-Brandon [Contributions](Brandon S10194173)
+Brandon [Contributions](BrandonS10194173.md)
 
 Irene: Designer and Tester. Doing the start up page design and testing of the app to check for error. (e.g alignments or any improvement needed)
 
