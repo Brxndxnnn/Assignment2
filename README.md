@@ -24,7 +24,7 @@ Users can also contribute by posting various videos on ways on how we can upcycl
 ```
 ### Roles and contribution of each team member:
 
-Brandon: Main Coder for the application. Coded the main structure of the application, including the Upload Listings feature, Viewing of Listings, Viewing of Videos etc. 
+Brandon: [a relative link](other_file.md)
 
 Irene: Designer and Tester. Doing the start up page design and testing of the app to check for error. (e.g alignments or any improvement needed)
 
