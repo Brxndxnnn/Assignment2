@@ -62,6 +62,8 @@ public class ChatActivity extends AppCompatActivity {
         binding = ActivityChatBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        database = FirebaseFirestore.getInstance();
+
         //Action Bar CODES//
         // calling the action bar
         ActionBar actionBar = getSupportActionBar();
@@ -75,13 +77,12 @@ public class ChatActivity extends AppCompatActivity {
         Intent intent = getIntent();
         userEmail = intent.getStringExtra("Name");
         image = intent.getStringExtra("Image");
-        conversationId = intent.getStringExtra("ID");
 
         user = findViewById(R.id.textName);
 
+        init();
         loadUserDetails();
         setListeners();
-        init();
         listenMessages();
     }
 
@@ -93,7 +94,6 @@ public class ChatActivity extends AppCompatActivity {
                 currentUserEmail
         );
         binding.chatRecyclerView.setAdapter(chatAdapter);
-        database = FirebaseFirestore.getInstance();
     }
 
     private void sendMessage(){
@@ -138,15 +138,19 @@ public class ChatActivity extends AppCompatActivity {
         }
         if(value != null){
             int count = chatMessages.size();
+            Log.d("GG", String.valueOf(chatMessages.size()));
             for(DocumentChange documentChange : value.getDocumentChanges()){
                 if(documentChange.getType() == DocumentChange.Type.ADDED){
+
                     ChatMessage chatMessage = new ChatMessage();
                     chatMessage.senderId = documentChange.getDocument().getString("SenderEmail");
                     chatMessage.receiverId = documentChange.getDocument().getString("ReceiverEmail");
-                    chatMessage.message = documentChange.getDocument().getString("Message");
+                    chatMessage.message = documentChange.getDocument().getString("Message").trim();
                     chatMessage.dateTime = getReadableDateTime(documentChange.getDocument().getDate("Timestamp"));
                     chatMessage.dateObject = documentChange.getDocument().getDate("Timestamp");
                     chatMessages.add(chatMessage);
+
+                    chatAdapter.notifyDataSetChanged();
                 }
             }
             Collections.sort(chatMessages, (obj1, obj2) -> obj1.dateObject.compareTo(obj2.dateObject));
@@ -161,7 +165,7 @@ public class ChatActivity extends AppCompatActivity {
         }
         binding.progressBar.setVisibility(View.GONE);
 
-        if(conversationId == null){ //*************8 CLEARED
+        if(conversationId == null){
             checkForConversation();
         }
     };
@@ -169,6 +173,7 @@ public class ChatActivity extends AppCompatActivity {
     private void loadUserDetails(){
         //Getting Realtime Database instance
         mDatabase = FirebaseDatabase.getInstance("https://mad-assignment-1-7b524-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
+
         //Finding Username in Realtime Database through current User Email Address
         mDatabase.child("Users").child(userEmail.replace(".", "").trim()).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override

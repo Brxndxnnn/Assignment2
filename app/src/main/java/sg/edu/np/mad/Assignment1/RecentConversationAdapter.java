@@ -8,8 +8,14 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
@@ -18,9 +24,6 @@ import sg.edu.np.mad.Assignment1.databinding.ItemContainerRecentConversationBind
 public class RecentConversationAdapter extends RecyclerView.Adapter<RecentConversationAdapter.ConversationViewHolder> {
 
     private final List<ChatMessage> chatMessages;
-
-    String currentUserEmail;
-    FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
     public RecentConversationAdapter(List<ChatMessage> chatMessages) {
         this.chatMessages = chatMessages;
@@ -50,6 +53,7 @@ public class RecentConversationAdapter extends RecyclerView.Adapter<RecentConver
 
     class ConversationViewHolder extends RecyclerView.ViewHolder{
 
+        DatabaseReference mDatabase;
         ItemContainerRecentConversationBinding binding;
 
         ConversationViewHolder(ItemContainerRecentConversationBinding itemContainerRecentConversationBinding){
@@ -61,7 +65,42 @@ public class RecentConversationAdapter extends RecyclerView.Adapter<RecentConver
             //binding.imageProfile.setImageDrawable("@drawable/");
             binding.textName.setText(chatMessage.conversationName);
             binding.textRecentMessage.setText(chatMessage.message);
-            //***********************************************
+
+            mDatabase = FirebaseDatabase.getInstance("https://mad-assignment-1-7b524-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
+
+            if (MainActivity.loggedInEmail.equals(chatMessages.get(getBindingAdapterPosition()).receiverId)){
+                //Finding Picture in Realtime Database through current User Email Address
+                mDatabase.child("Users").child(chatMessages.get(getBindingAdapterPosition()).senderId.replace(".", "").trim()).child("profilepicUrl").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DataSnapshot> task) {
+                        //Check if user has existing profile pic
+                        if (task.getResult().exists()) {
+                            Glide.with(itemView.getContext()).load(task.getResult().getValue()).into(binding.imageProfile);
+                        }
+                        //Set User Profile Pic to ImageView
+                        else {
+                            Log.e("firebase", "Error getting data", task.getException());
+                        }
+                    }
+                });
+            }
+            else{
+                //Finding Picture in Realtime Database through current User Email Address
+                mDatabase.child("Users").child(chatMessages.get(getBindingAdapterPosition()).receiverId.replace(".", "").trim()).child("profilepicUrl").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DataSnapshot> task) {
+                        //Check if user has existing profile pic
+                        if (task.getResult().exists()) {
+                            Glide.with(itemView.getContext()).load(task.getResult().getValue()).into(binding.imageProfile);
+                        }
+                        //Set User Profile Pic to ImageView
+                        else {
+                            Log.e("firebase", "Error getting data", task.getException());
+                        }
+                    }
+                });
+            }
+
             binding.getRoot().setOnClickListener(v -> {
 
                 Intent intent = new Intent(v.getContext(), ChatActivity.class);

@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -73,6 +74,22 @@ public class MainChat extends AppCompatActivity {
         conversationAdapter = new RecentConversationAdapter(conversations);
         binding.conversationsRecyclerView.setAdapter(conversationAdapter);
         database = FirebaseFirestore.getInstance();
+
+
+        mDatabase = FirebaseDatabase.getInstance("https://mad-assignment-1-7b524-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
+        mDatabase.child("Users").child(currentUserEmail.replace(".", "").trim()).child("profilepicUrl").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                //Check if user has existing profile pic
+                if (task.getResult().exists()) {
+                    Glide.with(MainChat.this).load(task.getResult().getValue()).into(binding.imageProfile);
+                }
+                //Set User Profile Pic to ImageView
+                else {
+                    Log.e("firebase", "Error getting data", task.getException());
+                }
+            }
+        });
     }
 
     private void loadUserDetails(){

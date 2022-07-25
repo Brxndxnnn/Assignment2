@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -93,10 +94,15 @@ public class ListingDetails extends AppCompatActivity {
         chatButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent1 = new Intent(ListingDetails.this, ChatActivity.class);
-                intent1.putExtra("Name", poster);
-                intent1.putExtra("Image", image);
-                startActivity(intent1);
+                if(MainActivity.loggedInEmail.equals(poster)){
+                    Toast.makeText(ListingDetails.this, "You can't chat with yourself :)", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Intent intent1 = new Intent(ListingDetails.this, ChatActivity.class);
+                    intent1.putExtra("Name", poster);
+                    intent1.putExtra("Image", image);
+                    startActivity(intent1);
+                }
             }
         });
     }
