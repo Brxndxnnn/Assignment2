@@ -71,6 +71,23 @@
         <entry key="..\:/Users/Brand/StudioProjects/Assignment1/app/src/main/res/layout/item_container_sent_message.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Brand/StudioProjects/Assignment1/app/src/main/res/layout/listing_details.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Brand/StudioProjects/Assignment1/app/src/main/res/menu/bottom_nav_menu.xml" value="0.35520833333333335" />
+        <entry key="..\:/Users/jaysa/AndroidStudioProjects/Assignment1/app/src/main/res/drawable/ic_info.xml" value="0.163" />
+        <entry key="..\:/Users/jaysa/AndroidStudioProjects/Assignment1/app/src/main/res/drawable/ic_launcher_background.xml" value="0.163" />
+        <entry key="..\:/Users/jaysa/AndroidStudioProjects/Assignment1/app/src/main/res/drawable/ic_remove.xml" value="0.164" />
+        <entry key="..\:/Users/jaysa/AndroidStudioProjects/Assignment1/app/src/main/res/drawable/ic_search.xml" value="0.163" />
+        <entry key="..\:/Users/jaysa/AndroidStudioProjects/Assignment1/app/src/main/res/layout/activity_listing_details.xml" value="0.17916666666666667" />
+        <entry key="..\:/Users/jaysa/AndroidStudioProjects/Assignment1/app/src/main/res/layout/activity_listing_search.xml" value="0.17916666666666667" />
+        <entry key="..\:/Users/jaysa/AndroidStudioProjects/Assignment1/app/src/main/res/layout/activity_main.xml" value="0.17916666666666667" />
+        <entry key="..\:/Users/jaysa/AndroidStudioProjects/Assignment1/app/src/main/res/layout/activity_select_listings.xml" value="0.17916666666666667" />
+        <entry key="..\:/Users/jaysa/AndroidStudioProjects/Assignment1/app/src/main/res/layout/custom_grid_layout.xml" value="0.17916666666666667" />
+        <entry key="..\:/Users/jaysa/AndroidStudioProjects/Assignment1/app/src/main/res/layout/fragment_home.xml" value="0.17916666666666667" />
+        <entry key="..\:/Users/jaysa/AndroidStudioProjects/Assignment1/app/src/main/res/layout/fragment_listing.xml" value="0.17916666666666667" />
+        <entry key="..\:/Users/jaysa/AndroidStudioProjects/Assignment1/app/src/main/res/layout/item_container_received_message.xml" value="0.16983695652173914" />
+        <entry key="..\:/Users/jaysa/AndroidStudioProjects/Assignment1/app/src/main/res/layout/item_container_recent_conversation.xml" value="0.16983695652173914" />
+        <entry key="..\:/Users/jaysa/AndroidStudioProjects/Assignment1/app/src/main/res/layout/listedvideos.xml" value="0.16983695652173914" />
+        <entry key="..\:/Users/jaysa/AndroidStudioProjects/Assignment1/app/src/main/res/layout/recent_listing_items.xml" value="0.17916666666666667" />
+        <entry key="..\:/Users/jaysa/AndroidStudioProjects/Assignment1/app/src/main/res/menu/bottom_nav_menu.xml" value="0.17916666666666667" />
+        <entry key="..\:/Users/jaysa/AndroidStudioProjects/Assignment1/app/src/main/res/xml/list_item_searchable.xml" value="0.13359375" />
       </map>
     </option>
   </component>
@@ -79,5 +96,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.17916666666666667" />
+      </ProjectState>
+    </option>
   </component>
 </project>
