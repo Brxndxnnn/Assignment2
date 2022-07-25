@@ -18,11 +18,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
-        
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            
+
             <ImageView
                 android:id="@+id/imageView6"
                 android:layout_width="match_parent"
@@ -68,9 +68,9 @@
                 android:layout_marginStart="43dp"
                 android:layout_marginTop="2dp"
                 android:text="Username1"
-                android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="16sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/username" />
 
@@ -96,9 +96,9 @@
                 android:layout_marginStart="43dp"
                 android:layout_marginTop="2dp"
                 android:text="Email Address1"
-                android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="16sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/email" />
 
@@ -108,11 +108,13 @@
                 android:layout_height="56dp"
                 android:layout_below="@id/textView9"
                 android:layout_centerHorizontal="true"
-                android:layout_marginStart="60dp"
+                android:layout_marginStart="32dp"
                 android:layout_marginTop="52dp"
                 android:backgroundTint="#C8EAD1"
                 android:text="Change Username"
                 android:textColor="@android:color/black"
+                app:layout_constraintEnd_toStartOf="@+id/button6"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView9"
                 app:rippleColor="@android:color/black"
@@ -143,11 +145,13 @@
                 android:layout_below="@id/textView9"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="52dp"
-                android:layout_marginEnd="60dp"
+                android:layout_marginEnd="32dp"
                 android:backgroundTint="#C8EAD1"
                 android:text="Change Password"
                 android:textColor="@android:color/black"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/button5"
                 app:layout_constraintTop_toBottomOf="@+id/textView9"
                 app:rippleColor="@android:color/black"
                 app:strokeColor="@android:color/black"
