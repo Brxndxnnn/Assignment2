@@ -70,7 +70,7 @@ public class RecentConversationAdapter extends RecyclerView.Adapter<RecentConver
 
             if (MainActivity.loggedInEmail.equals(chatMessages.get(getBindingAdapterPosition()).receiverId)){
                 //Finding Picture in Realtime Database through current User Email Address
-                mDatabase.child("Users").child(chatMessages.get(getBindingAdapterPosition()).senderId.replace(".", "").trim()).child("profilepicUrl").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                mDatabase.child("Users").child(chatMessages.get(getBindingAdapterPosition()).senderId.replace("![](../../../../../../../../../../../../Users/Brand/AppData/Local/Temp/download.jpg).", "").trim()).child("profilepicUrl").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DataSnapshot> task) {
                         //Check if user has existing profile pic
