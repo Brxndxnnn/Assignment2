@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 public class SearchHistoryViewHolder extends RecyclerView.ViewHolder{
     TextView listingName;
 
+
     // Constructor
     public SearchHistoryViewHolder(View item)
     {

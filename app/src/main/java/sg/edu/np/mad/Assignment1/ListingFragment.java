@@ -60,6 +60,7 @@ public class ListingFragment extends Fragment {
             public void onClick(View v) {
                 Intent searchIntent = new Intent(getActivity(),ListingSearch.class);
                 getActivity().startActivity(searchIntent);
+                searchView.setIconified(true);
             }
         });
 
