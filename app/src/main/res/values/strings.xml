@@ -6,4 +6,9 @@
     <string name="registerHere"><b><u>Do not have an account? Register here</u></b></string>
     <string name="loginHere"><b><u>Already have an account? Login here</u></b></string>
 
+    <style name="Circular">
+        <item name="cornerSize">50%</item>
+        
+    </style>
+
 </resources>

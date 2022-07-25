@@ -33,18 +33,19 @@
                 tools:layout_constraintLeft_creator="1"
                 tools:layout_constraintTop_creator="1" />
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/imageView5"
-                android:layout_width="115dp"
-                android:layout_height="105dp"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="156dp"
+                android:layout_marginTop="153dp"
                 android:scaleType="fitXY"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@android:drawable/sym_def_app_icon"
-                tools:ignore="MissingConstraints" />
+                tools:ignore="MissingConstraints"
+                app:shapeAppearanceOverlay="@style/Circular"/>
 
             <TextView
                 android:id="@+id/username"

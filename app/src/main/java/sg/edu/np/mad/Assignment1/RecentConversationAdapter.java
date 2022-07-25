@@ -78,7 +78,7 @@ public class RecentConversationAdapter extends RecyclerView.Adapter<RecentConver
                         }
                         //Set User Profile Pic to ImageView
                         else {
-                            Log.e("firebase", "Error getting data", task.getException());
+                            Glide.with(itemView.getContext()).load(R.drawable.user_icon).into(binding.imageProfile);
                         }
                     }
                 });
@@ -94,7 +94,7 @@ public class RecentConversationAdapter extends RecyclerView.Adapter<RecentConver
                         }
                         //Set User Profile Pic to ImageView
                         else {
-                            Log.e("firebase", "Error getting data", task.getException());
+                            Glide.with(itemView.getContext()).load(R.drawable.user_icon).into(binding.imageProfile);
                         }
                     }
                 });

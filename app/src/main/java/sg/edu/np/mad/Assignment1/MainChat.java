@@ -156,9 +156,9 @@ public class MainChat extends AppCompatActivity {
                 }
             }
             Collections.sort(conversations, (obj1,obj2) -> obj2.dateObject.compareTo(obj1.dateObject));
-            conversationAdapter.notifyDataSetChanged();
             binding.conversationsRecyclerView.smoothScrollToPosition(0);
             binding.conversationsRecyclerView.setVisibility(View.VISIBLE);
+            conversationAdapter.notifyDataSetChanged();
             binding.progressBar.setVisibility(View.GONE);
         }
     };
