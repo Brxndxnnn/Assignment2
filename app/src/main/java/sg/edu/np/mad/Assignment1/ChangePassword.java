@@ -32,8 +32,9 @@ public class ChangePassword extends AppCompatActivity {
 
         // calling the action bar
         ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("");
 
-        actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.MintCream)));
+        actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.Beige)));
 
         actionBar.setHomeAsUpIndicator(R.drawable.backbutton_icon);
 

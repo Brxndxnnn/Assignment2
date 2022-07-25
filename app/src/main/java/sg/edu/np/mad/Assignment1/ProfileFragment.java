@@ -93,7 +93,7 @@ public class ProfileFragment extends Fragment {
                 }
                 //Set User Username to Textview
                 else {
-                    username.setText("Username: " + String.valueOf(task.getResult().child("username").getValue()));
+                    username.setText(String.valueOf(task.getResult().child("username").getValue()));
                 }
             }
         });
@@ -120,7 +120,6 @@ public class ProfileFragment extends Fragment {
                 //Intent to ChangeUsername Activity
                 Intent intent = new Intent(view.getContext(), ChangeUsername.class);
                 startActivity(intent);
-                getActivity().finish();
             }
         });
 
@@ -189,8 +188,11 @@ public class ProfileFragment extends Fragment {
         //show progress bar
         progressDialog.show();
 
+        //timestamp
+        String timestamp = "" + System.currentTimeMillis();
+
         //filepath and name in storage
-        String filePathAndName = "ProfilePic/" + "pic_";
+        String filePathAndName = "ProfilePic/" + "pic_" + timestamp;
 
         //storage reference
         StorageReference storageReference = FirebaseStorage.getInstance().getReference(filePathAndName);
@@ -223,7 +225,7 @@ public class ProfileFragment extends Fragment {
                                         public void onSuccess(Void unused) {
                                             //listing added to db
                                             progressDialog.dismiss();
-                                            Toast.makeText(getContext(), "Listing has been uploaded", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getContext(), "Profile Picture has been uploaded", Toast.LENGTH_SHORT).show();
                                         }
                                     })
                                     .addOnFailureListener(new OnFailureListener() {
@@ -231,7 +233,7 @@ public class ProfileFragment extends Fragment {
                                         public void onFailure(@NonNull Exception e) {
                                             //listing details failed to add to db
                                             progressDialog.dismiss();
-                                            Toast.makeText(getContext(), "Listing details failed to upload. Try again", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getContext(), "Profile Picture failed to upload. Try again", Toast.LENGTH_SHORT).show();
                                         }
                                     });
                         }

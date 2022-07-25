@@ -97,9 +97,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
             //If Video button is clicked, start respective activity
             case R.id.button:
-//                getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, videoFragment).commit();
-//                bottomNavigationView.setSelectedItemId(R.id.video);
-//                return true;
                 Intent intent4 = new Intent(view.getContext(), MainChat.class);
                 startActivity(intent4);
                 return true;

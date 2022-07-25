@@ -3,12 +3,22 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/POLY/MAD/Assignment1/app/src/main/res/drawable/background_content_top.xml" value="0.1735" />
+        <entry key="..\:/POLY/MAD/Assignment1/app/src/main/res/drawable/background_input_message.xml" value="0.332" />
+        <entry key="..\:/POLY/MAD/Assignment1/app/src/main/res/drawable/background_sent_message.xml" value="0.332" />
+        <entry key="..\:/POLY/MAD/Assignment1/app/src/main/res/drawable/ic_addpic.xml" value="0.332" />
         <entry key="..\:/POLY/MAD/Assignment1/app/src/main/res/layout/activity_chat.xml" value="0.36666666666666664" />
+        <entry key="..\:/POLY/MAD/Assignment1/app/src/main/res/layout/activity_listing_details.xml" value="0.36666666666666664" />
+        <entry key="..\:/POLY/MAD/Assignment1/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/POLY/MAD/Assignment1/app/src/main/res/layout/activity_main_chat.xml" value="0.36666666666666664" />
-        <entry key="..\:/POLY/MAD/Assignment1/app/src/main/res/layout/custom_grid_layout.xml" value="0.36666666666666664" />
+        <entry key="..\:/POLY/MAD/Assignment1/app/src/main/res/layout/custom_grid_layout.xml" value="0.25" />
+        <entry key="..\:/POLY/MAD/Assignment1/app/src/main/res/layout/fragment_home.xml" value="0.36666666666666664" />
         <entry key="..\:/POLY/MAD/Assignment1/app/src/main/res/layout/fragment_listing.xml" value="0.36666666666666664" />
+        <entry key="..\:/POLY/MAD/Assignment1/app/src/main/res/layout/fragment_profile.xml" value="0.36666666666666664" />
         <entry key="..\:/POLY/MAD/Assignment1/app/src/main/res/layout/fragment_video.xml" value="0.36666666666666664" />
+        <entry key="..\:/POLY/MAD/Assignment1/app/src/main/res/layout/item_container_received_message.xml" value="0.36666666666666664" />
         <entry key="..\:/POLY/MAD/Assignment1/app/src/main/res/layout/item_container_recent_conversation.xml" value="0.36666666666666664" />
+        <entry key="..\:/POLY/MAD/Assignment1/app/src/main/res/layout/item_container_sent_message.xml" value="0.36666666666666664" />
         <entry key="..\:/POLY/MAD/Assignment1/app/src/main/res/menu/bottom_nav_menu.xml" value="0.2712962962962963" />
         <entry key="..\:/Poly/Year 3 Modules/MAD/Assignment1/app/src/main/res/font/roboto_condensed_bold.xml" value="0.228515625" />
         <entry key="..\:/Poly/Year 3 Modules/MAD/Assignment1/app/src/main/res/layout/activity_faqhelp.xml" value="0.27447916666666666" />

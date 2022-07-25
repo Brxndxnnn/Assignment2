@@ -15,6 +15,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -24,6 +29,8 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.Viewhold
     private Context context;
     private ArrayList<Listings> listingsArrayList;
     LayoutInflater inflater;
+    DatabaseReference mDatabase;
+
 
     public ListingAdapter(Context context, ArrayList<Listings> listingsArrayList) {
         this.context = context;
@@ -50,6 +57,23 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.Viewhold
 
         //Setting the Listing title into TextView
         holder.listingTitle.setText(listings.title);
+
+        //Getting Realtime Database instance
+        mDatabase = FirebaseDatabase.getInstance("https://mad-assignment-1-7b524-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
+
+        //Finding Username in Realtime Database through current User Email Address
+        mDatabase.child("Users").child(listings.poster.replace(".", "").trim()).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e("firebase", "Error getting data", task.getException());
+                }
+                //Set User Username to Textview
+                else {
+                    holder.listingPoster.setText(String.valueOf(task.getResult().child("username").getValue()));
+                }
+            }
+        });
     }
 
     @Override
@@ -60,12 +84,13 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.Viewhold
     public class Viewholder extends RecyclerView.ViewHolder{
         //Initialising variables
         ImageView listingImg;
-        TextView listingTitle;
+        TextView listingTitle, listingPoster;
 
         public Viewholder(@NonNull View itemView) {
             super(itemView);
             listingImg = itemView.findViewById(R.id.listingImg);
             listingTitle = itemView.findViewById(R.id.listingTitle);
+            listingPoster = itemView.findViewById(R.id.postedBy);
 
             //If listing is being pressed on, enlarge chosen listing
             itemView.setOnClickListener(new View.OnClickListener() {

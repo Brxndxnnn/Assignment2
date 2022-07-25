@@ -2,11 +2,21 @@ package sg.edu.np.mad.Assignment1;
 
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
@@ -17,7 +27,7 @@ import sg.edu.np.mad.Assignment1.databinding.ItemContainerSentMessageBinding;
 public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     private final List<ChatMessage> chatMessages;
-    private final String receiverProfileImage;
+    public final String receiverProfileImage;
     private final String senderId;
 
     public static final int VIEW_TYPE_SENT = 1;
@@ -58,7 +68,7 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
             ((SentMessageViewHolder) holder).setData(chatMessages.get(position));
         }
         else{
-            ((ReceivedMessageViewHolder) holder).setData(chatMessages.get(position), receiverProfileImage);
+            ((ReceivedMessageViewHolder) holder).setData(chatMessages.get(position)); //add in receiverProfileImage
         }
     }
 
@@ -87,13 +97,14 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         }
 
         void setData(ChatMessage chatMessage){
-            binding.textMessage.setText(chatMessage.message);
+            binding.textMessage.setText(chatMessage.message.trim());
             binding.textDateTime.setText(chatMessage.dateTime);
         }
     }
 
     static class ReceivedMessageViewHolder extends RecyclerView.ViewHolder{
 
+        DatabaseReference mDatabase;
         private final ItemContainerReceivedMessageBinding binding;
 
         ReceivedMessageViewHolder(ItemContainerReceivedMessageBinding itemContainerReceivedMessageBinding){
@@ -101,12 +112,46 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
             binding = itemContainerReceivedMessageBinding;
         }
 
-        void setData(ChatMessage chatMessage, String receiverProfileImage){
-            binding.textMessage.setText(chatMessage.message);
+        void setData(ChatMessage chatMessage){
+            binding.textMessage.setText(chatMessage.message.trim());
             binding.textDateTime.setText(chatMessage.dateTime);
-            //binding.imageProfile.setImageURI(Uri.parse(receiverProfileImage));
-        }
 
+            mDatabase = FirebaseDatabase.getInstance("https://mad-assignment-1-7b524-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
+
+            if (MainActivity.loggedInEmail.equals(chatMessage.receiverId)){
+                //Finding Picture in Realtime Database through current User Email Address
+                mDatabase.child("Users").child(chatMessage.senderId.replace(".", "").trim()).child("profilepicUrl").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DataSnapshot> task) {
+                        //Check if user has existing profile pic
+                        if (task.getResult().exists()) {
+                            Glide.with(itemView.getContext()).load(task.getResult().getValue()).into(binding.imageProfile);
+                        }
+                        //Set User Profile Pic to ImageView
+                        else {
+                            Log.e("firebase", "Error getting data", task.getException());
+                        }
+                    }
+                });
+            }
+            else{
+                //Finding Picture in Realtime Database through current User Email Address
+                mDatabase.child("Users").child(chatMessage.receiverId.replace(".", "").trim()).child("profilepicUrl").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DataSnapshot> task) {
+                        //Check if user has existing profile pic
+                        if (task.getResult().exists()) {
+                            Glide.with(itemView.getContext()).load(task.getResult().getValue()).into(binding.imageProfile);
+                        }
+                        //Set User Profile Pic to ImageView
+                        else {
+                            Log.e("firebase", "Error getting data", task.getException());
+                        }
+                    }
+                });
+            }
+
+        }
     }
 
 }
