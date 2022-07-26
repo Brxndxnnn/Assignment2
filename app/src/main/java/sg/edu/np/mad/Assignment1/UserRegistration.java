@@ -117,10 +117,13 @@ public class UserRegistration extends AppCompatActivity {
                 fAuth1.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+
+                        Integer points = 0;
+
                         if(task.isSuccessful()){
                             Toast.makeText(UserRegistration.this, "User Created, you may now login",Toast.LENGTH_SHORT).show();
 
-                            writeNewUser(id, email, username);
+                            writeNewUser(id, email, username, points);
 
                             Intent intent = new Intent(getApplicationContext(), UserLogin.class);
                             intent.putExtra("registeredemail", email);
@@ -150,8 +153,8 @@ public class UserRegistration extends AppCompatActivity {
 
 
     //Method to write new User to Realtime Database
-    public void writeNewUser(String id, String email, String name) {
-        User user = new User(email, name);
+    public void writeNewUser(String id, String email, String name, Integer points) {
+        User user = new User(email, name, points);
 
         mDatabase.child("Users").child(id).setValue(user);
     }
