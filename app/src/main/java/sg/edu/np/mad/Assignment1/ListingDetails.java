@@ -68,6 +68,12 @@ public class ListingDetails extends AppCompatActivity {
         String poster = intent.getStringExtra("Poster");
         String location = intent.getStringExtra("Location");
 
+        // Receiving Intent Values from ListingSearch Activity (when user searches a specific item):
+        // Intent fromListingSearch = getIntent();
+        // String listingName = fromListingSearch.getStringExtra("Title");
+        // String listingPicture = fromListingSearch.getStringExtra("Image");
+
+
         //Setting the data saved in Intent
         Glide.with(this).load(image).into(listingImage);
         listingTitle.setText(title);

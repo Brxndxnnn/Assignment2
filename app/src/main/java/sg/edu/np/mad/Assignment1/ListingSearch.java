@@ -1,19 +1,24 @@
 package sg.edu.np.mad.Assignment1;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,6 +37,7 @@ public class ListingSearch extends AppCompatActivity {
     //Initialise the variables
     private String currentEmail;
     private TextView cancel;
+    private TextView clearAll;
     private SearchView searchView; //SearchView Widget
     private RecyclerView searchRV; //RecyclerView for Search History
     private ArrayList<Listings> listingItems; //ArrayList storing listings in firebase
@@ -42,6 +48,13 @@ public class ListingSearch extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listing_search);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowHomeEnabled(true);
+        actionBar.setLogo(R.mipmap.ic_launcher_round);
+        actionBar.setDisplayUseLogoEnabled(true);
+        actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.MintCream)));
+        actionBar.setTitle(Html.fromHtml("<font color='#000000'> Recyclops </font>"));
 
         // Get the email of the login user:
         currentEmail = MainActivity.loggedInEmail.replace(".", "");
@@ -57,12 +70,13 @@ public class ListingSearch extends AppCompatActivity {
 
         // Set linear layout and adapter for Search History RecyclerView:
         LinearLayoutManager linearLayout = new LinearLayoutManager(this);
-        SearchHistoryAdapter shAdapter = new SearchHistoryAdapter(searchHistoryList);
+        SearchHistoryAdapter shAdapter = new SearchHistoryAdapter(searchHistoryList, ListingSearch.this);
         searchRV.setLayoutManager(linearLayout);
         searchRV.setAdapter(shAdapter);
 
         //Assign searchView object to the SearchView widget:
         searchView = (SearchView) findViewById(R.id.searchView);
+        searchView.setIconified(false);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -75,12 +89,21 @@ public class ListingSearch extends AppCompatActivity {
                         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
                         String strDate = dateFormat.format(date);
                         SearchHistory searchItem = new SearchHistory(query, strDate);
-                        AddSearchItemToDB(searchItem.getListingName(), searchItem.getSearchTime());
+                        AddSearchItemToDB(searchItem.getListingName(), searchItem.getSearchTime()); // Add Search History record to firebase
+                        shAdapter.notifyDataSetChanged();
+                        // New Intent to go to Listing Details Page after user search for a specific listing item
+                        Intent searchToDetails = new Intent(ListingSearch.this, ListingDetails.class);
+                        searchToDetails.putExtra("Title", item.getTitle());
+                        searchToDetails.putExtra("Image", item.getImageUrl());
+                        searchToDetails.putExtra("Desc", item.getDesc());
+                        searchToDetails.putExtra("Poster", item.getPoster());
+                        searchToDetails.putExtra("Location", item.getLocation());
+                        startActivity(searchToDetails);
                     }
 
                 }
                 if (exist == false){
-                    Toast.makeText(ListingSearch.this,"fuck u",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ListingSearch.this,"Item is not found.",Toast.LENGTH_SHORT).show();
                 }
                 // Clear the SearchView text after user submits the query
                 searchView.setQuery("", false);
@@ -92,6 +115,15 @@ public class ListingSearch extends AppCompatActivity {
             @Override
             public boolean onQueryTextChange(String newText) {
                 return false;
+            }
+        });
+        // When user clicks Clear All, the search history of the user will be deleted
+        clearAll = findViewById(R.id.clearAllText);
+        clearAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ClearSearchHistory();
+                shAdapter.notifyDataSetChanged();
             }
         });
 
@@ -146,8 +178,8 @@ public class ListingSearch extends AppCompatActivity {
                     SearchHistory searchItems = ds.getValue(SearchHistory.class);
                     //add model/data to list
                     searchHistoryList.add(searchItems);
-
                 }
+
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -156,5 +188,27 @@ public class ListingSearch extends AppCompatActivity {
         });
 
     }
+    // Method to clear search history
+    public void ClearSearchHistory(){
+        DatabaseReference searchHistoryRef = FirebaseDatabase.getInstance("https://mad-assignment-1-7b524-default-rtdb.asia-southeast1.firebasedatabase.app/")
+                .getReference("SearchHistory").child(currentEmail);
+        searchHistoryRef.removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+                Toast.makeText(getApplicationContext(), "Cleared Search History!", Toast.LENGTH_LONG).show();
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getApplicationContext(), "Search History not cleared....", Toast.LENGTH_LONG).show();
+            }
+        });
+        searchHistoryList.clear();
+
+
+
+    }
+
 
 }
