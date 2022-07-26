@@ -206,6 +206,7 @@ public class ChatActivity extends AppCompatActivity {
     private void setListeners(){
         binding.imageBack.setOnClickListener(v -> onBackPressed());
         binding.layoutSend.setOnClickListener(v -> sendMessage());
+        binding.imageInfo.setOnClickListener(v -> checkUserProfile());
     }
 
     private String getReadableDateTime(Date date){
@@ -254,4 +255,11 @@ public class ChatActivity extends AppCompatActivity {
             conversationId = documentSnapshot.getId();
         }
     };
+
+    private void checkUserProfile(){
+        Intent profileIntent = new Intent(ChatActivity.this, ChatUserProfile.class);
+        profileIntent.putExtra("Name", ReceiverUsername);
+        profileIntent.putExtra("Email", userEmail);
+        startActivity(profileIntent);
+    }
 }

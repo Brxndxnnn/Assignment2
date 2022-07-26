@@ -64,39 +64,6 @@ public class ListingFragment extends Fragment {
             }
         });
 
-//        DatabaseReference databaseReference = FirebaseDatabase.getInstance("https://mad-assignment-1-7b524-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference().child("Listings");
-//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//            @Override
-//            public boolean onQueryTextSubmit(String query) {
-//                databaseReference.addValueEventListener(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                        listingsArrayList.clear();
-//                        for(DataSnapshot dataSnapshot : snapshot.getChildren()){
-//                            Listings listings;
-//                            listings = dataSnapshot.getValue(Listings.class);
-//                            if(listings.getTitle().equals(query)){
-//                                listingsArrayList.add(listings);
-//                            }
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError error) {
-//
-//                    }
-//                });
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean onQueryTextChange(String newText) {
-//                return false;
-//            }
-//        });
-
-
-
         //Setting GridLayout
         gridLayoutManager = new GridLayoutManager(view.getContext(), 2 , GridLayoutManager.VERTICAL, false);
         listings.setLayoutManager(gridLayoutManager);

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/userLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background_green"
+    tools:context=".ChatUserProfile">
+
+    <ScrollView
+        android:id="@+id/sv"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="match_parent"
+                android:layout_height="210dp"
+                android:background="@drawable/profile_bg"
+                android:scaleType="centerCrop"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_constraintLeft_creator="1"
+                tools:layout_constraintTop_creator="1" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imageView5"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="153dp"
+                android:scaleType="fitXY"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@android:drawable/sym_def_app_icon"
+                tools:ignore="MissingConstraints"
+                app:shapeAppearanceOverlay="@style/Circular"/>
+
+            <TextView
+                android:id="@+id/username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imageView5"
+                android:layout_marginStart="43dp"
+                android:layout_marginTop="16dp"
+                android:text="Username"
+                android:textColor="@color/gray"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/username"
+                android:layout_marginStart="43dp"
+                android:layout_marginTop="2dp"
+                android:text="Username1"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/username" />
+
+            <TextView
+                android:id="@+id/email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textView8"
+                android:layout_marginStart="43dp"
+                android:layout_marginTop="5dp"
+                android:text="Email Address"
+                android:textColor="@color/gray"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/email"
+                android:layout_marginStart="43dp"
+                android:layout_marginTop="2dp"
+                android:text="Email Address1"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/email" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
