@@ -13,6 +13,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+//import sg.edu.np.mad.Assignment1.Likes.LikesPage;
+//import sg.edu.np.mad.Assignment1.VideoFragment;
+
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     //Initialising variables
@@ -117,6 +120,21 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             case R.id.button4:
                 Intent intent3 = new Intent(view.getContext(), FAQHelp.class);
                 startActivity(intent3);
+                return true;
+
+            case R.id.buttonMap:
+                Intent intent5 = new Intent(view.getContext(), MapPage.class);
+                startActivity(intent5);
+                return true;
+
+//            case R.id.likesButton:
+//                Intent intent6 = new Intent(view.getContext(), LikesPage.class);
+//                startActivity(intent6);
+//                return true;
+
+            case R.id.buttonEvent:
+                Intent intent7 = new Intent(view.getContext(), EventPage.class);
+                startActivity(intent7);
                 return true;
         }
         return false;
