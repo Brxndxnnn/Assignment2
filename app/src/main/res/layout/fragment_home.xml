@@ -148,6 +148,38 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/button3"
             app:layout_constraintTop_toBottomOf="@+id/button2" />
+
+            <Button
+                android:id="@+id/button5"
+                android:layout_width="175dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="30dp"
+                android:backgroundTint="#eef2f3"
+                android:drawableLeft="@drawable/ic_map"
+                android:text="Map"
+                android:textColor="#43A047"
+                app:layout_constraintEnd_toStartOf="@+id/button5"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/button3" />
+
+            <Button
+                android:id="@+id/button7"
+                android:layout_width="175dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="132dp"
+                android:layout_marginTop="112dp"
+                android:backgroundTint="#eef2f3"
+                android:drawableLeft="@drawable/ic_event"
+                android:text="Event"
+                android:textColor="#43A047"
+                app:layout_constraintEnd_toStartOf="@+id/button7"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/button3" />
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
