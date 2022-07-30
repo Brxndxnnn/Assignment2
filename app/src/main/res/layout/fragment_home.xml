@@ -95,13 +95,13 @@
             android:textColor="#43A047" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/buttonMap"
             android:layout_width="175dp"
             android:layout_height="70dp"
             android:layout_marginStart="10dp"
             android:backgroundTint="#eef2f3"
-            android:drawableLeft="@drawable/upload2icon"
-            android:text="Upload"
+            android:drawableLeft="@drawable/ic_map"
+            android:text="Map"
             android:textColor="#43A047" />
 
 
@@ -116,13 +116,13 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/buttonEvent"
             android:layout_width="175dp"
             android:layout_height="70dp"
             android:layout_marginEnd="10dp"
             android:backgroundTint="#eef2f3"
-            android:drawableLeft="@drawable/listings_icon"
-            android:text="Listings"
+            android:drawableLeft="@drawable/ic_event"
+            android:text="Event"
             android:textColor="#43A047"
             />
 
@@ -147,22 +147,12 @@
         android:paddingBottom="5dp"
         android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/buttonMap"
-            android:layout_width="175dp"
-            android:layout_height="70dp"
-            android:layout_marginEnd="10dp"
-            android:backgroundTint="#eef2f3"
-            android:drawableLeft="@drawable/ic_map"
-            android:text="Map"
-            android:textColor="#43A047"
-            />
+
 
         <Button
             android:id="@+id/likesButton"
             android:layout_width="175dp"
             android:layout_height="70dp"
-            android:layout_marginStart="10dp"
             android:backgroundTint="#eef2f3"
             android:drawableLeft="@drawable/ic_favorite"
             android:text="Likes"
@@ -171,28 +161,7 @@
     </LinearLayout>
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
-        android:orientation="horizontal">
 
-
-        <Button
-            android:id="@+id/buttonEvent"
-            android:layout_width="175dp"
-            android:layout_height="70dp"
-            android:layout_marginEnd="10dp"
-            android:backgroundTint="#eef2f3"
-            android:drawableLeft="@drawable/ic_event"
-            android:text="Event"
-            android:textColor="#43A047"
-            />
-
-
-    </LinearLayout>
 
 
 </LinearLayout>

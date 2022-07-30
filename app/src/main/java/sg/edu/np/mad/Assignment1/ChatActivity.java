@@ -19,8 +19,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -38,7 +40,7 @@ import java.util.Locale;
 
 import sg.edu.np.mad.Assignment1.databinding.ActivityChatBinding;
 
-public class ChatActivity extends AppCompatActivity {
+public class ChatActivity extends BaseActivity {
 
     //Initialising binding
     private ActivityChatBinding binding;
@@ -54,7 +56,6 @@ public class ChatActivity extends AppCompatActivity {
 
     DatabaseReference mDatabase;
     TextView user;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,6 +120,28 @@ public class ChatActivity extends AppCompatActivity {
             addConversation(conversation);
         }
         binding.inputMessage.setText(null);
+    }
+
+    private void listenReceiverAvailability(){
+        mDatabase = FirebaseDatabase.getInstance("https://mad-assignment-1-7b524-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Users");
+
+        mDatabase.child(userEmail.replace(".", "")).child("Status").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (String.valueOf(snapshot.getValue()).equals("1")){
+                    binding.textAvailability.setVisibility(View.VISIBLE);
+                }
+                else{
+                    binding.textAvailability.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
     }
 
     private void listenMessages(){
@@ -261,5 +284,11 @@ public class ChatActivity extends AppCompatActivity {
         profileIntent.putExtra("Name", ReceiverUsername);
         profileIntent.putExtra("Email", userEmail);
         startActivity(profileIntent);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        listenReceiverAvailability();
     }
 }

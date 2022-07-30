@@ -61,7 +61,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:20.0.0'
 
     // picasso for rendering website url img
-    implementation'com.squareup.picasso:picasso:2.71828'
+    implementation 'com.squareup.picasso:picasso:2.71828'
 
     implementation "androidx.fragment:fragment:1.2.5"
     

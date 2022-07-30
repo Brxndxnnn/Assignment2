@@ -41,7 +41,7 @@
             <TextView
                 android:id="@+id/listingTitle"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="45dp"
                 android:layout_marginStart="2dp"
                 android:layout_marginTop="4dp"
                 android:text="First"

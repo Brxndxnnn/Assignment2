@@ -35,7 +35,7 @@ import java.util.List;
 
 import sg.edu.np.mad.Assignment1.databinding.ActivityMainChatBinding;
 
-public class MainChat extends AppCompatActivity {
+public class MainChat extends BaseActivity {
 
     private ActivityMainChatBinding binding;
     private List<ChatMessage> conversations;

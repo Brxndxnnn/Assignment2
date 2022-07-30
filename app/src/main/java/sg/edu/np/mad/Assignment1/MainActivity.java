@@ -105,15 +105,15 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 return true;
 
             //If Upload button is clicked, start respective activity
-            case R.id.button2:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, uploadFragment).commit();
-                bottomNavigationView.setSelectedItemId(R.id.upload);
+            case R.id.buttonMap:
+                Intent intent5 = new Intent(view.getContext(), MapPage.class);
+                startActivity(intent5);
                 return true;
 
             //If Listing button is clicked, start respective activity
-            case R.id.button3:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, listingFragment).commit();
-                bottomNavigationView.setSelectedItemId(R.id.listing);
+            case R.id.buttonEvent:
+                Intent intent7 = new Intent(view.getContext(), EventPage.class);
+                startActivity(intent7);
                 return true;
 
             //If FAQ button is clicked, start respective activity
@@ -122,20 +122,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 startActivity(intent3);
                 return true;
 
-            case R.id.buttonMap:
-                Intent intent5 = new Intent(view.getContext(), MapPage.class);
-                startActivity(intent5);
-                return true;
-
 //            case R.id.likesButton:
 //                Intent intent6 = new Intent(view.getContext(), LikesPage.class);
 //                startActivity(intent6);
 //                return true;
-
-            case R.id.buttonEvent:
-                Intent intent7 = new Intent(view.getContext(), EventPage.class);
-                startActivity(intent7);
-                return true;
         }
         return false;
     }
