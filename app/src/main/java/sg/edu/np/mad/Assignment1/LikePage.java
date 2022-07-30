@@ -31,11 +31,11 @@ public class LikePage extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         viewPager = (ViewPager) findViewById(R.id.viewPager);
-        tabLayout = (TabLayout) findViewById(R.id.tabLayout); // To switch view between listings and tutorials
+        tabLayout = (TabLayout) findViewById(R.id.tabLayout); // To switch view between liked listings and tutorials
 
         tabAdapter = new TabAdapter(getSupportFragmentManager());
-        tabAdapter.addFragment(new LikedListingsFragment(), "Listing");
-        tabAdapter.addFragment(new TutorialFragment(), "Tutorial");
+        tabAdapter.addFragment(new LikedListingsFragment(), "Listing"); // Directed to liked items page for listings
+        tabAdapter.addFragment(new TutorialFragment(), "Tutorial"); // Directed to liked items page for tutorials
 
         viewPager.setAdapter(tabAdapter);
         tabLayout.setupWithViewPager(viewPager);
