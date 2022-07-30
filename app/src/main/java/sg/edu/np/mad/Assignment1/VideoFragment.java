@@ -10,15 +10,17 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Parcelable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.google.android.exoplayer2.ExoPlayer;
+import com.google.android.exoplayer2.util.Log;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -37,13 +39,13 @@ public class VideoFragment extends Fragment {
     }
 
     private RecyclerView eduVideos;
-
     private static ArrayList<ModelVideos> videosArrayList = new ArrayList<>();
-
     private AdapterVideo adapterVideo;
-
     public boolean alreadyExecuted = false;
 
+    // Assignment 2
+    private FirebaseAuth mAuth;
+    private String userEmail;
 
 
     @Override
@@ -57,19 +59,35 @@ public class VideoFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_video, container, false);
 
+        // ASG2
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        userEmail = currentUser.getEmail(); // Current email is the key
+        userEmail = userEmail.replace(".", "");
+
         //Assigning RecyclerView
         eduVideos = (RecyclerView) view.findViewById(R.id.eduVideos);
 
-        //Call method
-        loadVideosFromFirebase();
+        // Retrieve data from Firebase
+        DatabaseReference ref = FirebaseDatabase.getInstance("https://mad-assignment-1-7b524-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Users");
+        ref.child(userEmail).child("tutoLikes").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
 
-
+                } else {
+                    ArrayList likes = new ArrayList<String>();
+                    likes = (ArrayList) task.getResult().getValue();
+                    loadVideosFromFirebase(likes); // Call method
+                }
+            }
+        });
         return view;
     }
 
 
 
-    private void loadVideosFromFirebase(){
+    private void loadVideosFromFirebase(ArrayList likes){
 
         if(!alreadyExecuted){
 
@@ -83,7 +101,13 @@ public class VideoFragment extends Fragment {
 
                     for (DataSnapshot ds: snapshot.getChildren()){
                         //get data
-                        ModelVideos modelVideos = ds.getValue(ModelVideos.class);
+                        String id = ds.child("id").getValue(String.class);
+                        String timestamp = ds.child("timestamp").getValue(String.class);
+                        String title = ds.child("title").getValue(String.class);
+                        String videoUrl = ds.child("videoUrl").getValue(String.class);
+                        Boolean isLikes = (likes != null && likes.contains(id));
+                        Log.d("testvid", String.valueOf(likes));
+                        ModelVideos modelVideos = new ModelVideos(id, title, timestamp, videoUrl, isLikes);
                         //add model/data to list
                         videosArrayList.add(modelVideos);
                     }
@@ -91,7 +115,7 @@ public class VideoFragment extends Fragment {
                     adapterVideo = new AdapterVideo(mContext, videosArrayList); //was dbHandler.getUsers()
                     //set adapter to recyclerview
                     eduVideos.setAdapter(adapterVideo);
-
+                    adapterVideo.updateData(videosArrayList);
                     alreadyExecuted = true;
                 }
 
