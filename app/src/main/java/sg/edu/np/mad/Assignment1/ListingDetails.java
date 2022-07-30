@@ -147,7 +147,7 @@ public class ListingDetails extends AppCompatActivity {
         MenuItem unfav = menu.findItem(R.id.item_dislike);
         // onView page run this.
         // Check whether user liked this listing.
-        mDatabase.child(userEmail).child("listingLikes").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        ref.child(userEmail).child("listingLikes").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (!task.isSuccessful()) {
@@ -195,7 +195,7 @@ public class ListingDetails extends AppCompatActivity {
         MenuItem dislike = menu.findItem(R.id.item_dislike);
 
         Log.d("test", userEmail);
-        mDatabase.child(userEmail).child("listingLikes").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        ref.child(userEmail).child("listingLikes").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 ArrayList likes = new ArrayList<String>();
