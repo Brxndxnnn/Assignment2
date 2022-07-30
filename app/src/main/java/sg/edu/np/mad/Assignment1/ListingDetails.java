@@ -44,7 +44,7 @@ public class ListingDetails extends AppCompatActivity {
     private String key, userEmail;
     private Menu menu;
     Boolean isLike;
-    DatabaseReference mDatabase = FirebaseDatabase.getInstance("https://mad-assignment-1-7b524-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Users");
+    DatabaseReference ref = FirebaseDatabase.getInstance("https://mad-assignment-1-7b524-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Users");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
