@@ -32,7 +32,7 @@ Chor Yi: [Contributions](LoongChorYi.md)
 
 Xin Ying: [Contributions](TayXinYing.md)
 
-Zhe Wei: [Contributions](LowZheWei.md) 
+Zhe Wei: [Contributions](LowZheWei) 
 
 ### User Guide:
 
