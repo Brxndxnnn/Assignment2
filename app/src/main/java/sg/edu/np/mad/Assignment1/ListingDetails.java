@@ -37,14 +37,13 @@ public class ListingDetails extends AppCompatActivity {
     TextView listingTitle, listingDesc, listingPoster, listingLocation;
     Button chatButton;
     ImageView listingImage;
-    //DatabaseReference mDatabase;
+    DatabaseReference mDatabase;
 
     // ASG 2
     private FirebaseAuth mAuth;
     private String key, userEmail;
     private Menu menu;
     Boolean isLike;
-
     DatabaseReference mDatabase = FirebaseDatabase.getInstance("https://mad-assignment-1-7b524-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Users");
 
     @Override
@@ -81,6 +80,7 @@ public class ListingDetails extends AppCompatActivity {
 
         //Getting Intent values from ListingAdapter (when Listing is pressed on)
         Intent intent = getIntent();
+        key = intent.getStringExtra("key");
         String title = intent.getStringExtra("Title");
         String image = intent.getStringExtra("Image");
         String desc = intent.getStringExtra("Desc");
@@ -202,7 +202,7 @@ public class ListingDetails extends AppCompatActivity {
                 likes = (ArrayList) task.getResult().getValue();
                 if (likes != null) {
                     likes.remove(id); // Remove disliked item
-                    mDatabase.child(userEmail).child("listingLikes").setValue(likes).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    ref.child(userEmail).child("listingLikes").setValue(likes).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
 
@@ -222,7 +222,7 @@ public class ListingDetails extends AppCompatActivity {
         MenuItem like = menu.findItem(R.id.item_like);
         MenuItem dislike = menu.findItem(R.id.item_dislike);
 
-        mDatabase.child(userEmail).child("listingLikes").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        ref.child(userEmail).child("listingLikes").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 ArrayList likes = new ArrayList<String>();
@@ -245,7 +245,7 @@ public class ListingDetails extends AppCompatActivity {
                     Log.d("Listing", userEmail);
                     ArrayList<String> newList = new ArrayList<String>();
                     newList.add(id);
-                    mDatabase.child(userEmail).child("listingLikes").setValue(newList);
+                    ref.child(userEmail).child("listingLikes").setValue(newList);
                     dislike.setVisible(false);
                     like.setVisible(true);
                     Toast.makeText(ListingDetails.this, "Item liked!", Toast.LENGTH_SHORT).show();
