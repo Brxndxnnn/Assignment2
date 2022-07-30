@@ -1,4 +1,4 @@
-package sg.edu.np.mad.Assignment1;
+package sg.edu.np.mad.Assignment1.Likes;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -21,6 +21,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+
+import sg.edu.np.mad.Assignment1.ListingAdapter;
+import sg.edu.np.mad.Assignment1.Listings;
+import sg.edu.np.mad.Assignment1.R;
 
 
 public class LikedListingsFragment extends Fragment {
@@ -89,7 +93,6 @@ public class LikedListingsFragment extends Fragment {
                         // Add data to list
                         listingsArrayList.add(listings);
                     }
-
                 }
                 listings.setLayoutManager(gridLayoutManager);
                 // Setup adapter
