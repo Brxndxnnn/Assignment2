@@ -231,7 +231,7 @@ public class ListingDetails extends AppCompatActivity {
                 if (likes != null) {
                     // if empty
                     likes.add(id); // Add liked item
-                    mDatabase.child(userEmail).child("listingLikes").setValue(likes).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    ref.child(userEmail).child("listingLikes").setValue(likes).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             dislike.setVisible(false);
