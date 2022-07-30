@@ -1,1 +1,22 @@
+Zhe Wei's Contribution for Assignment 2
+
+Feature Created: Basic search feature for the listing items, as well as the search history feature to allow users to view their recent searches. 
+Created to complement the existing Listing Feature to allow user to search for their desired listing items. 
+Realtime Firebase was used to store the Search History of each user.
+
+Feature involves:
+
+1. A new user interface for the users to search for listing items.
+2. Allow users to view details of the listing item that the user search for. 
+3. Open the SearchView wiget immediately when the user wants to search for a listing item.
+4. Allow users to view their search history. 
+5. Allow users to delete their search history records.
+6. Allow users to clear their search history.
+
+Improvements I made to Application since Assignment 1:
+
+1. Added basic search feature for the user 
+2. Added search history feature for the users to view the listing items that they searched previously. 
+3. New Child added to the Realtime Firebase (SearchHistory) to store what items each user search
+4. Created new user interface for the users to search for listing items (Added SearchView widget, RecyclerView)
 
