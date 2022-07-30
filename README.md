@@ -24,7 +24,7 @@ Users can also contribute by posting various videos on ways on how we can upcycl
 ```
 ### Roles and contribution of each team member:
 
-Brandon [Contributions](BrandonS10194173.md)
+Brandon [Contributions](BrandonS10194173)
 
 Irene: [Contributions](IrenePhang.md)
 
