@@ -5,8 +5,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.Manifest;
-import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
@@ -17,19 +16,17 @@ import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationRequest;
 import android.os.Bundle;
-import android.Manifest.permission;
 
-import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
@@ -55,6 +52,12 @@ import com.google.android.libraries.places.api.model.PlaceLikelihood;
 import com.google.android.libraries.places.api.net.FindCurrentPlaceRequest;
 import com.google.android.libraries.places.api.net.FindCurrentPlaceResponse;
 import com.google.android.libraries.places.api.net.PlacesClient;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -104,14 +107,14 @@ public class MapPage extends AppCompatActivity implements OnMapReadyCallback {
     private LatLng[] likelyPlaceLatLngs;
 
     private ArrayList<LatLng> latLngArrayList;
-    private ArrayList<String> locationNameArrayList;
+    private ArrayList<String> locationIdArrayList;
 
-
+    //1.4300960249580397, 103.83582957108915
     LatLng myhouse = new LatLng(1.3513598452036133, 103.93497801639789);
-
-    LatLng tamp1 = new LatLng(1.3508203109315504, 103.93612034816596);
-    LatLng tamp2 = new LatLng(1.3517779841795774, 103.93372774778388);
-    LatLng tamp3 = new LatLng(1.3497727148805476, 103.9347396558402);
+//
+//    LatLng tamp1 = new LatLng(1.3508203109315504, 103.93612034816596);
+//    LatLng tamp2 = new LatLng(1.3517779841795774, 103.93372774778388);
+//    LatLng tamp3 = new LatLng(1.3497727148805476, 103.9347396558402);
 
     private boolean permissionDenied = false;
 
@@ -127,15 +130,9 @@ public class MapPage extends AppCompatActivity implements OnMapReadyCallback {
             cameraPosition = savedInstanceState.getParcelable(KEY_CAMERA_POSITION);
         }
         latLngArrayList = new ArrayList<>();
-        locationNameArrayList = new ArrayList<>();
+        locationIdArrayList = new ArrayList<>();
 
         // database
-        latLngArrayList.add(tamp1);
-        locationNameArrayList.add("Tamp 1");
-        latLngArrayList.add(tamp2);
-        locationNameArrayList.add("Tamp 2");
-        latLngArrayList.add(tamp3);
-        locationNameArrayList.add("Tamp 3");
 
 
         setContentView(R.layout.activity_map_page);
@@ -151,6 +148,38 @@ public class MapPage extends AppCompatActivity implements OnMapReadyCallback {
         // Construct a FusedLocationProviderClient.
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+
+        DatabaseReference ref = FirebaseDatabase.getInstance("https://mad-assignment-1-7b524-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("location");
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+
+                    Double lat = dataSnapshot.child("lat").getValue(Double.class);
+                    Double lng = dataSnapshot.child("lng").getValue(Double.class);
+                    String id = dataSnapshot.getKey();
+
+                    LatLng e_waste_loc = new LatLng(lat, lng);
+
+                    latLngArrayList.add(e_waste_loc);
+                    locationIdArrayList.add(id);
+
+                    updateMapMarker();
+                }
+
+
+            }
+
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+
+        });
+
 
         // action bar conf
         ActionBar actionBar = getSupportActionBar();
@@ -160,11 +189,8 @@ public class MapPage extends AppCompatActivity implements OnMapReadyCallback {
         // showing the back button in action bar
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
 
-
-        mapFragment.getMapAsync(this);
+        mapFragment.getMapAsync(MapPage.this);
         View view = mapFragment.getView();
         ((View) view).setClickable(false);
     }
@@ -218,30 +244,33 @@ public class MapPage extends AppCompatActivity implements OnMapReadyCallback {
                         this, R.raw.style_json));
 
 
-        for (int i = 0; i < latLngArrayList.size(); i++) {
-
-            // adding marker to each location on google maps
-            this.map.addMarker(new MarkerOptions()
-                    .position(latLngArrayList.get(i))
-                    .title("Marker in " + locationNameArrayList.get(i))
-                    .icon(BitmapFromVector(MapPage.this, R.drawable.e_waste)));
-
-            // below line is use to move camera.
-            this.map.moveCamera(CameraUpdateFactory.newLatLng(myhouse));
-        }
+//        for (int i = 0; i < latLngArrayList.size(); i++) {
+//
+//            // adding marker to each location on google maps
+//            this.map.addMarker(new MarkerOptions()
+//                    .position(latLngArrayList.get(i))
+//                    .title(locationIdArrayList.get(i))
+//                    .icon(BitmapFromVector(MapPage.this, R.drawable.e_waste)));
+//
+//            // below line is use to move camera.
+//            this.map.moveCamera(CameraUpdateFactory.newLatLng(myhouse));
+//        }
 
         // adding on click listener to marker of google maps.
+
+
+        // onclick marker
         this.map.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
                 // on marker click we are getting the title of our marker
                 // which is clicked and displaying it in a toast message.
-                String markerName = marker.getTitle();
-                Toast.makeText(MapPage.this, "Clicked location is " + markerName, Toast.LENGTH_SHORT).show();
-                return false;
+                showMapMarkerDetails(marker.getTitle());
+//                String markerName = marker.getTitle();
+//                Toast.makeText(MapPage.this, "Clicked location is " + markerName, Toast.LENGTH_SHORT).show();
+                return true;
             }
         });
-
 
 
         // [START_EXCLUDE]
@@ -285,6 +314,25 @@ public class MapPage extends AppCompatActivity implements OnMapReadyCallback {
     }
     // [END maps_current_place_on_map_ready]
 
+
+    // update marker after firebase done loading
+    private void updateMapMarker() {
+
+        Log.d("test", " lmao ");
+        for (int i = 0; i < latLngArrayList.size(); i++) {
+
+            // adding marker to each location on google maps
+            this.map.addMarker(new MarkerOptions()
+                    .position(latLngArrayList.get(i))
+                    .title(locationIdArrayList.get(i))
+                    .icon(BitmapFromVector(MapPage.this, R.drawable.e_waste)));
+
+            // below line is use to move camera.
+//            this.map.moveCamera(CameraUpdateFactory.newLatLng(myhouse));
+        }
+    }
+
+
     /**
      * Gets the current location of the device, and positions the map's camera.
      */
@@ -304,7 +352,12 @@ public class MapPage extends AppCompatActivity implements OnMapReadyCallback {
                             // Set the map's camera position to the current location of the device.
                             lastKnownLocation = task.getResult();
                             if (lastKnownLocation != null) {
-                                map.moveCamera(CameraUpdateFactory.newLatLngZoom(myhouse, DEFAULT_ZOOM));
+                                // for real device
+                                map.moveCamera(CameraUpdateFactory.newLatLngZoom(
+                                        new LatLng(lastKnownLocation.getLatitude(),
+                                                lastKnownLocation.getLongitude()), DEFAULT_ZOOM));
+                                // for emulator
+//                                map.moveCamera(CameraUpdateFactory.newLatLngZoom(myhouse, DEFAULT_ZOOM));
                             }
                         } else {
                             Log.d(TAG, "Current location is null. Using defaults.");
@@ -312,11 +365,15 @@ public class MapPage extends AppCompatActivity implements OnMapReadyCallback {
                             map.moveCamera(CameraUpdateFactory
                                     .newLatLngZoom(myhouse, DEFAULT_ZOOM));
                             map.getUiSettings().setMyLocationButtonEnabled(false);
+
+                            map.moveCamera(CameraUpdateFactory
+                                    .newLatLngZoom(defaultLocation, DEFAULT_ZOOM));
+                            map.getUiSettings().setMyLocationButtonEnabled(false);
                         }
                     }
                 });
             }
-        } catch (SecurityException e)  {
+        } catch (SecurityException e) {
             Log.e("Exception: %s", e.getMessage(), e);
         }
     }
@@ -387,10 +444,9 @@ public class MapPage extends AppCompatActivity implements OnMapReadyCallback {
 
             // Get the likely places - that is, the businesses and other points of interest that
             // are the best match for the device's current location.
-            @SuppressWarnings("MissingPermission") final
-            Task<FindCurrentPlaceResponse> placeResult =
+            @SuppressWarnings("MissingPermission") final Task<FindCurrentPlaceResponse> placeResult =
                     placesClient.findCurrentPlace(request);
-            placeResult.addOnCompleteListener (new OnCompleteListener<FindCurrentPlaceResponse>() {
+            placeResult.addOnCompleteListener(new OnCompleteListener<FindCurrentPlaceResponse>() {
                 @Override
                 public void onComplete(@NonNull Task<FindCurrentPlaceResponse> task) {
                     if (task.isSuccessful() && task.getResult() != null) {
@@ -427,8 +483,7 @@ public class MapPage extends AppCompatActivity implements OnMapReadyCallback {
                         // Show a dialog offering the user the list of likely places, and add a
                         // marker at the selected place.
                         MapPage.this.openPlacesDialog();
-                    }
-                    else {
+                    } else {
                         Log.e(TAG, "Exception: %s", task.getException());
                     }
                 }
@@ -505,13 +560,73 @@ public class MapPage extends AppCompatActivity implements OnMapReadyCallback {
                 lastKnownLocation = null;
                 getLocationPermission();
             }
-        } catch (SecurityException e)  {
+        } catch (SecurityException e) {
             Log.e("Exception: %s", e.getMessage());
         }
     }
     // [END maps_current_place_update_location_ui]
 
 
+    private void showMapMarkerDetails(String id) {
+        Dialog builder = new Dialog(MapPage.this, android.R.style.Theme_DeviceDefault_Light_NoActionBar_Fullscreen);
+
+        builder.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        builder.setContentView((R.layout.dialog_map_popup));
+
+
+//        Toast.makeText(this, id, Toast.LENGTH_SHORT).show();
+
+        ImageView imgV = builder.findViewById(R.id.map_popup_image);
+        TextView title = builder.findViewById(R.id.map_popup_title);
+        TextView address = builder.findViewById(R.id.map_popup_address);
+        TextView url = builder.findViewById(R.id.map_popup_url);
+        TextView desc = builder.findViewById(R.id.map_popup_desc);
+        Button bClose = builder.findViewById(R.id.map_popup_cancelB);
+
+        DatabaseReference ref = FirebaseDatabase.getInstance("https://mad-assignment-1-7b524-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("location");
+        ref.child(id).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                LocationMap locationMap = (LocationMap) snapshot.getValue(LocationMap.class);
+
+                Log.d("TAG", locationMap.getAddress());
+
+
+                title.setText(locationMap.getTitle() != null ? locationMap.getTitle() : "");
+
+                address.setText(locationMap.getAddress() != null ? locationMap.getAddress() : "");
+
+                url.setText(locationMap.getUrl() != null ? locationMap.getUrl() : "");
+                desc.setText(locationMap.getDetails() != null ? locationMap.getDetails() : "");
+
+                //img
+                Picasso.get().load(locationMap.getImg_url()).into(imgV);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialogInterface) {
+                //nothing;
+            }
+        });
+
+
+        bClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                builder.dismiss();
+            }
+        });
+        builder.show();
+    }
 
 
     @Override
@@ -527,7 +642,7 @@ public class MapPage extends AppCompatActivity implements OnMapReadyCallback {
         Drawable vectorDrawable = ContextCompat.getDrawable(context, vectorResId);
 
         // below line is use to set bounds to our vector drawable.
-        vectorDrawable.setBounds(0, 0, 60,60);
+        vectorDrawable.setBounds(0, 0, 60, 60);
 
         // below line is use to create a bitmap for our
         // drawable which we have added.
