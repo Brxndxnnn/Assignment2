@@ -1,6 +1,6 @@
 Brandon's Contribution for Assignment 2
 
-Feature Created: Realtime Chat Feature that allows Users of application to Message one another. 
+Feature Implemented: Realtime Chat Feature that allows Users of application to Message one another. 
 Created to complement the existing Listing Feature to allow User to chat with the person who posted the Listings. 
 Firebase Firestore is used to store the Messages and Conversations.
 
