@@ -71,3 +71,8 @@ User can click on redeem and if point is sufficient a message will show "Success
 
 ### MAP Feature (Irene Phang)
 <img src="https://user-images.githubusercontent.com/104063681/182048847-d0d8fc08-1e58-4a52-a8a3-37b8310be22e.png" width="160" height="350"> <img src="https://user-images.githubusercontent.com/104063681/182048835-d2cbf90d-f794-4528-b0c8-0ccd83d085b4.png" width="160" height="350"> <img src="https://user-images.githubusercontent.com/104063681/182048785-ddaaacc8-159c-47f8-ad28-0a04d9e684cc.png" width="160" height="350"> <img src="https://user-images.githubusercontent.com/104063681/182048875-35737184-c4d8-4cbb-8a86-8b5f5ef75281.png" width="160" height="350">
+
+<img src="https://user-images.githubusercontent.com/104063681/182048913-ca759fc2-5d1d-49bd-a8b8-9ae53baf8f2c.png" width="160" height="350"> <img src="https://user-images.githubusercontent.com/104063681/182048917-e7dbb274-2e8f-4244-9b34-cb12f27269e9.png" width="160" height="350">
+
+
+
