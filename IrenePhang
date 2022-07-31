@@ -1,1 +1,28 @@
+IrenePhang's Contribution for Assignment 2
 
+Feature Created: Map and Events
+
+**Map** - Created a new map feature due to most people are not aware where these bins are located to recycle in the event that their items are not able to be upcycled
+          so i created the map feature for user to be able to locate where are the e-waste bin or recycling bin located at as. 
+          Firebase Firestore is used to store the location and description of the ewaste bin/recycling bin (image, url, details, title, address, longitude and latitude).
+
+Feature involves:
+
+1. Allow users to locate e-waste / recycling bin through pop up markers shown based on their current location.
+2. Allow user select on the e-waste / recycling bin pop up markers shown
+3. Allow user to tap onto the pop up maker to get more information
+
+
+**Events** - Created a new feature where can see what event are happening on the date through the calender.
+
+Feature involves:
+
+1. Allow user to see the types of event happening based on the date that can seen on the calender
+2. User can tap onto the events to see more details about it
+
+
+Improvements I made to Application since Assignment 1:
+
+1. Added a new map feature for user to see where are the e-waste bin located based on their current location
+2. Add a new event features (used CalenderView, RecyclerView)
+3. New Child added to the Realtime Firebase (Location) to store the e-waste location so user can see based on their location
