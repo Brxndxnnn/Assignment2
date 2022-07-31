@@ -70,7 +70,7 @@ Similarly when user click on the “SPIN” button for the first time of the day
 User can click on redeem and if point is sufficient a message will show "Successfully Redeem Voucher!". On the other hand if points is insufficient the message "Points Insufficient to Redeem Voucher!" will be displayed.
 
 ### MAP Feature (Irene Phang)
-<img src="https://user-images.githubusercontent.com/104063681/182048847-d0d8fc08-1e58-4a52-a8a3-37b8310be22e.png" width="160" height="350"> <img src="https://user-images.githubusercontent.com/104063681/182048835-d2cbf90d-f794-4528-b0c8-0ccd83d085b4.png" width="160" height="350"> <img src="https://user-images.githubusercontent.com/104063681/182048785-ddaaacc8-159c-47f8-ad28-0a04d9e684cc.png" width="160" height="350"> <img src="https://user-images.githubusercontent.com/104063681/182048875-35737184-c4d8-4cbb-8a86-8b5f5ef75281.png" width="160" height="350">
+<img src="https://user-images.githubusercontent.com/104063681/182048847-d0d8fc08-1e58-4a52-a8a3-37b8310be22e.png" width="160" height="350"> <img src="https://user-images.githubusercontent.com/104063681/182048835-d2cbf90d-f794-4528-b0c8-0ccd83d085b4.png" width="160" height="350"> <img src="https://user-images.githubusercontent.com/104063681/182049932-668602cc-7d89-4217-84e9-6efc5a384f9b.png" width="160" height="350"> <img src="https://user-images.githubusercontent.com/104063681/182048875-35737184-c4d8-4cbb-8a86-8b5f5ef75281.png" width="160" height="350">
 
 User is able to use the map feature to see where are the e-waste/ recycling bin are located at.
 1. User will need to choose the permission requested by the app once acessing the map feature. location permissions - (deny, only this time and while using the app)
