@@ -5,14 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Dialog;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Window;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import sg.edu.np.mad.Assignment1.EventAdapter;
-import sg.edu.np.mad.Assignment1.EventList;
 
 public class EventPage extends AppCompatActivity {
 
@@ -31,7 +33,7 @@ public class EventPage extends AppCompatActivity {
 
         actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.MintCream)));
 
-        actionBar.setTitle("Listing");
+        actionBar.setTitle("Event");
         actionBar.setHomeAsUpIndicator(R.drawable.backbutton_icon);
 
         // showing the back button in action bar
@@ -47,10 +49,9 @@ public class EventPage extends AppCompatActivity {
         eventLists.clear();
 
 
-
-        EventList eventList = new EventList(img1, "Hear talks from Recycling experts!", "All Day");
-        EventList eventList2 = new EventList(img2, "Go Green Recycle Your E-Waste", "10am - 2pm");
-        EventList eventList3 = new EventList(img3, "Go Green Recycle Your E-Waste", "3PM - 6PM");
+        EventList eventList = new EventList(img1, "Hear talks from Recycling experts!", "","All Day");
+        EventList eventList2 = new EventList(img2, "Go Green Recycle Your E-Waste", "","10am - 2pm");
+        EventList eventList3 = new EventList(img3, "Go Green Recycle Your E-Waste", "","3PM - 6PM");
 
         eventLists.add(eventList);
         eventLists.add(eventList2);
@@ -58,6 +59,8 @@ public class EventPage extends AppCompatActivity {
 
         eventAdapter.updateData(eventLists);
     }
+
+
 
 
     @Override
