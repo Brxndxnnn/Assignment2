@@ -3,6 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Assignment2/app/src/main/res/drawable-hdpi/ic_favorite.xml" value="0.1655" />
+        <entry key="..\:/Assignment2/app/src/main/res/drawable-xxxhdpi/ic_fav.xml" value="0.1655" />
+        <entry key="..\:/Assignment2/app/src/main/res/drawable/ic_unfav.xml" value="0.1655" />
+        <entry key="..\:/Assignment2/app/src/main/res/layout/activity_like_page.xml" value="0.1272644927536232" />
+        <entry key="..\:/Assignment2/app/src/main/res/layout/fragment_LikeListings.xml" value="0.1272644927536232" />
+        <entry key="..\:/Assignment2/app/src/main/res/layout/fragment_LikedListings.xml" value="0.1272644927536232" />
+        <entry key="..\:/Assignment2/app/src/main/res/layout/fragment_liked_listings.xml" value="0.1272644927536232" />
+        <entry key="..\:/Assignment2/app/src/main/res/layout/fragment_tutorial.xml" value="0.1272644927536232" />
+        <entry key="..\:/Assignment2/app/src/main/res/layout/listedvideos.xml" value="0.1272644927536232" />
+        <entry key="..\:/Assignment2/app/src/main/res/menu/like_menu.xml" value="0.146875" />
         <entry key="..\:/POLY/MAD/Assignment1/app/src/main/res/drawable/background_content_top.xml" value="0.1735" />
         <entry key="..\:/POLY/MAD/Assignment1/app/src/main/res/drawable/background_input_message.xml" value="0.332" />
         <entry key="..\:/POLY/MAD/Assignment1/app/src/main/res/drawable/background_sent_message.xml" value="0.332" />

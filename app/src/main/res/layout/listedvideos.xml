@@ -18,7 +18,7 @@
 
     <TextView
         android:id="@+id/videoTitle"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:fontFamily="sans-serif-condensed"
@@ -37,5 +37,25 @@
         android:textSize="18sp"
         android:text="dd/MM/yyyy hh:mm"
         android:textColor="@color/white"/>
+
+    <ImageView
+        android:id="@+id/like_tuto"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/ic_fav" />
+
+    <ImageView
+        android:id="@+id/dislike_tuto"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/ic_unfav" />
 
 </RelativeLayout>

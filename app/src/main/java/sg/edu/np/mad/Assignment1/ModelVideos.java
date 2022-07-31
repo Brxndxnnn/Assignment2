@@ -2,17 +2,19 @@ package sg.edu.np.mad.Assignment1;
 
 public class ModelVideos {
     String id, title, timestamp, videoUrl;
+    Boolean isLike;
 
     //constructor
     public ModelVideos(){
 
     }
 
-    public ModelVideos(String id, String title, String timestamp, String videoUrl) {
+    public ModelVideos(String id, String title, String timestamp, String videoUrl, Boolean isLike) {
         this.id = id;
         this.title = title;
         this.timestamp = timestamp;
         this.videoUrl = videoUrl;
+        this.isLike = isLike;
     }
 
     //Getter & Setter
@@ -46,5 +48,9 @@ public class ModelVideos {
 
     public void setVideoUrl(String videoUrl) {
         this.videoUrl = videoUrl;
+    }
+
+    public Boolean getLike() {
+        return isLike;
     }
 }
