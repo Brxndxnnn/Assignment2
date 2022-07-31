@@ -39,19 +39,16 @@ Zhe Wei: [Contributions](LowZheWei)
 #### Search Feature (Low Zhe Wei):
 <img src="https://user-images.githubusercontent.com/92966900/182042466-555cf4e3-73f7-4af2-96d3-b343049fda1a.JPG" width="140" height="350">
 
-When the user first sees the listing page shown above, there is a SearchView widdget at the top of the screen (below the action bar).
-When the user clicks the Search Icon, he or she will be navigated to the List Search Page (Next Image).
+User will be navigated to the List Search Page (Next Image) when clicking on the Search Icon.
 
 <img src="https://user-images.githubusercontent.com/92966900/182042615-9077eae6-cd36-4276-aa3b-0cffaa9ffb5e.JPG" width="140" height="350">
 
-When the user is navigated to this page, the SearchView widget will open automatically. In the widget, the user can search for any listing items that they want. 
-Once the user submits their search query, he will be navigated to the listing details page (Next Image) of the item that he has searched for. 
+When the user submits his search query, he will be navigated to the listing details page (Next Image) of the item that he has searched for. 
+His search history will be recorded and displayed in the page as well.
+ 
+When the user clicks on the remove icon (in red), a toast message will pop up to indicate that his "Search History Record" has been successfully deleted. The record will disappear from the list search page. 
 
-The search query that the user search for will be recorded as a search history record. When the user navigates back to the list search page, he will be able to see the item that he has just searched. 
-
-The remove icon (in red) is for the user to delete a particular search history record. When the user clicks on the remove icon, a toast message will pop up to indicate that the "Search History Record" has been successfully deleted. The record will disappear from the list search page. 
-
-The "Clear All" text is for the user to clear his search history. When the user clicks on the "Clear All" text, a toast message will pop up to indicate that the user's search history has been successfully cleared. The list items that the user has searched for preiusly would be cleared. 
+When the user clicks on the "Clear All" text, a toast message will pop up to indicate that the user's search history has been successfully cleared. The user's search history would be cleared. 
 
 When the user clicks on "Cancel", the user will be navigated back to the listings page. 
 
