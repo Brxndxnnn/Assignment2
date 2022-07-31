@@ -43,6 +43,7 @@ When the user first sees the listing page shown above, there is a SearchView wid
 When the user clicks the Search Icon, he or she will be navigated to the List Search Page (Next Image).
 
 ![List Search Page](https://user-images.githubusercontent.com/92966900/182042615-9077eae6-cd36-4276-aa3b-0cffaa9ffb5e.JPG)
+
 When the user is navigated to this page, the SearchView widget will open automatically. In the widget, the user can search for any listing items that they want. 
 Once the user submits their search query, he will be navigated to the listing details page (Next Image) of the item that he has searched for. 
 
@@ -50,7 +51,13 @@ The search query that the user search for will be recorded as a search history r
 
 The remove icon (in red) is for the user to delete a particular search history record. When the user clicks on the remove icon, a toast message will pop up to indicate that the "Search History Record" has been successfully deleted. The record will disappear from the list search page. 
 
-The "Clear All"
+The "Clear All" text is for the user to clear his search history. When the user clicks on the "Clear All" text, a toast message will pop up to indicate that the user's search history has been successfully cleared. The list items that the user has searched for preiusly would be cleared. 
+
+When the user clicks on "Cancel", the user will be navigated back to the listings page. 
+
+![Listing Details Page](https://user-images.githubusercontent.com/92966900/182043116-d0efd409-7936-437d-adb0-e2462df9a39c.JPG)
+
+Listing details page of a specific item. 
 
 
 
