@@ -24,17 +24,62 @@ Users can also contribute by posting various videos on ways on how we can upcycl
 ```
 ### Roles and contribution of each team member:
 
-Brandon [Contributions](BrandonS10194173.md)
+Brandon [Contributions](Brandon.md)
 
-Irene: Designer and Tester. Doing the start up page design and testing of the app to check for error. (e.g alignments or any improvement needed) test
+Irene: [Contributions](IrenePhang)
 
-Chor Yi: Coder and Tester. Coded the FAQ page, layouts (e.g. for different screen orientations, app colours etc) and tested the app.
+Chor Yi: [Contributions](LoongChorYi)
 
-Xin Ying: Designer, Coder and Tester. Designed and coded layouts (e.g. alignments, constraints and scrollviews etc). Tested application to check for errors.
+Xin Ying: [Contributions](TayXinYing)
 
-Zhe Wei: App Tester. Testing the app for any bugs as well as ensure all the error handling are working as intended. 
+Zhe Wei: [Contributions](LowZheWei) 
 
-### Relevant appendices (diagrams, screenshots, user guides):
+### User Guide:
+
+### Start Up Page / Login Page / Register Page
+<img src="https://user-images.githubusercontent.com/104063681/182047005-6b41d0f8-234b-4ec8-96d7-f23cef046925.png" width="160" height="350"> <img src="https://user-images.githubusercontent.com/104063681/182047017-1356ec20-333a-432e-b84b-33b68aaaabf3.png" width="160" height="350"> <img src="https://user-images.githubusercontent.com/104063681/182047089-c6a35aa8-b366-4525-b864-dfa1a2965eb2.png" width="160" height="350">
+
+Through this 3 pages, Users can choose whether to Login if they already have an account, or Register for an account if they don't have one. 
+
+### Upload Page
+<img src="https://user-images.githubusercontent.com/104063681/182047219-cad722b2-bcdd-4057-b3a5-55d5cbe6f46f.png" width="160" height="350"> <img src="https://user-images.githubusercontent.com/104063681/182047283-f41058ef-c8ba-455e-a27c-69e9f60f54e2.png" width="160" height="350"> <img src="https://user-images.githubusercontent.com/104063681/182047291-6bf6eca9-d96e-4820-821b-2640779a4361.png" width="160" height="350">
+
+In this Upload Page, User can choose to upload Educational Videos or Listings. 
+
+### Home Page / Select Video or Listings Page / User Profile Page
+<img src="https://user-images.githubusercontent.com/92966900/182047381-cbdf1446-d7b4-4495-bef8-d3fd2eb22119.JPG" width="160" height="350"> <img src="https://user-images.githubusercontent.com/92966900/182047406-fcf8987c-f3b3-426d-af2d-1f639853b9f2.JPG" width="160" height="350"> <img src="https://user-images.githubusercontent.com/92966900/182047412-aade6bf5-644d-418d-bdc0-4eb60bd0e4db.JPG" width="160" height="350">
+
+Through this 3 pages, users can naigate through the various features, select video or item upload as well as view or edit their account details. 
+
+### Search Feature (Low Zhe Wei): Search and Search History Feature
+<img src="https://user-images.githubusercontent.com/92966900/182042466-555cf4e3-73f7-4af2-96d3-b343049fda1a.JPG" width="160" height="350"> <img src="https://user-images.githubusercontent.com/92966900/182042615-9077eae6-cd36-4276-aa3b-0cffaa9ffb5e.JPG" width="160" height="350"> <img src="https://user-images.githubusercontent.com/92966900/182043116-d0efd409-7936-437d-adb0-e2462df9a39c.JPG" width="160" height="350">
+
+With this feature, users can search for listing items, as well as view or edit their search history.
+
+### Rewards Feature (Tay XinYing)
+<img src="https://user-images.githubusercontent.com/104063681/182048558-da3d65ae-49c6-44cf-9015-70b47fb1e43e.png" width="160" height="350">
+
+As shown above this is the main page of the rewards feature. It consists of “REDEEM POINTS”, “CHECK IN”, “SPIN” and “View”. (Yet to implement the “VIEW” feature)
+
+<img src="https://user-images.githubusercontent.com/104063681/182048599-ef10efcf-9380-48b7-8858-0fdfe3c2a0ef.png" width="160" height="350">
+
+Similarly when user click on the “SPIN” button for the first time of the day spin value updated message will be displayed. Else "Reward Claimed Already Come Back Tomorrow!" message will be shown. 
+
+<img src="https://user-images.githubusercontent.com/104063681/182048633-70c33e27-0bd0-4231-b32d-9a58b6110a5b.png" width="160" height="350"> <img src="https://user-images.githubusercontent.com/104063681/182048638-f2c6ec95-dfeb-40ae-8e42-54c929bab211.png" width="160" height="350">
+
+User can click on redeem and if point is sufficient a message will show "Successfully Redeem Voucher!". On the other hand if points is insufficient the message "Points Insufficient to Redeem Voucher!" will be displayed.
+
+### MAP Feature (Irene Phang)
+<img src="https://user-images.githubusercontent.com/104063681/182048847-d0d8fc08-1e58-4a52-a8a3-37b8310be22e.png" width="160" height="350"> <img src="https://user-images.githubusercontent.com/104063681/182048835-d2cbf90d-f794-4528-b0c8-0ccd83d085b4.png" width="160" height="350"> <img src="https://user-images.githubusercontent.com/104063681/182049932-668602cc-7d89-4217-84e9-6efc5a384f9b.png" width="160" height="350"> <img src="https://user-images.githubusercontent.com/104063681/182048875-35737184-c4d8-4cbb-8a86-8b5f5ef75281.png" width="160" height="350">
+
+User is able to use the map feature to see where are the e-waste/ recycling bin are located at.
+1. User will need to choose the permission requested by the app once acessing the map feature. location permissions - (deny, only this time and while using the app)
+2. User will then be able to zoom into the map
+3. User can tap onto the e-waste/recycling bin markers that is on the map based on their location, once user tap onto the chosen markers user will be able to see more    information
 
 
+### Event Feature (Irene Phang)
+<img src="https://user-images.githubusercontent.com/104063681/182048913-ca759fc2-5d1d-49bd-a8b8-9ae53baf8f2c.png" width="160" height="350"> <img src="https://user-images.githubusercontent.com/104063681/182048917-e7dbb274-2e8f-4244-9b34-cb12f27269e9.png" width="160" height="350">
+
+User can tap on the date and the different events will pop up. user can then select the event that looks intersting to them and it will bring them to more details on the event. 
 

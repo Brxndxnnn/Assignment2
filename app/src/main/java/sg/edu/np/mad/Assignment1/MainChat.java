@@ -35,13 +35,13 @@ import java.util.List;
 
 import sg.edu.np.mad.Assignment1.databinding.ActivityMainChatBinding;
 
-public class MainChat extends AppCompatActivity {
+public class MainChat extends BaseActivity {
 
+    //Initialising the variables.
     private ActivityMainChatBinding binding;
     private List<ChatMessage> conversations;
     private  RecentConversationAdapter conversationAdapter;
     private FirebaseFirestore database;
-
     public String currentUserEmail, image;
     DatabaseReference mDatabase;
 
@@ -62,21 +62,28 @@ public class MainChat extends AppCompatActivity {
         // showing the back button in action bar
         actionBar.setDisplayHomeAsUpEnabled(true);
 
+        //Get the email of the current logged in user.
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         currentUserEmail = currentUser.getEmail();
 
+        //Calling the methods
         init();
         loadUserDetails();
         listenConversations();
     }
 
+
+    /**
+     * This method is to initialise the List, Adapter, Set Adapter to Recyclerview, and lastly,
+     * get the profile pic of the receiver user you're chatting with.
+     */
     private void init(){
         conversations = new ArrayList<>();
         conversationAdapter = new RecentConversationAdapter(conversations);
         binding.conversationsRecyclerView.setAdapter(conversationAdapter);
         database = FirebaseFirestore.getInstance();
 
-
+        //Getting Profile pic url of the Receiver.
         mDatabase = FirebaseDatabase.getInstance("https://mad-assignment-1-7b524-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
         mDatabase.child("Users").child(currentUserEmail.replace(".", "").trim()).child("profilepicUrl").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
@@ -93,6 +100,9 @@ public class MainChat extends AppCompatActivity {
         });
     }
 
+    /**
+     * This method is to load the user details of the receiver.
+     */
     private void loadUserDetails(){
         //Getting Realtime Database instance
         mDatabase = FirebaseDatabase.getInstance("https://mad-assignment-1-7b524-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
