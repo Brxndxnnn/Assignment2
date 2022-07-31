@@ -31,7 +31,6 @@
                 android:orientation="horizontal">
 
 
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -65,9 +64,9 @@
             <TextView
                 android:id="@+id/event_popup_time"
                 android:layout_width="wrap_content"
-                android:textColor="@color/green"
                 android:layout_height="wrap_content"
-                android:text="Time" />
+                android:text="Time"
+                android:textColor="@color/green" />
 
         </LinearLayout>
 
@@ -97,16 +96,29 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:text="This is a map desc" />
+                android:text="This is a event desc" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:text="Location"
+                android:textColor="#345345"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/event_popup_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="" />
 
 
         </LinearLayout>
 
     </LinearLayout>
-
-
-
-
 
     <FrameLayout
         android:layout_width="match_parent"
