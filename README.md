@@ -34,7 +34,7 @@ Xin Ying: [Contributions](TayXinYing)
 
 Zhe Wei: [Contributions](LowZheWei) 
 
-## User Guide:
+### User Guide:
 
 ### Start Up Page / Login Page / Register Page
 <img src="https://user-images.githubusercontent.com/104063681/182047005-6b41d0f8-234b-4ec8-96d7-f23cef046925.png" width="160" height="350"> <img src="https://user-images.githubusercontent.com/104063681/182047017-1356ec20-333a-432e-b84b-33b68aaaabf3.png" width="160" height="350"> <img src="https://user-images.githubusercontent.com/104063681/182047089-c6a35aa8-b366-4525-b864-dfa1a2965eb2.png" width="160" height="350">
@@ -50,24 +50,6 @@ In this Upload Page, User can choose to upload Educational Videos or Listings.
 <img src="https://user-images.githubusercontent.com/92966900/182047381-cbdf1446-d7b4-4495-bef8-d3fd2eb22119.JPG" width="160" height="350"> <img src="https://user-images.githubusercontent.com/92966900/182047406-fcf8987c-f3b3-426d-af2d-1f639853b9f2.JPG" width="160" height="350"> <img src="https://user-images.githubusercontent.com/92966900/182047412-aade6bf5-644d-418d-bdc0-4eb60bd0e4db.JPG" width="160" height="350">
 
 Through this 3 pages, users can naigate through the various features, select video or item upload as well as view or edit their account details. 
-
-## Individual Features
-
-### Chat Feature (Brandon)
-### Recent Conversations/Chat
-<img src="https://user-images.githubusercontent.com/104063681/182048348-689a3bb5-bcf8-4b40-87dc-6e93b1039b07.png" width="160" height="350">
-
-Shows the list of Chats/Conversations you have had with other Users.
-
-### Realtime Chat
-<img src="https://user-images.githubusercontent.com/104063681/182048225-26eb49a3-6d66-4df8-b74d-fbdb884b4158.png" width="160" height="350"><img src="https://user-images.githubusercontent.com/104063681/182048232-c9c28799-8cfb-4259-ac69-63b28536b0f0.png" width="160" height="350">
-
-Chat with other Users of this app in Realtime.
-
-### Profile Page of User you're chatting with
-<img src="https://user-images.githubusercontent.com/104063681/182048414-749a568a-0b1e-4fec-9391-f77a46784fa9.png" width="160" height="350">
-
-Look at the Profile Page of the User you're chatting with.
 
 ### Search Feature (Low Zhe Wei): Search and Search History Feature
 <img src="https://user-images.githubusercontent.com/92966900/182042466-555cf4e3-73f7-4af2-96d3-b343049fda1a.JPG" width="160" height="350"> <img src="https://user-images.githubusercontent.com/92966900/182042615-9077eae6-cd36-4276-aa3b-0cffaa9ffb5e.JPG" width="160" height="350"> <img src="https://user-images.githubusercontent.com/92966900/182043116-d0efd409-7936-437d-adb0-e2462df9a39c.JPG" width="160" height="350">
@@ -90,6 +72,11 @@ User can click on redeem and if point is sufficient a message will show "Success
 ### MAP Feature (Irene Phang)
 <img src="https://user-images.githubusercontent.com/104063681/182048847-d0d8fc08-1e58-4a52-a8a3-37b8310be22e.png" width="160" height="350"> <img src="https://user-images.githubusercontent.com/104063681/182048835-d2cbf90d-f794-4528-b0c8-0ccd83d085b4.png" width="160" height="350"> <img src="https://user-images.githubusercontent.com/104063681/182048785-ddaaacc8-159c-47f8-ad28-0a04d9e684cc.png" width="160" height="350"> <img src="https://user-images.githubusercontent.com/104063681/182048875-35737184-c4d8-4cbb-8a86-8b5f5ef75281.png" width="160" height="350">
 
+User is able to use the map feature to see where are the e-waste/ recycling bin are located at.
+
+
+
+### Event Feature (Irene Phang)
 <img src="https://user-images.githubusercontent.com/104063681/182048913-ca759fc2-5d1d-49bd-a8b8-9ae53baf8f2c.png" width="160" height="350"> <img src="https://user-images.githubusercontent.com/104063681/182048917-e7dbb274-2e8f-4244-9b34-cb12f27269e9.png" width="160" height="350">
 
 
