@@ -36,5 +36,22 @@ Zhe Wei: [Contributions](LowZheWei)
 
 ### User Guide:
 
+#### Search Feature (Low Zhe Wei):
+![Listings Page](https://user-images.githubusercontent.com/92966900/182042466-555cf4e3-73f7-4af2-96d3-b343049fda1a.JPG)
+
+When the user first sees the listing page shown above, there is a SearchView widdget at the top of the screen (below the action bar).
+When the user clicks the Search Icon, he or she will be navigated to the List Search Page (Next Image).
+
+![List Search Page](https://user-images.githubusercontent.com/92966900/182042615-9077eae6-cd36-4276-aa3b-0cffaa9ffb5e.JPG)
+When the user is navigated to this page, the SearchView widget will open automatically. In the widget, the user can search for any listing items that they want. 
+Once the user submits their search query, he will be navigated to the listing details page (Next Image) of the item that he has searched for. 
+
+The search query that the user search for will be recorded as a search history record. When the user navigates back to the list search page, he will be able to see the item that he has just searched. 
+
+The remove icon (in red) is for the user to delete a particular search history record. When the user clicks on the remove icon, a toast message will pop up to indicate that the "Search History Record" has been successfully deleted. The record will disappear from the list search page. 
+
+The "Clear All"
+
+
 
 
