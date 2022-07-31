@@ -12,8 +12,8 @@ android {
         applicationId "sg.edu.np.mad.Assignment1"
         minSdk 21
         targetSdk 32
-        versionCode 3
-        versionName "3.0"
+        versionCode 4
+        versionName "4.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -61,7 +61,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:20.0.0'
 
     // picasso for rendering website url img
-    implementation'com.squareup.picasso:picasso:2.71828'
+    implementation 'com.squareup.picasso:picasso:2.71828'
 
     implementation "androidx.fragment:fragment:1.2.5"
     

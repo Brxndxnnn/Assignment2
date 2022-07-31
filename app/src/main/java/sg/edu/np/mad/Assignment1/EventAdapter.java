@@ -1,12 +1,16 @@
 package sg.edu.np.mad.Assignment1;
 
+import android.app.Dialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.content.Context;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -43,6 +47,37 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
         holder.event_info.setText(eventList.getEvent_info());
         holder.time.setText(eventList.getTime());
 
+        holder.event_ll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Dialog builder = new Dialog(context, android.R.style.Theme_DeviceDefault_Light_NoActionBar_Fullscreen);
+                builder.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                builder.setContentView((R.layout.event_details_popup));
+
+                ImageView imgV = builder.findViewById(R.id.event_popup_image);
+                TextView title = builder.findViewById(R.id.event_popup_title);
+                TextView time = builder.findViewById(R.id.event_popup_time);
+                TextView desc = builder.findViewById(R.id.event_popup_desc);
+                Button bClose = builder.findViewById(R.id.event_popup_cancelB);
+
+                // img
+                Picasso.get().load(eventList.getImg_url()).into(imgV);
+
+                title.setText(eventList.getEvent_info());
+                time.setText(eventList.getTime());
+                desc.setText(eventList.getDescription());
+
+                bClose.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        builder.dismiss();
+                    }
+                });
+
+                builder.show();
+            }
+        });
     }
 
     public void updateData(List<EventList> eventLists) {
@@ -59,14 +94,23 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
 
         private ImageView event_img;
         private TextView time, event_info;
+        private LinearLayout event_ll;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+
+                }
+            });
+
 
             event_img = itemView.findViewById(R.id.event_img);
             time = itemView.findViewById(R.id.event_time);
             event_info = itemView.findViewById(R.id.event_info);
-
+            event_ll = itemView.findViewById(R.id.event_layout);
         }
 
     }

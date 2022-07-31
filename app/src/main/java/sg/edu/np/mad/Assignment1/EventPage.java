@@ -5,14 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Dialog;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Window;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import sg.edu.np.mad.Assignment1.EventAdapter;
-import sg.edu.np.mad.Assignment1.EventList;
 
 public class EventPage extends AppCompatActivity {
 
@@ -31,7 +33,7 @@ public class EventPage extends AppCompatActivity {
 
         actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.MintCream)));
 
-        actionBar.setTitle("Listing");
+        actionBar.setTitle("Event");
         actionBar.setHomeAsUpIndicator(R.drawable.backbutton_icon);
 
         // showing the back button in action bar
@@ -47,10 +49,9 @@ public class EventPage extends AppCompatActivity {
         eventLists.clear();
 
 
-
-        EventList eventList = new EventList(img1, "Hear talks from Recycling experts!", "All Day");
-        EventList eventList2 = new EventList(img2, "Go Green Recycle Your E-Waste", "10am - 2pm");
-        EventList eventList3 = new EventList(img3, "Go Green Recycle Your E-Waste", "3PM - 6PM");
+        EventList eventList = new EventList(img1, "Hear talks from Recycling experts!", "TerraCycle and Loop founder and CEO Tom Szaky says the economics of the recycling business are broken in key ways, but consumer and corporate interest in building a circular economy continues to grow. ","All Day", "HeartBeat Bedok");
+        EventList eventList2 = new EventList(img2, "Go Green Recycle Your E-Waste", "As an individual or as part of a household, you are encouraged to make use of e-waste recycling programmes voluntarily offered by industry stakeholders. Simply drop off your e-waste at the recycling points to properly recycle your e-waste. Trading or donation of used goods in working condition can be performed at these Collection Centres.","10am - 2pm"," Tampines Hub");
+        EventList eventList3 = new EventList(img3, "Go Green Recycle Your E-Waste", "As an individual or as part of a household, you are encouraged to make use of e-waste recycling programmes voluntarily offered by industry stakeholders. Simply drop off your e-waste at the recycling points to properly recycle your e-waste. Trading or donation of used goods in working condition can be performed at these Collection Centres.","3PM - 6PM","Jurong East Mrt");
 
         eventLists.add(eventList);
         eventLists.add(eventList2);
@@ -58,6 +59,8 @@ public class EventPage extends AppCompatActivity {
 
         eventAdapter.updateData(eventLists);
     }
+
+
 
 
     @Override
