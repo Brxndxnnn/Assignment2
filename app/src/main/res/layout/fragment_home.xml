@@ -154,7 +154,7 @@
             android:layout_marginEnd="10dp"
             android:backgroundTint="#eef2f3"
             android:drawableLeft="@drawable/ic_favorite"
-            android:text="Likes"
+            android:text="Like"
             android:textColor="#43A047"/>
 
         <Button

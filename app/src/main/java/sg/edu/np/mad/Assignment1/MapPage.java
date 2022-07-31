@@ -356,8 +356,8 @@ public class MapPage extends AppCompatActivity implements OnMapReadyCallback {
                                 map.moveCamera(CameraUpdateFactory.newLatLngZoom(
                                         new LatLng(lastKnownLocation.getLatitude(),
                                                 lastKnownLocation.getLongitude()), DEFAULT_ZOOM));
-                                // for emulator
-//                                map.moveCamera(CameraUpdateFactory.newLatLngZoom(myhouse, DEFAULT_ZOOM));
+                                //for emulator
+                                //map.moveCamera(CameraUpdateFactory.newLatLngZoom(myhouse, DEFAULT_ZOOM));
                             }
                         } else {
                             Log.d(TAG, "Current location is null. Using defaults.");

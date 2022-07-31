@@ -26,6 +26,7 @@ import sg.edu.np.mad.Assignment1.databinding.ItemContainerSentMessageBinding;
 
 public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
+    //Initialising the variables
     private final List<ChatMessage> chatMessages;
     public final String receiverProfileImage;
     private final String senderId;
@@ -42,6 +43,7 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        //If message is sent, inflate the sent message layout
         if(viewType == VIEW_TYPE_SENT){
             return new SentMessageViewHolder(
                     ItemContainerSentMessageBinding.inflate(
@@ -51,6 +53,8 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
                     )
             );
         }
+
+        //If message is received, inflate the receive message layout
         else{
             return new ReceivedMessageViewHolder(
                     ItemContainerReceivedMessageBinding.inflate(
@@ -64,9 +68,11 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        //If message is sent, set data to sentmessage viewholder
         if(getItemViewType(position) == VIEW_TYPE_SENT){
             ((SentMessageViewHolder) holder).setData(chatMessages.get(position));
         }
+        //If message is received, set data to receivedmessage viewholder
         else{
             ((ReceivedMessageViewHolder) holder).setData(chatMessages.get(position)); //add in receiverProfileImage
         }
@@ -79,6 +85,7 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     @Override
     public int getItemViewType(int position) {
+        //Get the view type, either the sent or received
         if(chatMessages.get(position).senderId.equals(senderId)){
             return VIEW_TYPE_SENT;
         }
@@ -87,6 +94,8 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         }
     }
 
+
+    //Chat bubble for the messages sent
     static class SentMessageViewHolder extends RecyclerView.ViewHolder{
 
         private final ItemContainerSentMessageBinding binding;
@@ -96,12 +105,14 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
             binding = itemContainerSentMessageBinding;
         }
 
+        //Set the data in the bubble
         void setData(ChatMessage chatMessage){
             binding.textMessage.setText(chatMessage.message.trim());
             binding.textDateTime.setText(chatMessage.dateTime);
         }
     }
 
+    //Chat bubble for the messages received
     static class ReceivedMessageViewHolder extends RecyclerView.ViewHolder{
 
         DatabaseReference mDatabase;
@@ -112,6 +123,7 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
             binding = itemContainerReceivedMessageBinding;
         }
 
+        //Set the data in the bubble
         void setData(ChatMessage chatMessage){
             binding.textMessage.setText(chatMessage.message.trim());
             binding.textDateTime.setText(chatMessage.dateTime);
