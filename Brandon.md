@@ -23,3 +23,7 @@ Improvements I made to Application since Assignment 1:
 6. Reformat the Buttons in the Homepage, making each Button unique and does not load to a Activity that is already in the Navigation Bar. 
 7. Overall improvements made to the UI/UX of the Application.
 8. Overall Bug fixes.
+
+##![chat1](https://user-images.githubusercontent.com/104063681/182048225-26eb49a3-6d66-4df8-b74d-fbdb884b4158.png)
+# Recent Conversations/Chat
+![chat2](https://user-images.githubusercontent.com/104063681/182048232-c9c28799-8cfb-4259-ac69-63b28536b0f0.png)
