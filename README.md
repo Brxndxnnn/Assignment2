@@ -46,10 +46,10 @@ Through this 3 pages, Users can choose whether to Login if they already have an 
 
 In this Upload Page, User can choose to upload Educational Videos or Listings. 
 
-### Home Page / Select Video or Listings Page / User Profile Page
-<img src="https://user-images.githubusercontent.com/92966900/182047381-cbdf1446-d7b4-4495-bef8-d3fd2eb22119.JPG" width="160" height="350"><img src="https://user-images.githubusercontent.com/92966900/182047406-fcf8987c-f3b3-426d-af2d-1f639853b9f2.JPG" width="160" height="350"><img src="https://user-images.githubusercontent.com/92966900/182047412-aade6bf5-644d-418d-bdc0-4eb60bd0e4db.JPG" width="160" height="350">
+### User Profile Page
+<img src="https://user-images.githubusercontent.com/92966900/182047381-cbdf1446-d7b4-4495-bef8-d3fd2eb22119.JPG" width="160" height="350">
 
-Through this 3 pages, users can naigate through the various features, select video or item upload as well as view or edit their account details. 
+Through this User Profile Page, User can view or edit their account details. 
 
 ### Search Feature (Low Zhe Wei): Search and Search History Feature
 <img src="https://user-images.githubusercontent.com/92966900/182042466-555cf4e3-73f7-4af2-96d3-b343049fda1a.JPG" width="160" height="350"><img src="https://user-images.githubusercontent.com/92966900/182042615-9077eae6-cd36-4276-aa3b-0cffaa9ffb5e.JPG" width="160" height="350"><img src="https://user-images.githubusercontent.com/92966900/182043116-d0efd409-7936-437d-adb0-e2462df9a39c.JPG" width="160" height="350">
