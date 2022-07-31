@@ -24,7 +24,7 @@ Users can also contribute by posting various videos on ways on how we can upcycl
 ```
 ### Roles and contribution of each team member:
 
-Brandon [Contributions](Brandon)
+Brandon [Contributions](Brandon.md)
 
 Irene: [Contributions](IrenePhang)
 
@@ -37,33 +37,38 @@ Zhe Wei: [Contributions](LowZheWei)
 ### User Guide:
 
 ### Start Up Page / Login Page / Register Page
-<img src="https://user-images.githubusercontent.com/104063681/182047005-6b41d0f8-234b-4ec8-96d7-f23cef046925.png" width="160" height="350"><img src="https://user-images.githubusercontent.com/104063681/182047017-1356ec20-333a-432e-b84b-33b68aaaabf3.png" width="160" height="350"><img src="https://user-images.githubusercontent.com/104063681/182047089-c6a35aa8-b366-4525-b864-dfa1a2965eb2.png" width="160" height="350">
+<img src="https://user-images.githubusercontent.com/104063681/182047005-6b41d0f8-234b-4ec8-96d7-f23cef046925.png" width="160" height="350"> <img src="https://user-images.githubusercontent.com/104063681/182047017-1356ec20-333a-432e-b84b-33b68aaaabf3.png" width="160" height="350"> <img src="https://user-images.githubusercontent.com/104063681/182047089-c6a35aa8-b366-4525-b864-dfa1a2965eb2.png" width="160" height="350">
 
 Through this 3 pages, Users can choose whether to Login if they already have an account, or Register for an account if they don't have one. 
 
 ### Upload Page
-<img src="https://user-images.githubusercontent.com/104063681/182047219-cad722b2-bcdd-4057-b3a5-55d5cbe6f46f.png" width="160" height="350"><img src="https://user-images.githubusercontent.com/104063681/182047283-f41058ef-c8ba-455e-a27c-69e9f60f54e2.png" width="160" height="350"><img src="https://user-images.githubusercontent.com/104063681/182047291-6bf6eca9-d96e-4820-821b-2640779a4361.png" width="160" height="350">
+<img src="https://user-images.githubusercontent.com/104063681/182047219-cad722b2-bcdd-4057-b3a5-55d5cbe6f46f.png" width="160" height="350"> <img src="https://user-images.githubusercontent.com/104063681/182047283-f41058ef-c8ba-455e-a27c-69e9f60f54e2.png" width="160" height="350"> <img src="https://user-images.githubusercontent.com/104063681/182047291-6bf6eca9-d96e-4820-821b-2640779a4361.png" width="160" height="350">
 
 In this Upload Page, User can choose to upload Educational Videos or Listings. 
 
 ### Home Page / Select Video or Listings Page / User Profile Page
-<img src="https://user-images.githubusercontent.com/92966900/182047381-cbdf1446-d7b4-4495-bef8-d3fd2eb22119.JPG" width="160" height="350"><img src="https://user-images.githubusercontent.com/92966900/182047406-fcf8987c-f3b3-426d-af2d-1f639853b9f2.JPG" width="160" height="350"><img src="https://user-images.githubusercontent.com/92966900/182047412-aade6bf5-644d-418d-bdc0-4eb60bd0e4db.JPG" width="160" height="350">
+<img src="https://user-images.githubusercontent.com/92966900/182047381-cbdf1446-d7b4-4495-bef8-d3fd2eb22119.JPG" width="160" height="350"> <img src="https://user-images.githubusercontent.com/92966900/182047406-fcf8987c-f3b3-426d-af2d-1f639853b9f2.JPG" width="160" height="350"> <img src="https://user-images.githubusercontent.com/92966900/182047412-aade6bf5-644d-418d-bdc0-4eb60bd0e4db.JPG" width="160" height="350">
 
 Through this 3 pages, users can naigate through the various features, select video or item upload as well as view or edit their account details. 
 
 ### Search Feature (Low Zhe Wei): Search and Search History Feature
-<img src="https://user-images.githubusercontent.com/92966900/182042466-555cf4e3-73f7-4af2-96d3-b343049fda1a.JPG" width="160" height="350"><img src="https://user-images.githubusercontent.com/92966900/182042615-9077eae6-cd36-4276-aa3b-0cffaa9ffb5e.JPG" width="160" height="350"><img src="https://user-images.githubusercontent.com/92966900/182043116-d0efd409-7936-437d-adb0-e2462df9a39c.JPG" width="160" height="350">
+<img src="https://user-images.githubusercontent.com/92966900/182042466-555cf4e3-73f7-4af2-96d3-b343049fda1a.JPG" width="160" height="350"> <img src="https://user-images.githubusercontent.com/92966900/182042615-9077eae6-cd36-4276-aa3b-0cffaa9ffb5e.JPG" width="160" height="350"> <img src="https://user-images.githubusercontent.com/92966900/182043116-d0efd409-7936-437d-adb0-e2462df9a39c.JPG" width="160" height="350">
 
 With this feature, users can search for listing items, as well as view or edit their search history.
 
+### Rewards Feature (Tay XinYing)
+<img src="https://user-images.githubusercontent.com/104063681/182048558-da3d65ae-49c6-44cf-9015-70b47fb1e43e.png" width="160" height="350">
 
+As shown above this is the main page of the rewards feature. It consists of “REDEEM POINTS”, “CHECK IN”, “SPIN” and “View”. (Yet to implement the “VIEW” feature)
+
+<img src="https://user-images.githubusercontent.com/104063681/182048599-ef10efcf-9380-48b7-8858-0fdfe3c2a0ef.png" width="160" height="350">
+
+Similarly when user click on the “SPIN” button for the first time of the day spin value updated message will be displayed. Else "Reward Claimed Already Come Back Tomorrow!" message will be shown. 
+
+<img src="https://user-images.githubusercontent.com/104063681/182048633-70c33e27-0bd0-4231-b32d-9a58b6110a5b.png" width="160" height="350"> <img src="https://user-images.githubusercontent.com/104063681/182048638-f2c6ec95-dfeb-40ae-8e42-54c929bab211.png" width="160" height="350">
+
+User can click on redeem and if point is sufficient a message will show "Successfully Redeem Voucher!". On the other hand if points is insufficient the message "Points Insufficient to Redeem Voucher!" will be displayed.
 
 ### MAP Feature (Irene Phang)
 
 <img src="https://user-images.githubusercontent.com/94032141/182047802-aee7539a-4a42-4383-90d1-ce4b00c8efc9.JPG" width="160" height="350"><img src="https://user-images.githubusercontent.com/94032141/182047965-3ca06a84-fc6a-47c4-8f88-e0b6bf10b084.JPG" width="160" height="350"><img src="https://user-images.githubusercontent.com/94032141/182047979-569778e8-0776-4ea0-8e8a-1eb982011ad6.JPG" width="160" height="350"><img src="https://user-images.githubusercontent.com/94032141/182047982-6b24295a-66e0-4fbd-ab9c-26b6423a7b26.JPG" width="160" height="350">
-
-### Event Feature (Irene Phang)
-
-<img src="https://user-images.githubusercontent.com/94032141/182048373-46403c06-ca7b-46cc-8c81-bbac5e10ec19.JPG" width="160" height="350"><img src="https://user-images.githubusercontent.com/94032141/182048375-e8c5e2aa-8898-4717-a8f8-8d8ddf557129.JPG" width="160" height="350">
-
-
