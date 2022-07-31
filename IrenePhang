@@ -11,7 +11,7 @@ Feature involves:
 1. Allow users to locate e-waste / recycling bin through pop up markers shown based on their current location.
 2. Allow user select on the e-waste / recycling bin pop up markers shown
 3. Allow user to tap onto the pop up maker to get more information
-
+4. To protect user privacy,the app will prompt a request location permissions - (deny, only this time and while using the app)
 
 **Events** - Created a new feature where can see what event are happening on the date through the calender.
 
