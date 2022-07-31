@@ -98,6 +98,7 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.Viewhold
                 public void onClick(View v) {
                     //start new intent
                     Intent intent = new Intent(v.getContext(), ListingDetails.class);
+                    intent.putExtra("key", listingsArrayList.get(getAdapterPosition()).id);
                     intent.putExtra("Title", listingsArrayList.get(getAdapterPosition()).title);
                     intent.putExtra("Image", listingsArrayList.get(getAdapterPosition()).imageUrl);
                     intent.putExtra("Desc", listingsArrayList.get(getAdapterPosition()).desc);
