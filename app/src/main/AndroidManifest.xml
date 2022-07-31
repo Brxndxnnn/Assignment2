@@ -31,10 +31,16 @@
             android:value="AIzaSyCcNtruyDAARE8mPd0OX-gQzURd_6dz6O0" />
 
         <activity
-            android:name=".EventList"
+            android:name=".RewardMain"
             android:exported="false" />
         <activity
-            android:name=".EventAdapter"
+            android:name=".RewardList"
+            android:exported="false" />
+        <activity
+            android:name=".RewardDetails"
+            android:exported="false" />
+        <activity
+            android:name=".SpinWheel"
             android:exported="false" />
         <activity
             android:name=".ChatUserProfile"

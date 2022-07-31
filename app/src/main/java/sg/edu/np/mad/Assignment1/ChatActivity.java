@@ -141,7 +141,6 @@ public class ChatActivity extends BaseActivity {
 
             }
         });
-
     }
 
     private void listenMessages(){

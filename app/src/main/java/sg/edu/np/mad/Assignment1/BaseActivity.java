@@ -23,6 +23,9 @@ public class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
     }
 
+    /** Done by Brandon
+     * When Activity is onPause, set the User Online status to offline. Associated with the Chat feature.
+     */
     @Override
     protected void onPause() {
         super.onPause();
@@ -36,6 +39,9 @@ public class BaseActivity extends AppCompatActivity {
                 .updateChildren(hashMap);
     }
 
+    /**
+     * When Activity is Resumed, set User Online. Associated with the Chat feature.
+     */
     @Override
     protected void onResume() {
         super.onResume();

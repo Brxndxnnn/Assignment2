@@ -144,9 +144,7 @@ public class RewardMain extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                //Intent to ___ Activity
-                Intent intent = new Intent(view.getContext(), RewardMain.class);
-                startActivity(intent);
+                Toast.makeText(getApplicationContext(), "Not Implemented yet", Toast.LENGTH_SHORT).show();
             }
         });
     }

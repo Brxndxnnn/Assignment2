@@ -17,7 +17,7 @@ import sg.edu.np.mad.Assignment1.databinding.FragmentVideoBinding;
 public class HomeFragment extends Fragment implements View.OnClickListener {
 
     //Initialising variables
-    Button chatButton, mapButton, helpButton,  likesButton, eventButton;
+    Button chatButton, mapButton, helpButton,  likesButton, eventButton, rewardButton;
 
     public HomeFragment(){
         // require a empty public constructor
@@ -34,14 +34,15 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         mapButton = (Button) view.findViewById(R.id.buttonMap);
         likesButton = (Button) view.findViewById(R.id.likesButton);
         eventButton = (Button) view.findViewById(R.id.buttonEvent);
+        rewardButton = (Button) view.findViewById(R.id.buttonReward);
 
         //Set onClickListener for respective buttons in Home Page
         chatButton.setOnClickListener(this);
-
         helpButton.setOnClickListener(this);
         mapButton.setOnClickListener(this);
         likesButton.setOnClickListener(this);
         eventButton.setOnClickListener(this);
+        rewardButton.setOnClickListener(this);
 
         return view;
     }
