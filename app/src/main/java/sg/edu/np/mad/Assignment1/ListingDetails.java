@@ -103,7 +103,7 @@ public class ListingDetails extends AppCompatActivity {
         //Getting Realtime Database instance
         mDatabase = FirebaseDatabase.getInstance("https://mad-assignment-1-7b524-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();
         //Finding Username in Realtime Database through current User Email Address
-        mDatabase.child(poster.replace(".", "").trim()).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        mDatabase.child("Users").child(poster.replace(".", "").trim()).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (!task.isSuccessful()) {
@@ -189,7 +189,7 @@ public class ListingDetails extends AppCompatActivity {
         }
     }
 
-    // Dislike listing item method
+    // Unlike listing item method
     private void removeItem(String id) {
         MenuItem like = menu.findItem(R.id.item_like);
         MenuItem dislike = menu.findItem(R.id.item_dislike);
@@ -242,7 +242,7 @@ public class ListingDetails extends AppCompatActivity {
 
                 } else {
                     // Add in current list and set
-                    Log.d("Listing", userEmail);
+                    Log.d("Testt", userEmail);
                     ArrayList<String> newList = new ArrayList<String>();
                     newList.add(id);
                     ref.child(userEmail).child("listingLikes").setValue(newList);
