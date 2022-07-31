@@ -26,11 +26,11 @@ Users can also contribute by posting various videos on ways on how we can upcycl
 
 Brandon [Contributions](BrandonS10194173)
 
-Irene: [Contributions](IrenePhang.md)
+Irene: [Contributions](IrenePhang)
 
-Chor Yi: [Contributions](LoongChorYi.md)
+Chor Yi: [Contributions](LoongChorYi)
 
-Xin Ying: [Contributions](TayXinYing.md)
+Xin Ying: [Contributions](TayXinYing)
 
 Zhe Wei: [Contributions](LowZheWei) 
 
