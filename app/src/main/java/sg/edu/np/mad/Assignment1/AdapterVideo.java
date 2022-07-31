@@ -85,7 +85,7 @@ public class AdapterVideo extends RecyclerView.Adapter<AdapterVideo.HolderVideo>
         calendar.setTimeInMillis(Long.parseLong(timestamp));
         String formattedDateTime = DateFormat.format("dd/MM/yyyy hh:mm", calendar).toString();
 
-        //Like video (ASG 2)
+        //Like tutorial vid (ASG 2)
         holder.like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -93,7 +93,7 @@ public class AdapterVideo extends RecyclerView.Adapter<AdapterVideo.HolderVideo>
             }
         });
 
-        // Dislike video (ASG 2)
+        // Dislike tutorial vid (ASG 2)
         holder.dislike.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -163,7 +163,7 @@ public class AdapterVideo extends RecyclerView.Adapter<AdapterVideo.HolderVideo>
     }
 
     // Method when user disliked tutorial
-    private void dislikeVid(String id, HolderVideo holder) {
+    private void likeVid(String id, HolderVideo holder) {
 
         ref.child(userEmail).child("tutoLikes").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
@@ -187,7 +187,7 @@ public class AdapterVideo extends RecyclerView.Adapter<AdapterVideo.HolderVideo>
     }
 
     // Method when user liked tutorial
-    private void likeVid(String id, HolderVideo holder) {
+    private void dislikeVid(String id, HolderVideo holder) {
 
         Log.d("test", "likes");
         ref.child(userEmail).child("tutoLikes").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
@@ -197,7 +197,7 @@ public class AdapterVideo extends RecyclerView.Adapter<AdapterVideo.HolderVideo>
                 likes = (ArrayList) task.getResult().getValue();
 
                 if (likes != null) {
-                    likes.add(id);
+                    likes.add(id); 
                     ref.child(userEmail).child("tutoLikes").setValue(likes).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
@@ -206,6 +206,14 @@ public class AdapterVideo extends RecyclerView.Adapter<AdapterVideo.HolderVideo>
                             Toast.makeText(context, "Tutorial liked!", Toast.LENGTH_SHORT).show();
                         }
                     });
+                } else {
+                    Log.d("test", userEmail);
+                    ArrayList<String> newList = new ArrayList<String>();
+                    newList.add(id); // add liked tutorial to list
+                    ref.child(userEmail).child("tutoLikes").setValue(newList);
+                    holder.like.setVisibility(View.VISIBLE);
+                    holder.dislike.setVisibility(View.INVISIBLE);
+                    Toast.makeText(context, "Tutorial liked!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
