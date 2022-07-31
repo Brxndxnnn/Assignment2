@@ -24,6 +24,11 @@ Improvements I made to Application since Assignment 1:
 7. Overall improvements made to the UI/UX of the Application.
 8. Overall Bug fixes.
 
-##![chat1](https://user-images.githubusercontent.com/104063681/182048225-26eb49a3-6d66-4df8-b74d-fbdb884b4158.png)
-# Recent Conversations/Chat
-![chat2](https://user-images.githubusercontent.com/104063681/182048232-c9c28799-8cfb-4259-ac69-63b28536b0f0.png)
+### Recent Conversations/Chat
+<img src="https://user-images.githubusercontent.com/104063681/182048348-689a3bb5-bcf8-4b40-87dc-6e93b1039b07.png" width="160" height="350">
+
+### Realtime Chat
+<img src="https://user-images.githubusercontent.com/104063681/182048225-26eb49a3-6d66-4df8-b74d-fbdb884b4158.png" width="160" height="350"><img src="https://user-images.githubusercontent.com/104063681/182048232-c9c28799-8cfb-4259-ac69-63b28536b0f0.png" width="160" height="350">
+
+### Profile Page of User you're chatting with
+<img src="https://user-images.githubusercontent.com/104063681/182048414-749a568a-0b1e-4fec-9391-f77a46784fa9.png" width="160" height="350">
