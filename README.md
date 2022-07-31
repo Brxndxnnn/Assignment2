@@ -37,12 +37,12 @@ Zhe Wei: [Contributions](LowZheWei)
 ### User Guide:
 
 #### Search Feature (Low Zhe Wei):
-![Listings Page](https://user-images.githubusercontent.com/92966900/182042466-555cf4e3-73f7-4af2-96d3-b343049fda1a.JPG)
+<img src="https://user-images.githubusercontent.com/92966900/182042466-555cf4e3-73f7-4af2-96d3-b343049fda1a.JPG" width="200" height="200">
 
 When the user first sees the listing page shown above, there is a SearchView widdget at the top of the screen (below the action bar).
 When the user clicks the Search Icon, he or she will be navigated to the List Search Page (Next Image).
 
-![List Search Page](https://user-images.githubusercontent.com/92966900/182042615-9077eae6-cd36-4276-aa3b-0cffaa9ffb5e.JPG)
+<img src="https://user-images.githubusercontent.com/92966900/182042615-9077eae6-cd36-4276-aa3b-0cffaa9ffb5e.JPG" width="200" height="200">
 
 When the user is navigated to this page, the SearchView widget will open automatically. In the widget, the user can search for any listing items that they want. 
 Once the user submits their search query, he will be navigated to the listing details page (Next Image) of the item that he has searched for. 
@@ -55,7 +55,7 @@ The "Clear All" text is for the user to clear his search history. When the user 
 
 When the user clicks on "Cancel", the user will be navigated back to the listings page. 
 
-![Listing Details Page](https://user-images.githubusercontent.com/92966900/182043116-d0efd409-7936-437d-adb0-e2462df9a39c.JPG)
+<img src="https://user-images.githubusercontent.com/92966900/182043116-d0efd409-7936-437d-adb0-e2462df9a39c.JPG" width="200" height="200">
 
 Listing details page of a specific item. 
 
