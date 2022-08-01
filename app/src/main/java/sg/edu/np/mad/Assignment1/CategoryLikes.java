@@ -40,6 +40,7 @@ public class CategoryLikes extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category_likes);
 
+        // Get user and initialized
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
         userEmail = currentUser.getEmail(); // current email is the key
@@ -66,7 +67,7 @@ public class CategoryLikes extends AppCompatActivity {
                 if (type.equals("ArrayList")) {
                     ArrayList likes = new ArrayList<String>();
                     likes = (ArrayList) task.getResult().getValue();
-                    loadListingsFromFirebase(likes); // Method to populate liked listings in its respective place
+                    loadListingsFromFirebase(likes); // Method to populate liked listings
                 } else {
                     // currently empty
                 }
@@ -88,7 +89,7 @@ public class CategoryLikes extends AppCompatActivity {
                 if (type.equals("ArrayList")) {
                     ArrayList likes = new ArrayList<String>();
                     likes = (ArrayList) task.getResult().getValue();
-                    loadListingsFromFirebase(likes); // Populate liked listings in the respective categories from Firebase
+                    loadListingsFromFirebase(likes); // Populate liked listings in the respective categories in Firebase
 
                 } else {
                     ArrayList likes = new ArrayList<String>();
@@ -110,13 +111,13 @@ public class CategoryLikes extends AppCompatActivity {
                 listingsArrayList.clear();
 
                 for (DataSnapshot ds : snapshot.getChildren()) {
-                    //get data
+                    // Get data
                     final String id = ds.child("id").getValue(String.class);
 
                     if ((likes != null && likes.contains(id))) {
                         Listings listings = ds.getValue(Listings.class);
                         Log.d("Listings", "Got data: " + id);
-                        //add model/data to list
+                        // Add model/data to list
                         listingsArrayList.add(listings); // Add liked listings into list
                     }
                 }

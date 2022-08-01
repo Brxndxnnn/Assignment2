@@ -2,7 +2,7 @@ package sg.edu.np.mad.Assignment1;
 
 public class ModelVideos {
     String id, title, timestamp, videoUrl;
-    Boolean isLike;
+    Boolean isLike; // Added liked button for tutorials in ASG2
 
     //constructor
     public ModelVideos(){

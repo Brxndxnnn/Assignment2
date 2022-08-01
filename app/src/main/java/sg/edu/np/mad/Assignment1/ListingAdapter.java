@@ -145,6 +145,7 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.Viewhold
         }
     }
 
+    // Method for selection of category in the liked listings page
     private void showDialog(String idList) {
         AlertDialog.Builder builderSingle = new AlertDialog.Builder(context);
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(context, android.R.layout.select_dialog_singlechoice);
@@ -160,6 +161,8 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.Viewhold
                     }
 
                 }
+
+                // User do not want to store liked listing(s) in to different categories
                 builderSingle.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -167,6 +170,8 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.Viewhold
                         dialog.dismiss();
                     }
                 });
+
+                // No existing categories found in user's account
                 if (arrayAdapter.getCount() == 0) {
                     builderSingle.setMessage("You have no category.");
                     builderSingle.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
@@ -175,7 +180,7 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.Viewhold
 
                         }
                     });
-                } else {
+                } else { // User to add liked listings in their choice of category
                     builderSingle.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
@@ -186,7 +191,7 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.Viewhold
                             builderInner.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-                                    addIntoCat(strName, idList);
+                                    addIntoCat(strName, idList); // Add liked listing(s) to a category
                                     dialog.dismiss();
                                 }
                             });
@@ -204,7 +209,7 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.Viewhold
         });
     }
 
-    // Method to add listings into category
+    // Method to store liked listings which would be added into category (default: "All" category to view all liked items)
     private void addIntoCat(String cate, String id) {
         DatabaseReference ref = FirebaseDatabase.getInstance("https://mad-assignment-1-7b524-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Users");
         ref.child(userEmail).child("likesCategory").child(cate).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
@@ -216,7 +221,7 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.Viewhold
                     // Means array exist
                     ArrayList likes = new ArrayList<String>();
                     likes = (ArrayList) task.getResult().getValue();
-                    likes.add(id); // Store liked items into the category
+                    likes.add(id); // Add liked items
 
                     ref.child(userEmail).child("likesCategory").child(cate).setValue(likes).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
@@ -227,7 +232,7 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.Viewhold
                 } else {
                     // means array is empty
                     ArrayList likes = new ArrayList<String>();
-                    likes.add(id);
+                    likes.add(id); // Add liked items
                     ref.child(userEmail).child("likesCategory").child(cate).setValue(likes).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {

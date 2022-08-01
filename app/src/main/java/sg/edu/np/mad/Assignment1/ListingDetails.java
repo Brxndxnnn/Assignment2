@@ -142,6 +142,8 @@ public class ListingDetails extends AppCompatActivity {
     }
 
     // ASG 2 (like/dislike feature)
+
+    // Method that enables user to perform liked/unliked function
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.like_menu, menu);
@@ -151,6 +153,7 @@ public class ListingDetails extends AppCompatActivity {
         // onView page run this.
         // Check whether user liked this listing.
 
+        // Check for all listings in firebase
         mDatabase.child(userEmail).child("likesCategory").child("All").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
@@ -202,7 +205,7 @@ public class ListingDetails extends AppCompatActivity {
         }
     }
 
-    // Dislike listing item method
+    // Dislike listing item method (Remove liked listings)
     private void removeItem(String id) {
         MenuItem like = menu.findItem(R.id.item_like);
         MenuItem dislike = menu.findItem(R.id.item_dislike);
@@ -223,6 +226,7 @@ public class ListingDetails extends AppCompatActivity {
             }
         });
 
+        // Get user's liked listings and customized categories
         mDatabase.child(userEmail).child("likesCategory").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
@@ -272,7 +276,8 @@ public class ListingDetails extends AppCompatActivity {
                     ArrayList likes = new ArrayList<String>();
                     likes = (ArrayList) task.getResult().getValue();
                     // if empty
-                    likes.add(id);
+                    likes.add(id); // Add liked listings based on listing id
+                    // Liked listings would be stored in the "All" category
                     mDatabase.child(userEmail).child("likesCategory").child("All").setValue(likes).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
@@ -284,10 +289,9 @@ public class ListingDetails extends AppCompatActivity {
 
                 } else {
                     // Add in current list and set
-                    Log.d("Listing", userEmail);
                     ArrayList<String> newList = new ArrayList<String>();
                     newList.add(id);
-                    mDatabase.child(userEmail).child("likesCategory").child("All").setValue(newList);
+                    mDatabase.child(userEmail).child("likesCategory").child("All").setValue(newList); // All liked listings in the "All" category
                     dislike.setVisible(false);
                     like.setVisible(true);
                     Toast.makeText(ListingDetails.this, "Item liked!", Toast.LENGTH_SHORT).show();
