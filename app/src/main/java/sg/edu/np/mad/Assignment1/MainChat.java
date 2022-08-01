@@ -121,7 +121,11 @@ public class MainChat extends BaseActivity {
         });
     }
 
+    /**
+     * This method is to Listen and Retrieve any existing conversations
+     */
     private void listenConversations(){
+        //Retrieving through the Conversation collection in Firestore Database.
         database.collection("Conversation")
                 .whereEqualTo("SenderEmail", currentUserEmail)
                 .addSnapshotListener(eventListener);
@@ -137,11 +141,15 @@ public class MainChat extends BaseActivity {
         if (value != null) {
             for (DocumentChange documentChange : value.getDocumentChanges()){
                 if(documentChange.getType() == DocumentChange.Type.ADDED){
+
+                    //Getting the Sender and Receiver Email from Firestore Database and assigning it to the variables.
                     String senderId = documentChange.getDocument().getString("SenderEmail");
                     String receiverId = documentChange.getDocument().getString("ReceiverEmail");
+
                     ChatMessage chatMessage = new ChatMessage();
                     chatMessage.senderId = senderId;
                     chatMessage.receiverId = receiverId;
+
                     if(currentUserEmail.equals(senderId)){
                         chatMessage.conversationName = documentChange.getDocument().getString("ReceiverName");
                         chatMessage.conversationId = documentChange.getDocument().getString("ReceiverEmail");
@@ -150,6 +158,8 @@ public class MainChat extends BaseActivity {
                         chatMessage.conversationName = documentChange.getDocument().getString("SenderName");
                         chatMessage.conversationId = documentChange.getDocument().getString("SenderEmail");
                     }
+
+                    //Add Chat message to the Conversations.
                     chatMessage.message = documentChange.getDocument().getString("LastMessage");
                     chatMessage.dateObject = documentChange.getDocument().getDate("Timestamp");
                     conversations.add(chatMessage);
@@ -166,6 +176,8 @@ public class MainChat extends BaseActivity {
                     }
                 }
             }
+
+            //Sort Conversations according to Newest - Oldest.
             Collections.sort(conversations, (obj1,obj2) -> obj2.dateObject.compareTo(obj1.dateObject));
             binding.conversationsRecyclerView.smoothScrollToPosition(0);
             binding.conversationsRecyclerView.setVisibility(View.VISIBLE);
@@ -174,6 +186,9 @@ public class MainChat extends BaseActivity {
         }
     };
 
+    /**
+     * This method is to return to previous activity if back button is pressed.
+     */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {

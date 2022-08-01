@@ -32,6 +32,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 
+
 public class ListingDetails extends AppCompatActivity {
     //Initialising variables
     TextView listingTitle, listingDesc, listingPoster, listingLocation;
@@ -115,7 +116,6 @@ public class ListingDetails extends AppCompatActivity {
                 }
             }
         });
-
         chatButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -145,21 +145,30 @@ public class ListingDetails extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.like_menu, menu);
         MenuItem fav = menu.findItem(R.id.item_like);
         MenuItem unfav = menu.findItem(R.id.item_dislike);
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance("https://mad-assignment-1-7b524-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Users");
         // onView page run this.
         // Check whether user liked this listing.
-        ref.child(userEmail).child("listingLikes").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+
+        mDatabase.child(userEmail).child("likesCategory").child("All").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (!task.isSuccessful()) {
 
                 } else {
-                    ArrayList likes = new ArrayList<String>();
-                    likes = (ArrayList) task.getResult().getValue();
-                    // Return list from Firebase
-                    if ((likes !=null && likes.contains(key))) {
-                        // If likes contain the string, return true
-                        fav.setVisible(true);
-                        unfav.setVisible(false);
+                    String type = ((Object) task.getResult().getValue()).getClass().getSimpleName(); // Retrieve category from firebase
+                    if (type.equals("ArrayList")) {
+                        Log.e("test", type);
+                        ArrayList likes = new ArrayList<String>();
+                        likes = (ArrayList) task.getResult().getValue();
+                        // Return list from Firebase
+                        if ((likes !=null && likes.contains(key))) {
+                            // If likes contain the string, return true
+                            fav.setVisible(true);
+                            unfav.setVisible(false);
+                        } else {
+                            fav.setVisible(false);
+                            unfav.setVisible(true);
+                        }
                     } else {
                         fav.setVisible(false);
                         unfav.setVisible(true);
@@ -176,11 +185,13 @@ public class ListingDetails extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.item_like:
 
+                // when user disliked item
                 removeItem(key);
                 return true;
 
             case R.id.item_dislike:
 
+                // when user like item
                 addItem(key);
                 return true;
 
@@ -189,20 +200,30 @@ public class ListingDetails extends AppCompatActivity {
         }
     }
 
-    // Unlike listing item method
+    // Dislike listing item method
     private void removeItem(String id) {
         MenuItem like = menu.findItem(R.id.item_like);
         MenuItem dislike = menu.findItem(R.id.item_dislike);
 
-        Log.d("test", userEmail);
-        ref.child(userEmail).child("listingLikes").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance("https://mad-assignment-1-7b524-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Users");
+        mDatabase.child(userEmail).child("likesCategory").child("All").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 ArrayList likes = new ArrayList<String>();
                 likes = (ArrayList) task.getResult().getValue();
-                if (likes != null) {
+                if ((likes != null && likes.size() != 1)) {
                     likes.remove(id); // Remove disliked item
-                    ref.child(userEmail).child("listingLikes").setValue(likes).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    mDatabase.child(userEmail).child("likesCategory").child("All").setValue(likes).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            // if successfully removed .
+                            like.setVisible(false);
+                            dislike.setVisible(true);
+                            Toast.makeText(ListingDetails.this, "Disliked item", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }else {
+                    mDatabase.child(userEmail).child("likesCategory").child("All").setValue("").addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
 
@@ -217,21 +238,23 @@ public class ListingDetails extends AppCompatActivity {
         });
     }
 
+
+
     // Like listing item method
     private void addItem(String id) {
         MenuItem like = menu.findItem(R.id.item_like);
         MenuItem dislike = menu.findItem(R.id.item_dislike);
 
-        ref.child(userEmail).child("listingLikes").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        mDatabase.child(userEmail).child("likesCategory").child("All").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
-                ArrayList likes = new ArrayList<String>();
-                likes = (ArrayList) task.getResult().getValue();
-
-                if (likes != null) {
+                String type = ((Object) task.getResult().getValue()).getClass().getSimpleName(); // Retrieve category from firebase
+                if (type.equals("ArrayList")) {
+                    ArrayList likes = new ArrayList<String>();
+                    likes = (ArrayList) task.getResult().getValue();
                     // if empty
-                    likes.add(id); // Add liked item
-                    ref.child(userEmail).child("listingLikes").setValue(likes).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    likes.add(id);
+                    mDatabase.child(userEmail).child("likesCategory").child("All").setValue(likes).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             dislike.setVisible(false);
@@ -242,10 +265,10 @@ public class ListingDetails extends AppCompatActivity {
 
                 } else {
                     // Add in current list and set
-                    Log.d("Testt", userEmail);
+                    Log.d("Listing", userEmail);
                     ArrayList<String> newList = new ArrayList<String>();
                     newList.add(id);
-                    ref.child(userEmail).child("listingLikes").setValue(newList);
+                    mDatabase.child(userEmail).child("likesCategory").child("All").setValue(newList);
                     dislike.setVisible(false);
                     like.setVisible(true);
                     Toast.makeText(ListingDetails.this, "Item liked!", Toast.LENGTH_SHORT).show();
@@ -254,3 +277,5 @@ public class ListingDetails extends AppCompatActivity {
         });
     }
 }
+
+

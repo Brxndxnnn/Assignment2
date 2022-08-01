@@ -122,10 +122,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 startActivity(intent3);
                 return true;
 
-//            case R.id.likesButton:
-//                Intent intent6 = new Intent(view.getContext(), LikesPage.class);
-//                startActivity(intent6);
-//                return true;
+            case R.id.likesButton:
+                Intent intent6 = new Intent(view.getContext(), LikePage.class);
+                startActivity(intent6);
+                return true;
 
             //If Reward button is clicked, start respective activity
             case R.id.buttonReward:

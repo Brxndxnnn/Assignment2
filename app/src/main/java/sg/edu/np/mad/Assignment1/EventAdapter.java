@@ -17,6 +17,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 
@@ -59,6 +61,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
                 TextView title = builder.findViewById(R.id.event_popup_title);
                 TextView time = builder.findViewById(R.id.event_popup_time);
                 TextView desc = builder.findViewById(R.id.event_popup_desc);
+                TextView location = builder.findViewById(R.id.event_popup_location);
                 Button bClose = builder.findViewById(R.id.event_popup_cancelB);
 
                 // img
@@ -67,6 +70,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
                 title.setText(eventList.getEvent_info());
                 time.setText(eventList.getTime());
                 desc.setText(eventList.getDescription());
+                location.setText(eventList.getLocation());
 
                 bClose.setOnClickListener(new View.OnClickListener() {
                     @Override

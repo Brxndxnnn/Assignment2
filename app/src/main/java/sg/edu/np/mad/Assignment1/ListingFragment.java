@@ -93,7 +93,7 @@ public class ListingFragment extends Fragment {
                 }
                 listings.setLayoutManager(gridLayoutManager);
                 //setup adapter
-                listingAdapter = new ListingAdapter(mContext, listingsArrayList);
+                listingAdapter = new ListingAdapter(mContext, listingsArrayList, false);
                 //set adapter to recyclerview
                 listings.setAdapter(listingAdapter);
             }

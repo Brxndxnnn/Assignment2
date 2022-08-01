@@ -76,6 +76,7 @@ public class ChatActivity extends BaseActivity {
         Intent intent = getIntent();
         userEmail = intent.getStringExtra("Name");
         image = intent.getStringExtra("Image");
+        //conversationId = intent.getStringExtra("ID");
 
         //Assigning text view
         user = findViewById(R.id.textName);
