@@ -68,6 +68,8 @@ Through this 3 pages, users can naigate through the various features, select vid
 ### Realtime Chat Feature (Brandon Chu)
 <img src="https://user-images.githubusercontent.com/104063681/182194883-9b83fa5b-a7b4-4097-a033-115cb6cc685c.png" width="160" height="350">  <img src="https://user-images.githubusercontent.com/104063681/182195114-5ec20286-0609-44a4-9171-fa1fe05896c7.png" width="160" height="350">  <img src="https://user-images.githubusercontent.com/104063681/182196875-27b63a13-8240-40c8-b6fa-e7607c564699.png" width="160" height="350">  <img src="https://user-images.githubusercontent.com/104063681/182196942-4f8c2388-0703-416f-912f-41ed457f5859.png" width="160" height="350">
 
+In this Chat Feature, User can talk to other Users in Realtime, as well as see whether if they are online, or check their User Profile.
+
 ### Search Feature (Low Zhe Wei): Search and Search History Feature
 <img src="https://user-images.githubusercontent.com/92966900/182042466-555cf4e3-73f7-4af2-96d3-b343049fda1a.JPG" width="160" height="350"> <img src="https://user-images.githubusercontent.com/92966900/182042615-9077eae6-cd36-4276-aa3b-0cffaa9ffb5e.JPG" width="160" height="350"> <img src="https://user-images.githubusercontent.com/92966900/182043116-d0efd409-7936-437d-adb0-e2462df9a39c.JPG" width="160" height="350">
 
