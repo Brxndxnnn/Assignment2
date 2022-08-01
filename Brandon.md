@@ -30,7 +30,7 @@ Improvements I made to Application since Assignment 1:
 Shows the list of Chats/Conversations you have had with other Users.
 
 ### Realtime Chat
-<img src="https://user-images.githubusercontent.com/104063681/182048225-26eb49a3-6d66-4df8-b74d-fbdb884b4158.png" width="160" height="350"><img src="https://user-images.githubusercontent.com/104063681/182048232-c9c28799-8cfb-4259-ac69-63b28536b0f0.png" width="160" height="350">
+<img src="https://user-images.githubusercontent.com/104063681/182048225-26eb49a3-6d66-4df8-b74d-fbdb884b4158.png" width="160" height="350">  <img src="https://user-images.githubusercontent.com/104063681/182048232-c9c28799-8cfb-4259-ac69-63b28536b0f0.png" width="160" height="350">
 
 Chat with other Users of this app in Realtime.
 
