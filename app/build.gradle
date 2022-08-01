@@ -12,8 +12,8 @@ android {
         applicationId "sg.edu.np.mad.Assignment1"
         minSdk 21
         targetSdk 32
-        versionCode 4
-        versionName "4.0"
+        versionCode 5
+        versionName "5.0"
         Properties properties = new Properties()
         properties.load(project.rootProject.file("local.properties").newDataInputStream())
         buildConfigField "String", "MAPS_API_KEY", "\"${properties.getProperty("MAPS_API_KEY")}\""

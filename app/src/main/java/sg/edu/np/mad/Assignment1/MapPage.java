@@ -325,7 +325,7 @@ public class MapPage extends AppCompatActivity implements OnMapReadyCallback {
             this.map.addMarker(new MarkerOptions()
                     .position(latLngArrayList.get(i))
                     .title(locationIdArrayList.get(i))
-                    .icon(BitmapFromVector(MapPage.this, R.drawable.e_waste)));
+                    .icon(BitmapFromVector(MapPage.this, R.drawable.logo)));
 
             // below line is use to move camera.
 //            this.map.moveCamera(CameraUpdateFactory.newLatLng(myhouse));
