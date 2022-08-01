@@ -223,14 +223,14 @@ public class ListingDetails extends AppCompatActivity {
             }
         });
 
-        mDatabase.child(userEmail).child("likesCategory").child("All").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        mDatabase.child(userEmail).child("likesCategory").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
-                ArrayList likes = new ArrayList<String>();
-                likes = (ArrayList) task.getResult().getValue();
-                if ((likes != null && likes.size() != 1)) {
-                    likes.remove(id); // Remove disliked item
-                    for (String Category : catNames){
+                for (String Category: catNames){
+                    ArrayList likes = new ArrayList<String>();
+                    likes = (ArrayList) task.getResult().child(Category).getValue();
+                    if ((likes != null && likes.size() != 1)) {
+                        likes.remove(id); // Remove disliked item
                         mDatabase.child(userEmail).child("likesCategory").child(Category).setValue(likes).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
@@ -240,13 +240,10 @@ public class ListingDetails extends AppCompatActivity {
                                 Toast.makeText(ListingDetails.this, "Disliked item", Toast.LENGTH_SHORT).show();
                             }
                         });
-                    }
-                }else {
-                    for (String Category: catNames){
+                    }else {
                         mDatabase.child(userEmail).child("likesCategory").child(Category).setValue("").addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
-
                                 // if successfully removed .
                                 like.setVisible(false);
                                 dislike.setVisible(true);

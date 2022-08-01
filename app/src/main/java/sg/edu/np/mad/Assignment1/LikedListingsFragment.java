@@ -74,7 +74,7 @@ public class LikedListingsFragment extends Fragment {
         listings.setLayoutManager(new LinearLayoutManager(getContext()));
 
         listingAdapter = new LikesCatAdapter(likesCatLists, getContext());
-        listings.setAdapter(listingAdapter);
+        //listings.setAdapter(listingAdapter);
 
         return view;
     }
@@ -99,6 +99,7 @@ public class LikedListingsFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                 if (snapshot.exists()) {
+                    Log.d("GG", "A");
                     for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                         final String key = dataSnapshot.getKey();
                         Boolean isKey = !key.equals("All");
@@ -106,8 +107,10 @@ public class LikedListingsFragment extends Fragment {
                         likesCatLists.add(likeCat);
                         cateList.add(key);
                     }
+                    listingAdapter = new LikesCatAdapter(likesCatLists, getContext());
                     listings.setAdapter(listingAdapter);
                 } else {
+                    Log.d("GG", "B");
                     Map<String, Object> values = new HashMap<>();
                     // set new category
                     values.put("All", "");

@@ -3,7 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Assignment2/app/src/main/res/layout/custom_grid_layout.xml" value="0.2318840579710145" />
         <entry key="..\:/POLY/MAD/Assignment1/app/src/main/res/drawable/background_content_top.xml" value="0.1735" />
         <entry key="..\:/POLY/MAD/Assignment1/app/src/main/res/drawable/background_input_message.xml" value="0.332" />
         <entry key="..\:/POLY/MAD/Assignment1/app/src/main/res/drawable/background_sent_message.xml" value="0.332" />
@@ -78,20 +77,14 @@
         <entry key="..\:/Users/Brand/StudioProjects/Assignment2/app/src/main/res/layout/activity_chat.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Brand/StudioProjects/Assignment2/app/src/main/res/layout/activity_chat_user_profile.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Brand/StudioProjects/Assignment2/app/src/main/res/layout/activity_listing_details.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Brand/StudioProjects/Assignment2/app/src/main/res/layout/activity_main.xml" value="0.22146739130434784" />
         <entry key="..\:/Users/Brand/StudioProjects/Assignment2/app/src/main/res/layout/activity_main_chat.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Brand/StudioProjects/Assignment2/app/src/main/res/layout/activity_reward_main.xml" value="0.22146739130434784" />
-        <entry key="..\:/Users/Brand/StudioProjects/Assignment2/app/src/main/res/layout/custom_grid_layout.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Brand/StudioProjects/Assignment2/app/src/main/res/layout/custom_grid_layout.xml" value="0.1" />
         <entry key="..\:/Users/Brand/StudioProjects/Assignment2/app/src/main/res/layout/custom_info_contents.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Brand/StudioProjects/Assignment2/app/src/main/res/layout/event_adapter.xml" value="0.22146739130434784" />
-        <entry key="..\:/Users/Brand/StudioProjects/Assignment2/app/src/main/res/layout/event_details_popup.xml" value="0.22146739130434784" />
         <entry key="..\:/Users/Brand/StudioProjects/Assignment2/app/src/main/res/layout/fragment_home.xml" value="0.25" />
-        <entry key="..\:/Users/Brand/StudioProjects/Assignment2/app/src/main/res/layout/fragment_liked_listings.xml" value="0.22644927536231885" />
         <entry key="..\:/Users/Brand/StudioProjects/Assignment2/app/src/main/res/layout/fragment_listing.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Brand/StudioProjects/Assignment2/app/src/main/res/layout/fragment_profile.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Brand/StudioProjects/Assignment2/app/src/main/res/layout/item_container_recent_conversation.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Brand/StudioProjects/Assignment2/app/src/main/res/layout/item_container_sent_message.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Brand/StudioProjects/Assignment2/app/src/main/res/layout/likes_listview.xml" value="0.17076502732240437" />
         <entry key="..\:/Users/jaysa/AndroidStudioProjects/Assignment1/app/src/main/res/drawable/ic_info.xml" value="0.163" />
         <entry key="..\:/Users/jaysa/AndroidStudioProjects/Assignment1/app/src/main/res/drawable/ic_launcher_background.xml" value="0.163" />
         <entry key="..\:/Users/jaysa/AndroidStudioProjects/Assignment1/app/src/main/res/drawable/ic_remove.xml" value="0.164" />
