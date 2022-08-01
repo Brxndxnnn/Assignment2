@@ -25,8 +25,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -204,8 +206,23 @@ public class ListingDetails extends AppCompatActivity {
     private void removeItem(String id) {
         MenuItem like = menu.findItem(R.id.item_like);
         MenuItem dislike = menu.findItem(R.id.item_dislike);
+        ArrayList<String> catNames = new ArrayList<>();
 
         DatabaseReference mDatabase = FirebaseDatabase.getInstance("https://mad-assignment-1-7b524-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Users");
+        mDatabase.child(userEmail).child("likesCategory").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot ds:snapshot.getChildren()){
+                    catNames.add(ds.getKey());
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         mDatabase.child(userEmail).child("likesCategory").child("All").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
@@ -213,26 +230,30 @@ public class ListingDetails extends AppCompatActivity {
                 likes = (ArrayList) task.getResult().getValue();
                 if ((likes != null && likes.size() != 1)) {
                     likes.remove(id); // Remove disliked item
-                    mDatabase.child(userEmail).child("likesCategory").child("All").setValue(likes).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            // if successfully removed .
-                            like.setVisible(false);
-                            dislike.setVisible(true);
-                            Toast.makeText(ListingDetails.this, "Disliked item", Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                    for (String Category : catNames){
+                        mDatabase.child(userEmail).child("likesCategory").child(Category).setValue(likes).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                // if successfully removed .
+                                like.setVisible(false);
+                                dislike.setVisible(true);
+                                Toast.makeText(ListingDetails.this, "Disliked item", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
                 }else {
-                    mDatabase.child(userEmail).child("likesCategory").child("All").setValue("").addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
+                    for (String Category: catNames){
+                        mDatabase.child(userEmail).child("likesCategory").child(Category).setValue("").addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
 
-                            // if successfully removed .
-                            like.setVisible(false);
-                            dislike.setVisible(true);
-                            Toast.makeText(ListingDetails.this, "Disliked item", Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                                // if successfully removed .
+                                like.setVisible(false);
+                                dislike.setVisible(true);
+                                Toast.makeText(ListingDetails.this, "Disliked item", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
                 }
             }
         });
@@ -245,10 +266,11 @@ public class ListingDetails extends AppCompatActivity {
         MenuItem like = menu.findItem(R.id.item_like);
         MenuItem dislike = menu.findItem(R.id.item_dislike);
 
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance("https://mad-assignment-1-7b524-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Users");
         mDatabase.child(userEmail).child("likesCategory").child("All").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
-                String type = ((Object) task.getResult().getValue()).getClass().getSimpleName(); // Retrieve category from firebase
+                String type = ((Object) task.getResult().getValue()).getClass().getSimpleName(); // Retrieve listing id from firebase
                 if (type.equals("ArrayList")) {
                     ArrayList likes = new ArrayList<String>();
                     likes = (ArrayList) task.getResult().getValue();

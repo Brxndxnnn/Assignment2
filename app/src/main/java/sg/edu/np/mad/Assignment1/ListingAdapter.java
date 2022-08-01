@@ -204,7 +204,7 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.Viewhold
         });
     }
 
-    // Method to add
+    // Method to add listings into category
     private void addIntoCat(String cate, String id) {
         DatabaseReference ref = FirebaseDatabase.getInstance("https://mad-assignment-1-7b524-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Users");
         ref.child(userEmail).child("likesCategory").child(cate).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
@@ -228,6 +228,42 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.Viewhold
                     // means array is empty
                     ArrayList likes = new ArrayList<String>();
                     likes.add(id);
+                    ref.child(userEmail).child("likesCategory").child(cate).setValue(likes).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            notifyDataSetChanged();
+                        }
+                    });
+                }
+            }
+        });
+
+    }
+
+    // Method to remove listings into category
+    private void removeFromCat(String cate, String id) {
+        DatabaseReference ref = FirebaseDatabase.getInstance("https://mad-assignment-1-7b524-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Users");
+        ref.child(userEmail).child("likesCategory").child(cate).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                String type = ((Object) task.getResult().getValue()).getClass().getSimpleName(); // Retrieve category from firebase
+                if (type.equals("ArrayList")) {
+
+                    // Means array exist
+                    ArrayList likes = new ArrayList<String>();
+                    likes = (ArrayList) task.getResult().getValue();
+                    likes.remove(id); // Remove liked items from the category
+
+                    ref.child(userEmail).child("likesCategory").child(cate).setValue(likes).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            notifyDataSetChanged();
+                        }
+                    });
+                } else {
+                    // means array is empty
+                    ArrayList likes = new ArrayList<String>();
+                    likes.remove(id);
                     ref.child(userEmail).child("likesCategory").child(cate).setValue(likes).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {

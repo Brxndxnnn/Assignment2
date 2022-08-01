@@ -78,7 +78,6 @@ public class CategoryLikes extends AppCompatActivity {
     @Override
     public void onResume() {
         super.onResume();
-        Log.e("Firebase","resume");
         DatabaseReference ref = FirebaseDatabase.getInstance("https://mad-assignment-1-7b524-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Users");
         ref.child(userEmail).child("likesCategory").child(cate).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
@@ -89,7 +88,7 @@ public class CategoryLikes extends AppCompatActivity {
                 if (type.equals("ArrayList")) {
                     ArrayList likes = new ArrayList<String>();
                     likes = (ArrayList) task.getResult().getValue();
-                    loadListingsFromFirebase(likes);
+                    loadListingsFromFirebase(likes); // Populate liked listings in the respective categories from Firebase
 
                 } else {
                     ArrayList likes = new ArrayList<String>();

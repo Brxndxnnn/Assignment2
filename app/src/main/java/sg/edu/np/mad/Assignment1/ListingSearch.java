@@ -93,11 +93,13 @@ public class ListingSearch extends AppCompatActivity {
                         shAdapter.notifyDataSetChanged();
                         // New Intent to go to Listing Details Page after user search for a specific listing item
                         Intent searchToDetails = new Intent(ListingSearch.this, ListingDetails.class);
+                        searchToDetails.putExtra("key", item.getId());
                         searchToDetails.putExtra("Title", item.getTitle());
                         searchToDetails.putExtra("Image", item.getImageUrl());
                         searchToDetails.putExtra("Desc", item.getDesc());
                         searchToDetails.putExtra("Poster", item.getPoster());
                         searchToDetails.putExtra("Location", item.getLocation());
+                        //searchToDetails.putExtra("IsLike", item.getLike());
                         startActivity(searchToDetails);
                     }
 
@@ -205,10 +207,5 @@ public class ListingSearch extends AppCompatActivity {
             }
         });
         searchHistoryList.clear();
-
-
-
     }
-
-
 }

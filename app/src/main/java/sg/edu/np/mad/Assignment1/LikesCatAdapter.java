@@ -108,49 +108,12 @@ public class LikesCatAdapter extends RecyclerView.Adapter<LikesCatAdapter.MyView
 
                             }
                         });
-
-
                     }
-
                 });
-
                 builderSingle.show();
-
             }
         });
     }
-
-    private void deleteDialog(String id) {
-        AlertDialog.Builder builderSingle = new AlertDialog.Builder(context);
-        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(context, android.R.layout.select_dialog_singlechoice);
-
-        builderSingle.setMessage("Delete " + id + "?");
-        builderSingle.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-                dialog.dismiss();
-            }
-        });
-        builderSingle.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                DatabaseReference ref = FirebaseDatabase.getInstance("https://mad-assignment-1-7b524-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Users");
-                ref.child(userEmail).child("likesCategory").child(id).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-
-                        likesCatLists.remove(id);
-                        updateData(likesCatLists);
-
-                    }
-                });
-            }
-        });
-
-        builderSingle.show();
-    }
-
 
     public void updateData(ArrayList<LikesCatList> likesCatLists) {
         this.likesCatLists = likesCatLists;

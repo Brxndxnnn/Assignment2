@@ -105,10 +105,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 return true;
 
             //If Upload button is clicked, start respective activity
-            case R.id.buttonMap:
-                Intent intent5 = new Intent(view.getContext(), MapPage.class);
-                startActivity(intent5);
-                return true;
+//            case R.id.buttonMap:
+//                Intent intent5 = new Intent(view.getContext(), MapPage.class);
+//                startActivity(intent5);
+//                return true;
 
             //If Listing button is clicked, start respective activity
             case R.id.buttonEvent:

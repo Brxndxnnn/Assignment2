@@ -54,13 +54,14 @@ public class LikedListingsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_liked_listings, container, false);
 
 
-        // get user and initialized
+        // Get user and initialized
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
         userEmail = currentUser.getEmail(); // current email is the key
         userEmail = userEmail.replace(".", "");
 
         addFAB = view.findViewById(R.id.fab_add_cat);
+        // Show popup dialog for user to input
         addFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -72,7 +73,6 @@ public class LikedListingsFragment extends Fragment {
         listings = (RecyclerView) view.findViewById(R.id.cate_list);
         listings.setLayoutManager(new LinearLayoutManager(getContext()));
 
-
         listingAdapter = new LikesCatAdapter(likesCatLists, getContext());
         listings.setAdapter(listingAdapter);
 
@@ -82,19 +82,16 @@ public class LikedListingsFragment extends Fragment {
     public void onResume() {
         super.onResume();
         likesCatLists.clear();
-        Log.e("Frontales","resume");
         loadData();
     }
     @Override
     public void onPause() {
         super.onPause();
-
         loadData();
-
     }
 
     private void loadData() {
-        likesCatLists.clear();
+        likesCatLists.clear(); // clear list
         cateList = new ArrayList<>();
         DatabaseReference ref = FirebaseDatabase.getInstance("https://mad-assignment-1-7b524-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Users");
         ref.child(userEmail).child("likesCategory").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -120,7 +117,6 @@ public class LikedListingsFragment extends Fragment {
                             loadData();
                         }
                     });
-                    Log.d("test", "nonne");
                 }
             }
             @Override
@@ -152,12 +148,12 @@ public class LikedListingsFragment extends Fragment {
         dialog.show();
     }
 
+    // Method to add user's input category
     private void addCate(String cate) {
-        Log.d("test", String.valueOf(likesCatLists));
 
         DatabaseReference ref = FirebaseDatabase.getInstance("https://mad-assignment-1-7b524-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Users");
         Map<String, Object> values = new HashMap<>();
-        // set new category
+        // Set new category
         values.put(cate, "");
         ref.child(userEmail).child("likesCategory").updateChildren(values).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override

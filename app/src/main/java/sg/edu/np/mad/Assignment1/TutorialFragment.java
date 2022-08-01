@@ -99,11 +99,9 @@ public class TutorialFragment extends Fragment {
                             //add model/data to list
                             videosArrayList.add(modelVideos);
                         }
-
                     }
                     // Setup adapter
-                    Log.d("test", String.valueOf(videosArrayList.size()));
-                    adapterVideo = new AdapterVideo(getContext(), videosArrayList); //was dbHandler.getUsers()
+                    adapterVideo = new AdapterVideo(getContext(), videosArrayList);
                     // Set adapter to recyclerview
                     tutVideos.setAdapter(adapterVideo);
                     adapterVideo.updateData(videosArrayList);
@@ -116,7 +114,7 @@ public class TutorialFragment extends Fragment {
             });
         } else {
             // Setup adapter
-            adapterVideo = new AdapterVideo(getContext(), videosArrayList); //was dbHandler.getUsers()
+            adapterVideo = new AdapterVideo(getContext(), videosArrayList);
             // Set adapter to recyclerview
             tutVideos.setAdapter(adapterVideo);
         }
