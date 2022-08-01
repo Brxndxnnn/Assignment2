@@ -22,7 +22,21 @@ They can utilize this platform to post their unused or unwanted items that are s
 Users can also contribute by posting various videos on ways on how we can upcycle and make use of the unused items around us. 
 
 ```
-### Roles and contribution of each team member:
+### Roles and contribution of each team member (Stage 2):
+
+Brandon Main Coder for the application. Coded the main structure of the application, including the Upload Listings feature, Viewing of Listings, Viewing of Videos etc. 
+
+Irene: Designer and Tester. Doing the start up page design and testing of the app to check for error. (e.g alignments or any improvement needed) test
+
+Chor Yi: Coder and Tester. Coded the FAQ page, layouts (e.g. for different screen orientations, app colours etc) and tested the app.
+
+Xin Ying: Designer, Coder and Tester. Designed and coded layouts (e.g. alignments, constraints and scrollviews etc). Tested application to check for errors.
+
+Zhe Wei: App Tester. Testing the app for any bugs as well as ensure all the error handling are working as intended. 
+
+
+```
+### Roles and contribution of each team member (Stage 2):
 
 Brandon [Contributions](Brandon.md)
 
