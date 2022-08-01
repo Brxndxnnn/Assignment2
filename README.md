@@ -95,3 +95,12 @@ User is able to use the map feature to see where are the e-waste/ recycling bin 
 
 User can tap on the date and the different events will pop up. user can then select the event that looks intersting to them and it will bring them to more details on the event. 
 
+### Like Page (Loong Chor Yi)
+<img src="https://user-images.githubusercontent.com/104066208/182186111-6235f5ce-a01c-410a-a7db-7d7e8e1a005a.png" width="160" height="350"> <img src="https://user-images.githubusercontent.com/104066208/182186295-52595aee-e407-4f80-b714-a7637ddea462.png" width="160" height="350"> <img src="https://user-images.githubusercontent.com/104066208/182186898-3fe29716-da64-4485-b39d-0e4a1b193a8d.png" width="160" height="350"> <img src="https://user-images.githubusercontent.com/104066208/182186982-28ba3e62-0e16-4241-aba5-48094823ac2c.png" width="160" height="350">
+
+User is able to like/unlike listings and tutorials.
+
+<img src="https://user-images.githubusercontent.com/104066208/182189628-14ab2460-d908-4852-b0a9-b00cc09217a6.png" width="160" height="350"> <img src="https://user-images.githubusercontent.com/104066208/182189671-c3629138-c792-4ec1-adf2-d25b2bc299f3.png" width="160" height="350"> 
+<img src="https://user-images.githubusercontent.com/104066208/182189801-670c7717-2aa2-4526-8c13-b1299f9f23e4.png" width="160" height="350">
+
+User is also able to create categories to store their liked listings.

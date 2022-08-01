@@ -64,14 +64,14 @@ public class TutorialFragment extends Fragment {
                 } else {
                     ArrayList likes = new ArrayList<String>();
                     likes = (ArrayList) task.getResult().getValue();
-                    loadVideosFromFirebase(likes);
+                    loadVideosFromFirebase(likes); // Method to retrieve and display liked tutorials
                 }
             }
         });
         return view;
     }
 
-    // Retrieve liked tutorial(s)
+    // Method to retrieve liked tutorial(s)
     private void loadVideosFromFirebase(ArrayList likes) {
 
         if (!alreadyExecuted) {
@@ -86,7 +86,7 @@ public class TutorialFragment extends Fragment {
 
                     for (DataSnapshot ds : snapshot.getChildren()) {
                         final String id = ds.child("id").getValue(String.class);
-                        // Get data and id contains in list likes
+                        // Get data and id contained in list likes
                         Log.d("test", id);
                         if ((likes != null && likes.contains(id))) {
 
@@ -97,7 +97,7 @@ public class TutorialFragment extends Fragment {
 
                             ModelVideos modelVideos = new ModelVideos(id, title, timestamp, videoUrl, isLikes);
                             //add model/data to list
-                            videosArrayList.add(modelVideos);
+                            videosArrayList.add(modelVideos); // Add liked tutorial to list
                         }
                     }
                     // Setup adapter

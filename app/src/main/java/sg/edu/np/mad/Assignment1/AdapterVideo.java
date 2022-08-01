@@ -171,11 +171,11 @@ public class AdapterVideo extends RecyclerView.Adapter<AdapterVideo.HolderVideo>
                 ArrayList likes = new ArrayList<String>();
                 likes = (ArrayList) task.getResult().getValue();
                 if (likes != null) {
-                    likes.remove(id);
+                    likes.remove(id); // Remove liked tutorial from user's account
                     ref.child(userEmail).child("tutoLikes").setValue(likes).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
-                            // if successfully removed
+                            // If successfully removed
                             Toast.makeText(context, "Disliked tutorial", Toast.LENGTH_SHORT).show();
                             holder.like.setVisibility(View.INVISIBLE);
                             holder.dislike.setVisibility(View.VISIBLE);
@@ -197,7 +197,7 @@ public class AdapterVideo extends RecyclerView.Adapter<AdapterVideo.HolderVideo>
                 likes = (ArrayList) task.getResult().getValue();
 
                 if (likes != null) {
-                    likes.add(id); 
+                    likes.add(id); // Add liked tutorial to user's account
                     ref.child(userEmail).child("tutoLikes").setValue(likes).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {

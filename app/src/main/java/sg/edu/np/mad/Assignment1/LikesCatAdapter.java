@@ -40,6 +40,8 @@ public class LikesCatAdapter extends RecyclerView.Adapter<LikesCatAdapter.MyView
     @NonNull
     @Override
     public LikesCatAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
+        // Get user and initialized
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
         userEmail = currentUser.getEmail(); // current email is the key
@@ -74,14 +76,12 @@ public class LikesCatAdapter extends RecyclerView.Adapter<LikesCatAdapter.MyView
         holder.imgView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // to delete category
                 // dialog
-//                deleteDialog(categoryLikes.getTitle());
-
 
                 AlertDialog.Builder builderSingle = new AlertDialog.Builder(context);
                 final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(context, android.R.layout.select_dialog_singlechoice);
 
+                // User do not wish to delete category
                 builderSingle.setMessage("Delete " + categoryLikes.getTitle() + "?");
                 builderSingle.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
@@ -90,10 +90,14 @@ public class LikesCatAdapter extends RecyclerView.Adapter<LikesCatAdapter.MyView
                         dialog.dismiss();
                     }
                 });
+
+                // User wishes to delete category
                 builderSingle.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         DatabaseReference ref = FirebaseDatabase.getInstance("https://mad-assignment-1-7b524-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Users");
+
+                        // Remove previously created category from user's account
                         ref.child(userEmail).child("likesCategory").child(categoryLikes.getTitle()).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
                             public void onComplete(@NonNull Task<Void> task) {
 
@@ -115,6 +119,7 @@ public class LikesCatAdapter extends RecyclerView.Adapter<LikesCatAdapter.MyView
         });
     }
 
+    // Method to update change in category data
     public void updateData(ArrayList<LikesCatList> likesCatLists) {
         this.likesCatLists = likesCatLists;
         notifyDataSetChanged();
@@ -124,8 +129,6 @@ public class LikesCatAdapter extends RecyclerView.Adapter<LikesCatAdapter.MyView
     public int getItemCount() {
         return likesCatLists.size();
     }
-
-
 
     static class MyViewHolder extends RecyclerView.ViewHolder {
         private TextView title;
@@ -139,8 +142,5 @@ public class LikesCatAdapter extends RecyclerView.Adapter<LikesCatAdapter.MyView
             imgView = itemView.findViewById(R.id.like_cat_cancel);
             item_cat = itemView.findViewById(R.id.cat_item);
         }
-
     }
-
-
 }

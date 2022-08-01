@@ -99,7 +99,6 @@ public class ListingSearch extends AppCompatActivity {
                         searchToDetails.putExtra("Desc", item.getDesc());
                         searchToDetails.putExtra("Poster", item.getPoster());
                         searchToDetails.putExtra("Location", item.getLocation());
-                        //searchToDetails.putExtra("IsLike", item.getLike());
                         startActivity(searchToDetails);
                     }
 

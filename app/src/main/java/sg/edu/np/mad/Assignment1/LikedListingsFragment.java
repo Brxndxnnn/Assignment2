@@ -61,7 +61,7 @@ public class LikedListingsFragment extends Fragment {
         userEmail = userEmail.replace(".", "");
 
         addFAB = view.findViewById(R.id.fab_add_cat);
-        // Show popup dialog for user to input
+        // Show popup dialog for user to input onClick
         addFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -90,8 +90,9 @@ public class LikedListingsFragment extends Fragment {
         loadData();
     }
 
+    // Method to check for additional categories
     private void loadData() {
-        likesCatLists.clear(); // clear list
+        likesCatLists.clear(); // Clear list
         cateList = new ArrayList<>();
         DatabaseReference ref = FirebaseDatabase.getInstance("https://mad-assignment-1-7b524-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Users");
         ref.child(userEmail).child("likesCategory").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -112,7 +113,7 @@ public class LikedListingsFragment extends Fragment {
                 } else {
                     Log.d("GG", "B");
                     Map<String, Object> values = new HashMap<>();
-                    // set new category
+                    // Set new category
                     values.put("All", "");
                     ref.child(userEmail).child("likesCategory").setValue(values).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
@@ -129,6 +130,7 @@ public class LikedListingsFragment extends Fragment {
         });
     }
 
+    // Method to enable users to create new categories to store their liked listings
     private void showDialog() {
         EditText inputEditTextField = new EditText(getContext());
         AlertDialog dialog = new AlertDialog.Builder(getContext())
@@ -142,7 +144,7 @@ public class LikedListingsFragment extends Fragment {
                         if (cateList.contains(editTextInput.trim())) {
                             Toast.makeText(getContext(), "Category already exist", Toast.LENGTH_SHORT).show();
                         } else {
-                            addCate(editTextInput);
+                            addCate(editTextInput); // Call method to add newly created listing category to user's account
                         }
                     }
                 })
@@ -151,7 +153,7 @@ public class LikedListingsFragment extends Fragment {
         dialog.show();
     }
 
-    // Method to add user's input category
+    // Method to add user's input category into their account
     private void addCate(String cate) {
 
         DatabaseReference ref = FirebaseDatabase.getInstance("https://mad-assignment-1-7b524-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Users");
@@ -164,6 +166,5 @@ public class LikedListingsFragment extends Fragment {
                 loadData();
             }
         });
-
     }
 }
