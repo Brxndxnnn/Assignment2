@@ -59,12 +59,19 @@ Through this 3 pages, Users can choose whether to Login if they already have an 
 In this Upload Page, User can choose to upload Educational Videos or Listings. 
 
 ### Home Page / Select Video or Listings Page / User Profile Page
-<img src="https://user-images.githubusercontent.com/92966900/182047381-cbdf1446-d7b4-4495-bef8-d3fd2eb22119.JPG" width="160" height="350"> <img src="https://user-images.githubusercontent.com/92966900/182047406-fcf8987c-f3b3-426d-af2d-1f639853b9f2.JPG" width="160" height="350"> <img src="https://user-images.githubusercontent.com/92966900/182047412-aade6bf5-644d-418d-bdc0-4eb60bd0e4db.JPG" width="160" height="350">
+<img src="https://user-images.githubusercontent.com/92966900/182202117-1ec82a1f-157b-434e-a131-e76d0928df4b.png" width="160" height="350"><img src="https://user-images.githubusercontent.com/92966900/182202159-d75bf617-370e-4b23-a1d9-939352d17f68.png" width="160" height="350"> <img src="https://user-images.githubusercontent.com/92966900/182202505-bba465b9-979b-4e95-b144-9c9966bef229.png" width="160" height="350"> 
 
-Through this 3 pages, users can naigate through the various features, select video or item upload as well as view or edit their account details. 
+Through this 3 pages, users can navigate through the various features, select video or item upload as well as view or edit their account details. 
+
+##Individual Features
+
+### Realtime Chat Feature (Brandon Chu)
+<img src="https://user-images.githubusercontent.com/104063681/182194883-9b83fa5b-a7b4-4097-a033-115cb6cc685c.png" width="160" height="350">  <img src="https://user-images.githubusercontent.com/104063681/182195114-5ec20286-0609-44a4-9171-fa1fe05896c7.png" width="160" height="350">  <img src="https://user-images.githubusercontent.com/104063681/182196875-27b63a13-8240-40c8-b6fa-e7607c564699.png" width="160" height="350">  <img src="https://user-images.githubusercontent.com/104063681/182196942-4f8c2388-0703-416f-912f-41ed457f5859.png" width="160" height="350">
+
+In this Chat Feature, User can talk to other Users in Realtime, as well as see whether if they are online, or check their User Profile.
 
 ### Search Feature (Low Zhe Wei): Search and Search History Feature
-<img src="https://user-images.githubusercontent.com/92966900/182042466-555cf4e3-73f7-4af2-96d3-b343049fda1a.JPG" width="160" height="350"> <img src="https://user-images.githubusercontent.com/92966900/182042615-9077eae6-cd36-4276-aa3b-0cffaa9ffb5e.JPG" width="160" height="350"> <img src="https://user-images.githubusercontent.com/92966900/182043116-d0efd409-7936-437d-adb0-e2462df9a39c.JPG" width="160" height="350">
+<img src="https://user-images.githubusercontent.com/92966900/182203739-19471e89-7ea4-453b-b655-f5b5bdf29851.png" width="160" height="350"><img src="https://user-images.githubusercontent.com/92966900/182203766-a3fc87a0-7743-433e-a727-273f34c63ba0.png" width="160" height="350">  
 
 With this feature, users can search for listing items, as well as view or edit their search history.
 

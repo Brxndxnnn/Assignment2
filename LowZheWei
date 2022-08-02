@@ -22,13 +22,11 @@ Improvements I made to Application since Assignment 1:
 
 ### User Guide (Search Feature):
 
-<img src="https://user-images.githubusercontent.com/92966900/182042466-555cf4e3-73f7-4af2-96d3-b343049fda1a.JPG" width="140" height="350">
+<img src="https://user-images.githubusercontent.com/92966900/182203739-19471e89-7ea4-453b-b655-f5b5bdf29851.png" width="160" height="350"><img src="https://user-images.githubusercontent.com/92966900/182203766-a3fc87a0-7743-433e-a727-273f34c63ba0.png" width="160" height="350">  
 
-User will be navigated to the List Search Page (Next Image) when clicking on the Search Icon.
+User will be navigated to the List Search Page (second image) when clicking on the Search Icon (shown in first image).
 
-<img src="https://user-images.githubusercontent.com/92966900/182042615-9077eae6-cd36-4276-aa3b-0cffaa9ffb5e.JPG" width="140" height="350">
-
-When the user submits his search query, he will be navigated to the listing details page (Next Image) of the item that he has searched for. 
+When the user submits his search query, he will be navigated to the listing details page of the item that he has searched for. 
 His search history will be recorded and displayed in the page as well.
  
 When the user clicks on the remove icon (in red), a toast message will pop up to indicate that his "Search History Record" has been successfully deleted. The record will disappear from the list search page. 
@@ -37,7 +35,5 @@ When the user clicks on the "Clear All" text, a toast message will pop up to ind
 
 When the user clicks on "Cancel", the user will be navigated back to the listings page. 
 
-<img src="https://user-images.githubusercontent.com/92966900/182043116-d0efd409-7936-437d-adb0-e2462df9a39c.JPG" width="140" height="350">
 
-Listing details page of a specific item. 
 
