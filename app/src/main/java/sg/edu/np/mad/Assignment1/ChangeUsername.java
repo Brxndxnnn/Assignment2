@@ -74,6 +74,12 @@ public class ChangeUsername extends AppCompatActivity {
                     return;
                 }
 
+                //Error Validation - If username characters more than 14
+                else if(username.length() > 14){
+                    newUsername.setError("Username must not be more than 14 Characters");
+                    return;
+                }
+
                 else {
                     //Get Realtime Database instance
                     mDatabase = FirebaseDatabase.getInstance("https://mad-assignment-1-7b524-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference();

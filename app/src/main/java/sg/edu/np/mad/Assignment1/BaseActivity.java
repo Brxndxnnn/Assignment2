@@ -26,6 +26,7 @@ public class BaseActivity extends AppCompatActivity {
     /** Done by Brandon
      * When Activity is onPause, set the User Online status to offline. Associated with the Chat feature.
      */
+
     @Override
     protected void onPause() {
         super.onPause();

@@ -160,21 +160,27 @@ public class ListingDetails extends AppCompatActivity {
                 if (!task.isSuccessful()) {
 
                 } else {
-                    String type = ((Object) task.getResult().getValue()).getClass().getSimpleName(); // Retrieve category from firebase
-                    if (type.equals("ArrayList")) {
-                        Log.e("test", type);
-                        ArrayList likes = new ArrayList<String>();
-                        likes = (ArrayList) task.getResult().getValue();
-                        // Return list from Firebase
-                        if ((likes !=null && likes.contains(key))) {
-                            // If likes contain the string, return true
-                            fav.setVisible(true);
-                            unfav.setVisible(false);
+                    if (task.getResult().exists()){
+                        String type = ((Object) task.getResult().getValue()).getClass().getSimpleName(); // Retrieve category from firebase
+                        if (type.equals("ArrayList")) {
+                            Log.e("test", type);
+                            ArrayList likes = new ArrayList<String>();
+                            likes = (ArrayList) task.getResult().getValue();
+                            // Return list from Firebase
+                            if ((likes !=null && likes.contains(key))) {
+                                // If likes contain the string, return true
+                                fav.setVisible(true);
+                                unfav.setVisible(false);
+                            } else {
+                                fav.setVisible(false);
+                                unfav.setVisible(true);
+                            }
                         } else {
                             fav.setVisible(false);
                             unfav.setVisible(true);
                         }
-                    } else {
+                    }
+                    else{
                         fav.setVisible(false);
                         unfav.setVisible(true);
                     }
@@ -271,7 +277,12 @@ public class ListingDetails extends AppCompatActivity {
         mDatabase.child(userEmail).child("likesCategory").child("All").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
-                String type = ((Object) task.getResult().getValue()).getClass().getSimpleName(); // Retrieve listing id from firebase
+                String type = "";
+                if (task.getResult().exists()){
+                    type = ((Object) task.getResult().getValue()).getClass().getSimpleName(); // Retrieve listing id from firebase
+                }
+
+                //String type = ((Object) task.getResult().getValue()).getClass().getSimpleName(); // Retrieve listing id from firebase
                 if (type.equals("ArrayList")) {
                     ArrayList likes = new ArrayList<String>();
                     likes = (ArrayList) task.getResult().getValue();

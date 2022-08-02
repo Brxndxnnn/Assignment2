@@ -149,9 +149,9 @@ public class SelectListings extends AppCompatActivity implements View.OnClickLis
                     return;
                 }
 
-                //Error Validation - If Description more than 50 characters
-                else if(desc.length() > 50){
-                    listingDesc.setError("Description must not be more than 50 Characters");
+                //Error Validation - If Description more than 200 characters
+                else if(desc.length() > 200){
+                    listingDesc.setError("Description must not be more than 200 Characters");
                     return;
                 }
 
