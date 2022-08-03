@@ -38,13 +38,13 @@ Zhe Wei: App Tester. Testing the app for any bugs as well as ensure all the erro
 
 Brandon [Contributions](Brandon.md)
 
-Irene: [Contributions](IrenePhang)
+Irene: [Contributions](IrenePhang.md)
 
-Chor Yi: [Contributions](LoongChorYi)
+Chor Yi: [Contributions](LoongChorYi.md)
 
-Xin Ying: [Contributions](TayXinYing)
+Xin Ying: [Contributions](TayXinYing.md)
 
-Zhe Wei: [Contributions](LowZheWei) 
+Zhe Wei: [Contributions](LowZheWei.md) 
 
 ### User Guide:
 
