@@ -23,6 +23,7 @@ Improvements I made to Application since Assignment 1:
 6. Reformat the Buttons in the Homepage, making each Button unique and does not load to a Activity that is already in the Navigation Bar. 
 7. Overall improvements made to the UI/UX of the Application.
 8. Overall Bug fixes.
+9. Created all the pictures that is used in the Play Store Listings.
 
 ### Recent Conversations/Chat
 <img src="https://user-images.githubusercontent.com/104063681/182048348-689a3bb5-bcf8-4b40-87dc-6e93b1039b07.png" width="160" height="350">
